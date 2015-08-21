@@ -1,0 +1,184 @@
+==================================================================================================================================
+./ext4_utils.c:168:	aux_info.sb = calloc(info.block_size, 1);									//shenpengru: memleak, need fix!!! 
+./ext4_utils.c:175:	aux_info.bg_desc = calloc(info.block_size, aux_info.bg_desc_blocks);		//shenpengru: memleak, need fix!!! 
+./allocate.c:164:	bg->inode_table = calloc(aux_info.inode_table_blocks, info.block_size);		//shenpengru: memleak, need fix!!! 
+./allocate.c:291:	bg->bitmaps = calloc(info.block_size, 2);									//shenpengru: memleak, need fix!!!
+./extent.c:32:		u8 *data = calloc(backing_len, 1);											//shenpengru: memleak, need fix!!!
+./ext4_utils.c:302:	u8 *buf = calloc(info.block_size, 1);										//shenpengru: memleak, need fix!!! 
+./indirect.c:450:	u32 *ind_block_data = calloc(info.block_size, info.bg_desc_reserve_blocks);	//shenpengru: memleak, need fix!!!
+==================================================================================================================================
+struct fs_info info;                                                                                                                                                          
+struct fs_aux_info aux_info;                                                                                                                                                  
+struct sparse_file *ext4_sparse_file;
+==================================================================================================================================
+struct fs_info info;
+++++++++++++++++++++
+ 
+struct fs_info {                                                                                                                                                              
+    int64_t len;    /* If set to 0, ask the block device for the size,                                                                                                        
+             * if less than 0, reserve that much space at the                                                                                                                 
+             * end of the partition, else use the size given. */                                                                                                              
+    uint32_t block_size;                                                                                                                                                      
+    uint32_t blocks_per_group;                                                                                                                                                
+    uint32_t inodes_per_group;                                                                                                                                                
+    uint32_t inode_size;                                                                                                                                                      
+    uint32_t inodes;                                                                                                                                                          
+    uint32_t journal_blocks;                                                                                                                                                  
+    uint16_t feat_ro_compat;                                                                                                                                                  
+    uint16_t feat_compat;                                                                                                                                                     
+    uint16_t feat_incompat;                                                                                                                                                   
+    uint32_t bg_desc_reserve_blocks;                                                                                                                                          
+    const char *label;                                                                                                                                                        
+    uint8_t no_journal;                                                                                                                                                       
+    // MStar Android Patch Begin                                                                                                                                              
+    // Add flexbg related member                                                                                                                                              
+    uint32_t flex_bg_size;                                                                                                                                                    
+    uint32_t flexbg_grps;                                                                                                                                                     
+    uint32_t flex_bg_len;                                                                                                                                                     
+    uint8_t log_groups_per_flex;                                                                                                                                              
+    uint32_t flexbg_free_block;                                                                                                                                               
+    // MStar Android Patch End                                                                                                                                                
+};
+==================================================================================================================================
+struct fs_aux_info aux_info;                                                                                                                                                  
+++++++++++++++++++++++++++++
+
+truct fs_aux_info {
+    struct ext4_super_block *sb;			//--ext4_utils.c:168: aux_info.sb = calloc(info.block_size, 1);
+    struct ext4_super_block **backup_sb;	//--ext4_create_fs_aux_info <-> /home/shenpengru/code/inception/android/system/extras/ext4_utils/ext4_utils.c:170
+    struct ext2_group_desc *bg_desc;
+    struct block_group_info *bgs;			//--block_allocator_init <-> /home/shenpengru/code/inception/android/system/extras/ext4_utils/allocate.c:347
+    struct xattr_list_element *xattrs;
+    u32 first_data_block;
+    u64 len_blocks;
+    u32 inode_table_blocks;
+    u32 groups;
+    u32 bg_desc_blocks;
+    u32 default_i_flags;
+    u32 blocks_per_ind;
+    u32 blocks_per_dind;
+    u32 blocks_per_tind;
+};
+
+struct block_group_info {
+    u32 first_block;
+    u32 first_flex_bg;
+    u32 first_flexbg_block;
+    u32 flexbg_block_bitmap;
+    u32 flexbg_inode_bitmap;
+    u32 flexbg_tbl_block;
+    int header_blocks;
+    int data_blocks_used;
+    int has_superblock;
+    u8 *bitmaps;						//--allocate.c:291:   bg->bitmaps = calloc(info.block_size, 2);
+    u8 *block_bitmap;					//--[bg->block_bitmap = bg->bitmaps;]--//
+    u8 *inode_bitmap;					//--[bg->inode_bitmap = bg->bitmaps + info.block_size;]--//
+    u8 *inode_table;					//--allocate.c:164:   bg->inode_table = calloc(aux_info.inode_table_blocks, info.block_size);
+    u32 free_blocks;
+    u32 first_free_block;
+    u32 free_inodes;
+    u32 first_free_inode;
+    u16 flags;
+    u16 used_dirs;
+};
+==================================================================================================================================
+struct sparse_file *ext4_sparse_file
+++++++++++++++++++++++++++++++++++++
+
+struct sparse_file {
+    unsigned int block_size;
+    int64_t len;
+    bool verbose;
+
+    struct backed_block_list *backed_block_list;		//-->
+    struct output_file *out;
+};
+
+struct backed_block_list {
+    struct backed_block *data_blocks;
+    struct backed_block *last_used;
+    unsigned int block_size;
+};
+
+struct backed_block {
+    unsigned int block;
+    unsigned int len;
+    enum backed_block_type type;
+    union {
+        struct {
+            void *data;									//--extent.c:32:      u8 *data = calloc(backing_len, 1);  //--!!!!
+        } data;
+        struct {
+            char *filename;
+            int64_t offset;
+        } file;
+        struct {
+            int fd; 
+            int64_t offset;
+        } fd; 
+        struct {
+            uint32_t val;
+        } fill;
+    };  
+    struct backed_block *next;
+};
+==================================================================================================================================
+truct ext4_inode {
+ __le16 i_mode;
+ __le16 i_uid;
+ __le32 i_size_lo;
+ __le32 i_atime;
+ __le32 i_ctime;
+ __le32 i_mtime;
+ __le32 i_dtime;
+ __le16 i_gid;
+ __le16 i_links_count;
+ __le32 i_blocks_lo;
+ __le32 i_flags;
+ union {
+ struct {
+ __le32 l_i_version;
+ } linux1;
+ struct {
+ __u32 h_i_translator;
+ } hurd1;
+ struct {
+ __u32 m_i_reserved1;
+ } masix1;
+ } osd1;
+ __le32 i_block[EXT4_N_BLOCKS];
+ __le32 i_generation;
+ __le32 i_file_acl_lo;
+ __le32 i_size_high;
+ __le32 i_obso_faddr;
+ union {
+ struct {
+ __le16 l_i_blocks_high;
+ __le16 l_i_file_acl_high;
+ __le16 l_i_uid_high;
+ __le16 l_i_gid_high;
+ __u32 l_i_reserved2;
+ } linux2;
+ struct {
+ __le16 h_i_reserved1;
+ __u16 h_i_mode_high;
+ __u16 h_i_uid_high;
+ __u16 h_i_gid_high;
+ __u32 h_i_author;
+ } hurd2;
+ struct {
+ __le16 h_i_reserved1;
+ __le16 m_i_file_acl_high;
+ __u32 m_i_reserved2[2];
+ } masix2;
+ } osd2;
+ __le16 i_extra_isize;
+ __le16 i_pad1;
+ __le32 i_ctime_extra;
+ __le32 i_mtime_extra;
+ __le32 i_atime_extra;
+ __le32 i_crtime;
+ __le32 i_crtime_extra;
+ __le32 i_version_hi;
+};
+==================================================================================================================================

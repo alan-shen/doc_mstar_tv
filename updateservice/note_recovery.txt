@@ -1,0 +1,169 @@
+==================================================================================================
+Command:
+++++++++
+
+static const struct option OPTIONS[] = {
+        { "send_intent",    required_argument, NULL, 's' },		//原生:
+        { "update_package", required_argument, NULL, 'u' },		//原生:升级包路径
+        { "uuid",           required_argument, NULL, 'd' },		//
+        { "label",          required_argument, NULL, 'a' },		//
+        { "wipe_data",      no_argument,       NULL, 'w' },		//原生:擦除数据,进data分区逐个删除文件(有skip);格式化cache;...还有...
+        { "format_data",    no_argument,       NULL, 'f' },		//格式化data分区;删tvinfo某些内容;
+        { "clean_app",      no_argument,       NULL, 'n' },		//与擦除data数据有关,是否在擦除时跳过某些文件;
+        { "wipe_cache",     no_argument,       NULL, 'c' },		//仅格式化cache分区
+        { "show_text",      no_argument,       NULL, 't' },		//原生: 显示菜单
+        { "graphic_mode",   no_argument,       NULL, 'G' },		//是否使用图片构成的菜单.(如果进入recovery没有command会默认设置"--show_text --graphic_mode")
+        { "just_exit",      no_argument,       NULL, 'x' },		//原生:
+        { "locale",         required_argument, NULL, 'l' },		//原生: 显示语言
+        { "stages",         required_argument, NULL, 'g' },		//原生:
+        { "shutdown_after", no_argument,       NULL, 'p' },		//原生:
+        { "reason",         required_argument, NULL, 'r' },		//原生:
+        { "backup_system",  no_argument,       NULL, 'b' },		//备份system分区数据到sdcard/backup_system
+        { "restore_system", no_argument,       NULL, 'z' },		//从sdcard/backup_system恢复system数据
+        { "wait_time",      required_argument, NULL, 'q' },		//未使用
+        { "switch_system",  no_argument,       NULL, 'o' },		//切换双系统(0->1/1->0)
+        { NULL, 0, NULL, 0 }, 
+};
+
+==================================================================================================
+
+gGraphicMode
+++++++++++++
+
+	该全局变量定义在 recovery.cpp 中;
+	值由 command 参数 { "graphic_mode", no_argument, NULL, 'G' } 决定;
+	
+		--------------------------------------------------------------------------
+		graphic_mode=true ;		||	Xiaomi修改过的基于图片的显示方式;(GraphicMode)
+		graphic_mode=false;		||	Android原生UI显示;
+		--------------------------------------------------------------------------
+
+	可以在以下函数中:
+		prompt_and_wait()
+		recovery_reboot()
+		wipe_data()
+		storage_update()
+		browse_directory()
+	看到通过变量 gGraphicMode 控制的不同模式UI显示流程.
+
+==================================================================================================
+default_device.cpp 中在 make_device() 时返回不同的device来决定是否是 Graphic 显示 Mode:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+extern bool gGraphicMode;
+
+Device* make_device() {
+    if (gGraphicMode) {
+        return new GraphicDevice(HEADERS, ITEMS);
+    } else {
+   	    return new DefaultDevice();
+    } 
+}
+
+==================================================================================================
+recovery.cpp 中的 ui 都是 RecoveryUI*
++++++++++++++++++++++++++++++++++++++
+
+main()
+{
+		...
+        Device* device = make_device();
+        ui = device->GetUI();				// 这里不论是 default_device 还是 GraphicDevice 返回的都是 RecoveryUI 类.
+											// RecoveryUI* GetUI()                { return ui; }
+											// RecoveryUI* GraphicDevice::GetUI() { return ui; }
+        gCurrentUI = ui;
+
+        ui->SetLocale(locale);
+        ui->Init();
+		...
+}
+
+==================================================================================================
+最上层如何使用这套UI架构:
++++++++++++++++++++++++++
+
+	if(gGraphicMode){
+		GraphicScreenRecoveryUI * gUi = (GraphicScreenRecoveryUI*)ui;						//
+		gUi->setMenuHeadersMap(headers, GraphicScreenRecoveryUI::HEADERS_MAIN);				//这里会组织一屏UI架构(将图片button组织起来) 
+	}
+
+	chosen_item = get_menu_selection(headers, device->GetMenuItems(), 0, 0, device);
+	{
+		...
+		ui->StartMenu(headers, items, initial_selection);									//这里会绘制上边组织的一屏UI
+		...
+		ui->SelectMenu(selected);															//这里会根据上下键选择button并重新绘制UI
+																							//直到有select动作..
+		...
+	}
+
+==================================================================================================
+==================================================================================================
+Device/UI 类继承:
++++++++++++++++++
+
+                                     ui.h          screen_ui.h           GraphicScreenRecoveryUI.h
+--------------------------------------------------------------------------------------------------
+(1)RecoveryUI* ui=device->GetUI();   [RecoveryUI]<-[ScreenRecoveryUI]<---[GraphicScreenRecoveryUI]
+                                          ^
+                                          |
+                                          `-------------GetUI()--------------------,
+                                                                                    |
+                                                                                    |
+(2)Device* device=make_device();     [          Device              ]<-------------[GraphicDevice]
+--------------------------------------------------------------------------------------------------
+                                     device.h                                    GraphicDevice.h
+==================================================================================================
+==================================================================================================
+
+       ScreenRecoveryUI::progress_thread()
+
+GraphicScreenRecoveryUI::progress_loop()
+
+       ScreenRecoveryUI::update_progress_locked();
+
+GraphicScreenRecoveryUI::draw_screen_locked();
+						ScreenRecoveryUI::draw_background_locked()						//绘制背景
+						ScreenRecoveryUI::draw_progress_locked()						//绘制进度条
+						GraphicScreenRecoveryUI::draw_screenview_locked(&current_view)	//绘制图片 button, current_view为StartMenu时决定,
+																						//setMenuHeadersMap时创建的,
+																						//每换一屏都要先setMenuHeadersMap/StartMenu
+       ScreenRecoveryUI::draw_progress_locked()
+
+==================================================================================================
+
+GraphicScreenRecoveryUI::StartMenu()
+       ScreenRecoveryUI::SetBackground(Icon icon)
+GraphicScreenRecoveryUI::SetTipTitle(Tip tip)
+       ScreenRecoveryUI::SetExitRecoveryTipTitle(int exitRecoveryTip)
+GraphicScreenRecoveryUI::Print(const char *fmt, ...)
+GraphicScreenRecoveryUI::SelectMenu(int sel)
+       ScreenRecoveryUI::EndMenu()
+       ScreenRecoveryUI::ShowText(bool visible)
+       ScreenRecoveryUI::Redraw()
+
+       ScreenRecoveryUI::update_screen_locked();
+
+GraphicScreenRecoveryUI::draw_screen_locked();
+						...
+						...
+
+==================================================================================================
+
+struct view {
+    int type;              // view type, now image view or progress view
+    int width;             // width of this view, mostly the screen width
+    int height;            // height of this view
+    int pos;               // the position of the view content
+    gr_surface* surfaces;  // the normal and selected image surfaces for this view, for an empty view, the surfaces is null.
+};
+
+struct screenview {
+    int menu_items;       // how many menu items
+    int menu_start;       // the position of first menu item in the views array
+    int menu_sel;         // the selected menu item index( 0 <= menu_sel < menu_items)
+    int child_count;      // how many child views
+    struct view views[MAX_CHILD_VIEWS];  // array of child view in y-axis order
+};
+==================================================================================================
+==================================================================================================

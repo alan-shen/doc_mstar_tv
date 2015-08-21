@@ -1,0 +1,23 @@
+=======================================================================================================================
+struct output_file_normal {
+    struct output_file out;
+    int fd; 
+};
+
+struct output_file {
+    int64_t cur_out_ptr;
+    unsigned int chunk_cnt;
+    uint32_t crc32;
+    struct output_file_ops *ops;
+    struct sparse_file_ops *sparse_ops;
+    int use_crc;
+    unsigned int block_size;
+    int64_t len;
+    char *zero_buf;							//--output_file_init <-> /work/inception/android/system/core/libsparse/output_file.c:556
+    uint32_t *fill_buf;						//--output_file_init <-> /work/inception/android/system/core/libsparse/output_file.c:562
+    char *buf;
+};
+
+=======================================================================================================================
+
+=======================================================================================================================
