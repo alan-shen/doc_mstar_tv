@@ -23,7 +23,8 @@ def_wait_device () {
 	echo -e ${blue}">>>>> READY <<<<<"${normal}
 }
 
-PRODUCT_OUT="/home/shenpengru/out/target/product/"
+#PRODUCT_OUT="/home/shenpengru/out/target/product/"
+PRODUCT_OUT="/work/inception/android/out/target/product/gladiator"
 SYSTEM_BIN_COPYLIST="updateservice runupdate simg2img img2simg make_ext4fs ext2simg ext4fixup"
 SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libsparse.so libext4_utils.so"
 
@@ -35,14 +36,14 @@ main () {
 	for ibin in ${SYSTEM_BIN_COPYLIST}
 	do
 		echo -e ${yellow}"${ibin}"${normal}
-		adb push ${PRODUCT}/system/bin/${ibin} /system/bin/${ibin}
+		adb push ${PRODUCT_OUT}/system/bin/${ibin} /system/bin/${ibin}
 	done
 
 	echo -e ${green}"\n>>>>> Copying libs..."${normal}
 	for ilib in ${SYSTEM_LIB_COPYLIST}
 	do
 		echo -e ${yellow}"${ilib}"${normal}
-		adb push ${PRODUCT}/system/lib/${ilib} /system/lib/${ilib}
+		adb push ${PRODUCT_OUT}/system/lib/${ilib} /system/lib/${ilib}
 	done
 }
 
