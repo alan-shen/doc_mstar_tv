@@ -2,4 +2,4 @@
 
 adb wait-for-devices
 
-logcat -s "UpdateService | UpdateCheck"
+adb logcat -s "UpdateService | UpdateCheck"
