@@ -25,8 +25,10 @@ def_wait_device () {
 
 #PRODUCT_OUT="/home/shenpengru/out/target/product/"
 PRODUCT_OUT="/work/inception/android/out/target/product/gladiator"
-SYSTEM_BIN_COPYLIST="updateservice runupdate simg2img img2simg make_ext4fs ext2simg ext4fixup"
-SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libsparse.so libext4_utils.so"
+#SYSTEM_BIN_COPYLIST="updateservice runupdate simg2img img2simg make_ext4fs ext2simg ext4fixup"
+#SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libsparse.so libext4_utils.so"
+SYSTEM_BIN_COPYLIST="updateservice runupdate mi_md5chk mi_md5list"
+SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libmitvmd5.so"
 
 main () {
 	def_colors
@@ -47,5 +49,29 @@ main () {
 	done
 }
 
-main
+copy_to_udisk () {
+	def_colors
 
+	mkdir -p $1/system/bin
+	mkdir -p $1/system/lib
+
+	echo -e ${green}"\n>>>>> Copying binarys..."${normal}
+	for ibin in ${SYSTEM_BIN_COPYLIST}
+	do
+		echo -e ${yellow}"${ibin}"${normal}
+		cp -rfv ${PRODUCT_OUT}/system/bin/${ibin} $1/system/bin/${ibin}
+	done
+
+	echo -e ${green}"\n>>>>> Copying libs..."${normal}
+	for ilib in ${SYSTEM_LIB_COPYLIST}
+	do
+		echo -e ${yellow}"${ilib}"${normal}
+		cp -rfv ${PRODUCT_OUT}/system/lib/${ilib} $1/system/lib/${ilib}
+	done
+}
+
+if test ! -z $1;then
+	copy_to_udisk $1
+else
+	main
+fi
