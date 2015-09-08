@@ -1,0 +1,60 @@
+============================================================================================================
+git push <远程主机名> <本地分支名>:<远程分支名>
+============================================================================================================
+eg.
+
+	# git push aosp HEAD:refs/for/master			/* updateservice 的提交 */
+	# git push aosp HEAD:refs/for/inception			/* recovery      的提交 */
+
+============================================================================================================
+远程主机名获取:
++++++++++++++++
+
+	# git remote
+
+============================================================================================================
+本地分支名:
++++++++++++
+
+	HEAD											/* 你可以认为 HEAD(大写)是"current branch"(当下的分支) */
+	# git branch									/* 带"*"号的是当前分支 */
+
+============================================================================================================
+远程分支名:
++++++++++++
+
+	# git branch -a
+
+============================================================================================================
+eg.
++++
+
+shenpengru@spacex:/work/inception/android/device/mstar/gladiator$ git branch -a
+* (no branch)
+  remotes/aosp/gl_307_cts
+  remotes/aosp/gl_44_781
+  remotes/aosp/gl_cts_880
+  remotes/aosp/gl_fr_1061
+  remotes/aosp/gl_fr_1215
+  remotes/aosp/gl_fr_338
+  remotes/aosp/gl_fr_398
+  remotes/aosp/gl_fr_570
+  remotes/aosp/gl_fr_708
+  remotes/aosp/gl_fr_916
+  remotes/aosp/gladiator
+  remotes/aosp/gladiator-L
+  remotes/aosp/gladiator_dev
+  remotes/aosp/ha_cts_221
+  remotes/aosp/ha_fr_182
+  remotes/aosp/ha_fr_334
+  remotes/aosp/ha_fr_413
+  remotes/aosp/ha_fr_422
+  remotes/aosp/ha_fr_556
+  remotes/aosp/in_cts_204
+  remotes/aosp/master
+  remotes/aosp/merge_3.04
+  remotes/aosp/mstar_2.05
+  remotes/aosp/mstar_3.03
+  remotes/aosp/mstar_3.10
+  remotes/m/inception -> aosp/gladiator-L							<---   远程分支名
+============================================================================================================
