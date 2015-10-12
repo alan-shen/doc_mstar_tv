@@ -45,3 +45,52 @@
 [440546.330118] tfat info: FAT32 volume name 'SHEN', version 0.0.
 [440546.336015] tfat warning (device sda1, pid 162): fat_fill_super(): FAT volume SHEN is dirty.  You should unmount and repair it.
 [440546.350096] init: no such service 'fuse_06BD-EAB4'
+
+=======================================================================================================
+插入U盘:
+++++++++
+
+[  545.296200] utmi off
+[  545.414429] ==20150116==> hub_port_init 1 #0
+[  545.418766] Plug in USB Port5
+[  545.421780] utmi on
+[  545.499694] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+[  545.584417] usb 5-1: new high-speed USB device number 4 using Mstar-ehci-5
+[  545.592795] utmi on
+[  545.674797] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+[  545.811463] usb 5-1: New USB device found, idVendor=058f, idProduct=6387
+[  545.818348] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  545.825759] usb 5-1: Product: Mass Storage
+[  545.829924] usb 5-1: Manufacturer: Generic
+[  545.834040] usb 5-1: SerialNumber: 677A66C4
+[  545.840635] usb-storage 5-1:1.0: USB Mass Storage device detected
+[  545.847039] usb-storage 5-1:1.0: Quirks match for vid 058f pid 6387: 20
+[  545.853749] usb-storage 5-1:1.0: This device (058f,6387,010e S 06 P 50) has unneeded SubClass and Protocol entries in unusual_devs.h (kernel 3.10.23)
+[  545.853749]    Please send a copy of this message to <linux-usb@vger.kernel.org> and <usb-storage@lists.one-eyed-alien.net>
+[  545.878499] scsi2 : usb-storage 5-1:1.0
+[  545.885587] scsi 2:0:0:0: Direct-Access     Generic  Flash Disk       8.07 PQ: 0 ANSI: 4
+[  545.900969] sd 2:0:0:0: [sda] 7987200 512-byte logical blocks: (4.08 GB/3.80 GiB)
+[  545.909295] sd 2:0:0:0: [sda] Write Protect is off
+[  545.914901] sd 2:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[  545.928201] emmc_partition()
+[  545.932330] 0xc033
+[  545.934442]  sda: sda1
+[  545.951265] sd 2:0:0:0: [sda] Attached SCSI removable disk
+[  548.465885] tfat: fail_safe is enabled
+[  548.470417] tfat: cluster_heap_lbo 0x79e000
+[  548.474827] tfat: 12 blkbits for normal inodes
+[  548.479342] tfat: fat start lbo 0x4000
+[  548.483513] tfat: 12 blkbits for main FAT32 inode
+[  548.702524] tfat info: FAT32 volume name 'SHEN', version 0.0.
+[  548.708420] tfat warning (device sda1, pid 159): fat_fill_super(): FAT volume SHEN is dirty.  You should unmount and repair it.
+[  548.722268] init: no such service 'fuse_06BD-EAB4'
+
+=======================================================================================================
+拔出U盘:
+++++++++
+
+[  558.854976] utmi off
+[  558.857320] usb 5-1: USB disconnect, device number 4
+[  558.893207] init: no such service 'fuse_06BD-EAB4'
+[  558.949796] root hub reinitial [usbdis]
+

@@ -1,0 +1,893 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2015.10.12 16:26:17 =~=~=~=~=~=~=~=~=~=~=~=
+UART_115200
+
+STR_ON
+_U
+Relocation Offset is: 01100000
+[AT][MB][start ub][357]
+
+U-Boot 2011.06-00000-g1e24f73 (Sep 22 2015 - 19:47:10)
+
+create instance at 57c75020 with private size 52 bytes at 57c75068
+
+uboot held at [578ddf60~59300000],size=01a220a0
+CPU  : Monaco
+Board: BD_MST068D_10AHP_14222
+HARDWARE ID: 0x4
+DRAM:  915 MiB
+Now running in RAM - U-Boot at: 58300000
+
+eMMC: HS400 200MHz 
+eMMC 7.28 GB [E8FFF8h]
+db_table=1
+No tcon_iic_read_ok
+HARDWARE ID with mirror: 0x204
+In:    serial
+Out:   serial
+Err:   serial
+Net:   No ethernet found.
+MAC:  0x10: 0x48: 0xb1: 0x0:0x0: 0x2
+
+[CPU INFO] cpu opencreate instance at 57c85528 with private size 44 bytes at 57c85570
+CPUIoctl - MDrv_CMD_CPU_QueryClock
+[UTOPIA INFO] close moduleNames[38]: MODULE_CPU
+
+cold boot,boot reason:wake_src is 1,wakeup pin(INT) is low
+bt wakeup gpio level is low
+turn on led
+tp_led_enable 42 failed
+tp_led_enable 50 failed
+tp i2c receive error
+msIR_Initialize
+DC on
+create instance at 57c85528 with private size 344 bytes at 57c85570
+MDrv_PNL_Init u32PnlRiuBaseAddr = 1f200000
+MDrv_PNL_Init u32PMRiuBaseAddr = 1f000000
+LINK TYPE = EXT [MDrv_PNL_SetPanelType][667] ATTENTION!!! Not support HW Training Mode
+
+
+[MHal_PNL_Init_MOD][2109]Vx1 2 division
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=40
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=12
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=12
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=12
+[msSetVBY1RconValue][1725]u16temp= 12
+Vx1 2 division[_MDrv_PNL_Init_LPLL][323]pstPanelInitData->u16Width=3840, pstPanelInitData->u16Height=2160
+[_MDrv_PNL_Init_LPLL][325]u16HTotal=4400,u16VTotal=2250,pstPanelInitData->u16HTotal=4400,pstPanelInitData->u16VTotal=2250, u16DefaultVFreq=600
+@@11=39
+[_MDrv_PNL_Init_Output_Dclk][375]pstPanelInitData->u16Width=3840, pstPanelInitData->u16Height=2160
+[_MDrv_PNL_Init_Output_Dclk][377]u16HTotal=4400,u16VTotal=2250,pstPanelInitData->u16HTotal=4400,pstPanelInitData->u16VTotal=2250, u16DefaultVFreq=600
+@@11=39
+@@11=39
+[MApi_XC_MLG_GetStatus, 1652]No instance existed, please get an instance by calling MApi_XC_Init() first
+Init PWM2[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=40
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=12
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=12
+[msReadEfuse][1689]u32Result=575a00d2, after mask u32Result=12
+[msSetVBY1RconValue][1725]u16temp= 12
+create instance at 57c856d0 with private size 1788 bytes at 57c85718
+[XC,Version][0;36m 
+ [mMApi_XC_Init_U2, 1151, pXC_InitData->stPanelInfo.eLPLL_Type=51
+Wait for PM51 standby DRAM ...........PM51 run ok...........mmc change mount : tvconfig
+Size of file "/boot0.jpg" from mmc device 0 partition tvconfig: 101722 bytes
+Loading file "/boot0.jpg" at offset 0x0 from mmc device 0 partition tvconfig
+101722 bytes read
+create instance at 57c85e18 with private size 312 bytes at 57c85e60
+[AT][MB][JPD Decode][1014]
+
+[UTOPIA INFO] close moduleNames[35]: MODULE_NJPEG_EX
+
+create instance at 57c85e18 with private size 1720 bytes at 57c85e60
+
+[GOP INFO] gop opencreate instance at 57c86520 with private size 7756 bytes at 57c86568
+[AT][MB][Show Logo][1084]
+[AT][MBoot][Driver Init][1086]
+MPOOL size : 0x200000
+Writing to MMC(0)... 128 blocks written: OK
+128 blocks written: OK
+done
+
+Changelist:	24543697
+============= set bootargs ===============
+Hit any key to stop autoboot:  0 
+fore uup IRKey [0x0]
+tp_get_version 108 failed
+SAR key = 255
+DC on
+[0;34m*******************************[0m
+[0;34m* tee1 Authentication SUCCESS !! *[0m
+[0;34m*******************************[0m
+[0;33mThe version of tee.bin is 00:00:00:00
+[0mMPOOL size : 0x200000
+[0;34m*******************************[0m
+[0;34m* boot1 Authentication SUCCESS !! *[0m
+[0;34m*******************************[0m
+[AT][MBoot][Boot Nuttx][2592]
+## Booting kernel from Legacy Image at 25000000 ...
+   Image Name:   MStar-linux
+   Image Type:   ARM Linux Multi-File Image (uncompressed)
+   Data Size:    7250915 Bytes = 6.9 MiB
+   Load Address: 20208000
+   Entry Point:  20208000
+   Contents:
+      Image 0: 5054616 Bytes = 4.8 MiB
+      Image 1: 2196287 Bytes = 2.1 MiB
+## Loading init Ramdisk from multi component Legacy Image at 25000000 ...
+-usb_stop(USB_PORT0)
+-usb_stop(USB_PORT1)
+-usb_stop(USB_PORT2)
+-usb_stop(USB_PORT3)
+-usb_stop(USB_PORT4)
+   Loading Multi-File Image ... OK
+[AT][MB][start kr][2654]
+
+Starting kernel   ...
+
+
+[MIU INFO] miu opencreate instance at 57c89830 with private size 80 bytes at 57c89878
+machid 1a20
+Uncompressing Linux... done, booting the kernel.
+KERN-3.10.23.001049551
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 3.10.23 (shenpengru@spacex) (gcc version 4.8.3 20140320 (prerelease) (Sourcery CodeBench Lite 2014.05-29) ) #2 SMP PREEMPT Mon Oct 12 14:53:59 CST 2015
+[    0.000000] CPU: ARMv7 Processor [410fc0d1] revision 1 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: gladiator
+[    0.000000] wdt_reset = 0
+[    0.000000] 
+[    0.000000] LX_MEM  = 0x20200000, 0x30d00000
+[    0.000000] LX_MEM2 = 0xa6600000, 0x19a00000
+[    0.000000] LX_MEM3 = 0xe0000000, 0xe500000
+[    0.000000] EMAC_LEN= 0x100000
+[    0.000000] DRAM_LEN= 0x80000000
+[    0.000000] [31mLX2_LEFT_MEM_SIZE  = 0xF2FFFFF[m
+[    0.000000] [31mFunction = dma_contiguous_reserve, Line = 484, cma: [mreserving 16 MiB for global area
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 689, cma: [mcma_reserved_count is 0
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 690, cma: [mbase is 0x0
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 691, cma: [mlimit is 0x4FA00000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 759, cma: [msuccessfully reserved 16 MiB at 4e800000
+[    0.000000] [31mFunction = dma_contiguous_reserve, Line = 504, cma: [mreserving 336 MiB for mstar_driver
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 689, cma: [mcma_reserved_count is 1
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 690, cma: [mbase is 0x39800000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 691, cma: [mlimit is 0x4FA00000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 759, cma: [msuccessfully reserved 336 MiB at 39800000
+[    0.000000] [31mFunction = dma_contiguous_reserve, Line = 504, cma: [mreserving 84 MiB for mstar_driver
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 689, cma: [mcma_reserved_count is 2
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 690, cma: [mbase is 0xBAC00000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 691, cma: [mlimit is 0x4FA00000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 759, cma: [msuccessfully reserved 84 MiB at bac00000
+[    0.000000] [31mFunction = dma_contiguous_reserve, Line = 504, cma: [mreserving 204 MiB for mstar_driver
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 689, cma: [mcma_reserved_count is 3
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 690, cma: [mbase is 0xA6800000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 691, cma: [mlimit is 0x4FA00000
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 754, cma: [mthis is a guaranteed cma block.
+[    0.000000] [31mFunction = dma_declare_contiguous, Line = 759, cma: [msuccessfully reserved 204 MiB at a6800000
+[    0.000000] Memory policy: ECC disabled, Data cache writealloc
+[    0.000000] PERCPU: Embedded 9 pages/cpu @c1be2000 s12416 r8192 d16256 u36864
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 362000
+[    0.000000] Kernel command line: console=ttyS0,115200 androidboot.console=ttyS0 root=/dev/ram rw rootwait init=/init CORE_DUMP_PATH=/data/log/core_dump.%%p.gz KDebug=1 delaylogo=true CMA0=mali0,miu=0,hid=16,sz=0x15000000 CMA1=mali1,miu=1,hid=17,sz=0x5400000 CMA2=VDEC1,miu=1,hid=19,sz=0xCC00000,st=0x6800000 user_debug=3 LX_MEM=0x30D00000 LX_MEM2=0xA6600000,0x19A00000 LX_MEM3=0xE0000000,0xE500000 EMAC_MEM=0x100000 PM51_ADDR=0x20010000 PM51_LEN=0x10000 DRAM_LEN=0x80000000 androidboot.system=1 BOOTLOGO_IN_MBOOT ENV_VAR_OFFSET=0x0 ENV_VAR_SIZE=0x10000 ENV=EMMC SECURITY=ON BOOTTIME_SBOOT=357 BOOTTIME_UBOOT=2654 hardware_id=516 macaddr=10:48:B1:00:00:02 androidboot.serialno=55MC11F8E00390B wdt_reset=0
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 781MB 410MB 229MB = 1420MB total
+[    0.000000] Memory: 769796k/769796k available, 684284k reserved, 380928K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     vmalloc : 0xf0000000 - 0xff000000   ( 240 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc094c074   (9489 kB)
+[    0.000000]       .init : 0xc094d000 - 0xc09ae080   ( 389 kB)
+[    0.000000]       .data : 0xc09b0000 - 0xc0a30790   ( 514 kB)
+[    0.000000]        .bss : 0xc0a30790 - 0xc0bcf7fc   (1661 kB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xef800000   (778240 kB)
+[    0.000000]     lowmem  : 0x0a800000 - 0x18d00000   (234496 kB)
+[    0.000000]     va_arm_lowmem_limit  : 0xEF800000
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] NR_IRQS:384
+[    0.000000] [35mGlobal Timer Frequency = 12 MHz[m
+[    0.000000] [35mCPU Clock Frequency = 1008 MHz[m
+[    0.000000] fre = 12000000, mult= -1498764629, shift= 25
+[    0.000000] sched_clock: 32 bits at 12MHz, resolution 83ns, wraps every 357913ms
+[    0.000000] [AT][KR][reset timer][3065]
+[    0.000000] Console: colour dummy device 80x30
+[    0.000000] console [ttyS0] enabled
+[    0.499391] Calibrating delay loop... 2003.76 BogoMIPS (lpj=5009408)
+[    0.525779] pid_max: default: 32768 minimum: 301
+[    0.530521] Security Framework initialized
+[    0.534630] SELinux:  Initializing.
+[    0.538191] Mount-cache hash table entries: 512
+[    0.543384] Initializing cgroup subsys debug
+[    0.547665] Initializing cgroup subsys freezer
+[    0.552126] Initializing cgroup subsys blkio
+[    0.556430] CPU: Testing write buffer coherency: ok
+[    0.561584] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.567806] Setting up static identity map for 0xc0724760 - 0xc07247b8
+[    0.604557] pen_release = 0x00000001, addr= 0xc0a2aa7c, pen_release ptr = 0x00000001
+ [    0.604752] CPU1: Booted secondary processor
+pen_release = 0x00000002, addr= 0xc0a2aa7c, pen_release ptr = 0x00000002
+ [    0.616684] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.627003] CPU2: Booted secondary processor
+pen_release = 0x00000003, addr= 0xc0a2aa7c, pen_release ptr = 0x00000003
+ [    0.643292] CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+[    0.653632] CPU3: Booted secondary processor
+
+[    0.669921] CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+[    0.669992] Brought up 4 CPUs
+[    0.678820] SMP: Total of 4 processors activated (8015.05 BogoMIPS).
+[    0.685694] devtmpfs: initialized
+[    0.696341] [31mFunction = cma_init_reserved_areas, Line = 642, cma: [minit No-1 cma_buffer
+[    0.704900] [35mFunction = cma_activate_area, pfn: 0x4E800 is in zone Normal[m
+[    0.712560] [31mFunction = cma_init_reserved_areas, Line = 642, cma: [minit No-2 cma_buffer
+[    0.721121] [35mFunction = cma_activate_area, pfn: 0x39800 is in zone Normal[m
+[    0.733887] [31mFunction = cma_init_reserved_areas, Line = 642, cma: [minit No-3 cma_buffer
+[    0.742447] [35mFunction = cma_activate_area, pfn: 0xBAC00 is in zone HighMem[m
+[    0.751282] [31mFunction = cma_init_reserved_areas, Line = 642, cma: [minit No-4 cma_buffer
+[    0.759858] [35mFunction = cma_activate_area, pfn: 0xA6800 is in zone HighMem[m
+[    0.769331] NET: Registered protocol family 16
+[    0.776188] DMA: preallocated 1280 KiB pool for atomic coherent allocations
+[    0.784323] 55 tv not has tp devices
+[    0.788040] Enable BackLight[3853]
+[    0.791462] Disable reset gate
+[    0.794519] Enable RTPM FLAGS
+[    0.797511] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.805529] hw-breakpoint: maximum watchpoint size is 4 bytes.
+[    0.815588] bio: create slab <bio-0> at 0
+[    0.820036] SCSI subsystem initialized
+[    0.823902] usbcore: registered new interface driver usbfs
+[    0.829434] usbcore: registered new interface driver hub
+[    0.834821] usbcore: registered new device driver usb
+[    0.840013] i2c-gpio i2c-gpio.5: using pins 92 (SDA) and 62 (SCL)
+[    0.846139] Linux video capture interface: v2.00
+[    0.850854] [35mFunction = mstar_ion_init, Line = 460[m
+[    0.856273] [35mFunction = mstar_ion_init, Line = 463, default_heap: 1, mstar_driver heap: 3[m
+[    0.865117] [31mFunction = mstar_ion_probe, Line = 362, doing mstar_ion_probe for ion-mstar, having 4 heaps[m
+[    0.875330] [35mFunction = mstar_ion_probe, Line = 385, create heap ion_system_heap, for type 0[m
+[    0.884456] [35mFunction = mstar_ion_probe, Line = 385, create heap mali0, for type 6[m
+[    0.892654] [35mFunction = ion_mstar_cma_heap_create, Line = 971, dev = c0b6d528(mali0), cma = d931fe40[m
+[    0.902469] [35mFunction = mstar_ion_probe, Line = 385, create heap mali1, for type 6[m
+[    0.910701] [35mFunction = ion_mstar_cma_heap_create, Line = 971, dev = c0b6d618(mali1), cma = d931fe80[m
+[    0.920539] [35mFunction = mstar_ion_probe, Line = 385, create heap VDEC1, for type 6[m
+[    0.928754] [35mFunction = ion_mstar_cma_heap_create, Line = 971, dev = c0b6d708(VDEC1), cma = d931fec0[m
+[    0.938597] mstr_apm_drv_probe
+[    0.941673] cold boot,boot reason:
+[    0.945107] wake_src is 1,wakeup pin(INT) is low
+[    0.949735] bt wakeup gpio level is low
+[    0.953676] resetting wifi&bt
+[    0.956754] input: mstr_apm as /devices/platform/mstr_apm.0/input/input0
+[    0.963629] eMMC: has SD 1006
+[    0.993732] Advanced Linux Sound Architecture Driver Initialized.
+[    0.999863] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:52, arg:c00h, retry:0 
+[    1.009311] Bluetooth: Core ver 2.19
+[    1.012916] NET: Registered protocol family 31
+[    1.017386] Bluetooth: HCI device and connection manager initialized
+[    1.023767] Bluetooth: HCI socket layer initialized
+[    1.028657] Bluetooth: L2CAP socket layer initialized
+[    1.028665] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:52, arg:80000c08h, retry:0 
+[    1.043343] Bluetooth: SCO socket layer initialized
+[    1.048397] cfg80211: Calling CRDA to update world regulatory domain
+[    1.055247] [ mstar_mci_completed_command() Ln.932 ] [    1.055343] Switching to clocksource timer1
+eMMC Warn: ST:FF08h, CMD:8, arg:1aah, retry:0 
+[    1.069061] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:5, arg:0h, retry:3 
+[    1.078531] [ mstar_mci_completed_command() Ln.932 ] [    1.081205] NET: Registered protocol family 2
+[    1.081616] TCP established hash table entries: 8192 (order: 4, 65536 bytes)
+[    1.081716] TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+[    1.081809] TCP: Hash tables configured (established 8192 bind 8192)
+[    1.081863] TCP: reno registered
+[    1.081869] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    1.081892] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    1.082081] NET: Registered protocol family 1
+eMMC Warn: ST:FF08h, CMD:5, arg:0h, retry:2 
+[    1.127656] RPC: Registered named UNIX socket transport module.
+[    1.127658] RPC: Registered udp transport module.
+[    1.127660] RPC: Registered tcp transport module.
+[    1.127661] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.127814] Trying to unpack rootfs image as initramfs...
+[    1.159288] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:5, arg:0h, retry:1 
+[    1.168748] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:5, arg:0h, retry:0 
+[    1.178204] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:55, arg:0h, retry:0 
+[    1.187738] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:55, arg:0h, retry:0 
+[    1.197271] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:55, arg:0h, retry:0 
+[    1.206801] [ mstar_mci_completed_command() Ln.932 ] eMMC Warn: ST:FF08h, CMD:55, arg:0h, retry:0 
+[    1.222919] Freeing initrd memory: 2140K (c52d3000 - c54ea000)
+[    1.229322] CPU PMU: probing PMU on CPU 1
+[    1.233360] CPU PMU: failed to probe PMU![    1.236493] mmc0: BKOPS_EN bit is not set
+[    1.239065] 
+[    1.239065] eMMC: HS400 200MHz 
+[    1.239150] mmc0: new HS400 MMC card at address 0001
+
+[    1.250809] CPU PMU: failed to register PMU devices![    1.256089] audit: initializing netlink socket (disabled)
+[    1.261529] type=2000 audit(0.804:1): initialized
+[    1.345089] bounce pool size: 64 pages
+[    1.352122] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    1.358414] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[    1.365086] NTFS driver 2.1.30 [Flags: R/O].
+[    1.369516] ROMFS MTD (C) 2007 Red Hat, Inc.
+[    1.373840] fuse init (API version 7.22)
+[    1.378130] msgmni has been set to 1467
+[    1.383263] NET: Registered protocol family 38
+[    1.387826] io scheduler noop registered
+[    1.391788] io scheduler cfq registered (default)
+[    1.396660] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    1.403134] serial8250: ttyS0 at I/O 0xfd201300 (irq = 192) is a 16550
+[    1.409803] serial8250: ttyS1 at I/O 0xfd220c00 (irq = 231) is a 16550
+[    1.416446] serial8250: ttyS2 at I/O 0xfd220d00 (irq = 242) is a 16550
+[    1.423392] [drm] Initialized drm 1.1.0 20060810
+[    1.432022] brd: module loaded
+[    1.437260] loop: module loaded
+[    1.442494] nbd: registered device at major 43
+[    1.450389] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    1.456900] tun: Universal TUN/TAP device driver, 1.6
+[    1.461962] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    1.468251] PPP generic driver version 2.4.2
+[    1.472617] PPP BSD Compression module registered
+[    1.477339] PPP Deflate Compression module registered
+[    1.482412] PPP MPPE Compression module registered
+[    1.484339] mstr_apm_timer
+[    1.489920] NET: Registered protocol family 24
+[    1.494393] Mstar_ehc_init version:20150116
+[    1.498611] Mstar-ehci-2 H.W init
+[    1.501935] Titania3_series_start_ehc start
+[    1.506125] [USB] config miu select [70] [b8] [dc] ][ff]
+[    1.512450] get rterm trim value: 0xc
+[    1.516122] BC disable 
+[    1.518569] utmi off
+[    1.520761] [USB] Mstar-ehci-2 irq --> 226
+[    1.524868] Mstar-ehci-2 Mstar-ehci-2.1: Mstar EHCI
+[    1.529765] Mstar-ehci-2 Mstar-ehci-2.1: new USB bus registered, assigned bus number 1
+[    1.538109] Mstar-ehci-2 Mstar-ehci-2.1: irq 226, io mem 0xfd201a00
+[    1.554421] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.561230] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.568463] usb usb1: Product: Mstar EHCI
+[    1.572481] usb usb1: Manufacturer: Linux 3.10.23 ehci_hcd
+[    1.577976] usb usb1: SerialNumber: Mstar-ehci-2.1
+[    1.583079] hub 1-0:1.0: USB hub found
+[    1.586852] hub 1-0:1.0: 1 port detected
+[    1.590944] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.597532] Mstar-ehci-1 H.W init
+[    1.600857] Titania3_series_start_ehc start
+[    1.605050] [USB] config miu select [70] [b8] [dc] ][ff]
+[    1.611375] get rterm trim value: 0xc
+[    1.615046] BC disable 
+[    1.617493] utmi off
+[    1.619684] [USB] Mstar-ehci-1 irq --> 199
+[    1.623785] Mstar-ehci-1 Mstar-ehci-1.0: Mstar EHCI
+[    1.628685] Mstar-ehci-1 Mstar-ehci-1.0: new USB bus registered, assigned bus number 2
+[    1.636885] Mstar-ehci-1 Mstar-ehci-1.0: irq 199, io mem 0xfd204800
+[    1.649395] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.656197] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.663429] usb usb2: Product: Mstar EHCI
+[    1.667446] usb usb2: Manufacturer: Linux 3.10.23 ehci_hcd
+[    1.672940] usb usb2: SerialNumber: Mstar-ehci-1.0
+[    1.678011] hub 2-0:1.0: USB hub found
+[    1.681785] hub 2-0:1.0: 1 port detected
+[    1.685889] Mstar-ehci-3 H.W init
+[    1.689205] Titania3_series_start_ehc start
+[    1.693447] [USB] config miu select [70] [b8] [dc] ][ff]
+[    1.699785] get rterm trim value: 0xc
+[    1.703452] BC disable 
+[    1.705904] utmi off
+[    1.708093] [USB] Mstar-ehci-3 irq --> 229
+[    1.712198] Mstar-ehci-3 Mstar-ehci-3.2: Mstar EHCI
+[    1.717093] Mstar-ehci-3 Mstar-ehci-3.2: new USB bus registered, assigned bus number 3
+[    1.725283] Mstar-ehci-3 Mstar-ehci-3.2: irq 229, io mem 0xfd227200
+[    1.739403] usb usb3: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.746204] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.753435] usb usb3: Product: Mstar EHCI
+[    1.757453] usb usb3: Manufacturer: Linux 3.10.23 ehci_hcd
+[    1.762946] usb usb3: SerialNumber: Mstar-ehci-3.2
+[    1.768038] hub 3-0:1.0: USB hub found
+[    1.771809] hub 3-0:1.0: 1 port detected
+[    1.775915] Mstar-ehci-4 H.W init
+[    1.779231] Titania3_series_start_ehc start
+[    1.783428] [USB] config miu select [70] [b8] [dc] ][ff]
+[    1.789819] get rterm trim value: 0xc
+[    1.793485] BC disable 
+[    1.795941] utmi off
+[    1.798129] [USB] Mstar-ehci-4 irq --> 330
+[    1.802234] Mstar-ehci-4 Mstar-ehci-4.3: Mstar EHCI
+[    1.807134] Mstar-ehci-4 Mstar-ehci-4.3: new USB bus registered, assigned bus number 4
+[    1.815344] Mstar-ehci-4 Mstar-ehci-4.3: irq 330, io mem 0xfd2a6000
+[    1.829394] usb usb4: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.836195] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.843426] usb usb4: Product: Mstar EHCI
+[    1.847443] usb usb4: Manufacturer: Linux 3.10.23 ehci_hcd
+[    1.852937] usb usb4: SerialNumber: Mstar-ehci-4.3
+[    1.858009] hub 4-0:1.0: USB hub found
+[    1.861778] hub 4-0:1.0: 1 port detected
+[    1.865889] Mstar-ehci-5 H.W init
+[    1.869206] Titania3_series_start_ehc start
+[    1.873403] [USB] config miu select [70] [b8] [dc] ][ff]
+[    1.879778] get rterm trim value: 0xc
+[    1.883445] BC disable 
+[    1.885941] ==20150116==> hub_port_init 1 #0
+[    1.890222] Plug in USB Port1
+[    1.893191] utmi on
+[    1.894346] utmi off
+[    1.894349] [USB] Mstar-ehci-5 irq --> 328
+[    1.894353] Mstar-ehci-5 Mstar-ehci-5.4: Mstar EHCI
+[    1.894378] Mstar-ehci-5 Mstar-ehci-5.4: new USB bus registered, assigned bus number 5
+[    1.914627] Mstar-ehci-5 Mstar-ehci-5.4: irq 328, io mem 0xfd2a6200
+[    1.994590] [USB fd204800], portstatus: 0x403, portchange: 0x10
+[    2.079356] usb 2-1: new high-speed USB device number 2 using Mstar-ehci-1
+[    2.089350] utmi on
+[    2.089403] usb usb5: New USB device found, idVendor=1d6b, idProduct=0002
+[    2.089408] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    2.089411] usb usb5: Product: Mstar EHCI
+[    2.089415] usb usb5: Manufacturer: Linux 3.10.23 ehci_hcd
+[    2.089418] usb usb5: SerialNumber: Mstar-ehci-5.4
+[    2.089700] hub 5-0:1.0: USB hub found
+[    2.089710] hub 5-0:1.0: 1 port detected
+[    2.089865] xHCI_800200 
+[    2.089866] Mstar-xhci H.W init
+[    2.089868] Mstar_xhc_init version:20141210
+[    2.089875] 
+[    2.089875]  [ XHC: get efuse value: 0x9c009c00 ] 
+[    2.089878] [USB] config miu select [70] [b8] [dc] ][ff]
+[    2.089891] XHCI_enable_PPC: Turn on USB3.0 port 0 power 
+[    2.089893] Addr: 0xf1a bit_num: 1 low_active:0
+[    2.089895] XHCI_enable_PPC: Turn on USB3.0 port 1 power 
+[    2.089896] Addr: 0xf22 bit_num: 1 low_active:0
+[    2.089900] utmi off
+[    2.089904] Mstar-xhci-1 Mstar-xhci-1.0: Mstar xHCI Host Controller
+[    2.089917] Mstar-xhci-1 Mstar-xhci-1.0: new USB bus registered, assigned bus number 6
+[    2.089948] Supported page size register = 0x1
+[    2.190575] Mstar-xhci-1 Mstar-xhci-1.0: irq 194, io mem 0xfd320000
+[    2.196940] usb usb6: New USB device found, idVendor=1d6b, idProduct=0002
+[    2.203741] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    2.210973] usb usb6: Product: Mstar xHCI Host Controller
+[    2.216381] usb usb6: Manufacturer: Linux 3.10.23 mstar-xhci-hcd
+[    2.222396] usb usb6: SerialNumber: Mstar-xhci-1.0
+[    2.227497] hub 6-0:1.0: USB hub found
+[    2.231267] hub 6-0:1.0: 2 ports detected
+[    2.235444] Mstar-xhci-1 Mstar-xhci-1.0: Mstar xHCI Host Controller
+[    2.241732] Mstar-xhci-1 Mstar-xhci-1.0: new USB bus registered, assigned bus number 7
+[    2.249729] usb usb7: New USB device found, idVendor=1d6b, idProduct=0003
+[    2.256529] usb usb7: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    2.263761] usb usb7: Product: Mstar xHCI Host Controller
+[    2.269169] usb usb7: Manufacturer: Linux 3.10.23 mstar-xhci-hcd
+[    2.269585] [USB fd204800], portstatus: 0x403, portchange: 0x12
+[    2.281107] usb usb7: SerialNumber: Mstar-xhci-1.0
+[    2.286181] hub 7-0:1.0: USB hub found
+[    2.289948] hub 7-0:1.0: 2 ports detected
+[    2.294254] usbcore: registered new interface driver usb-storage
+[    2.300358] usbcore: registered new interface driver usbserial
+[    2.306234] usbcore: registered new interface driver cp210x
+[    2.311835] usbserial: USB Serial support registered for cp210x
+[    2.317832] usbcore: registered new interface driver pl2303
+[    2.323429] usbserial: USB Serial support registered for pl2303
+[    2.329546] mousedev: PS/2 mouse device common for all mice
+[    2.335317] usbcore: registered new interface driver xpad
+[    2.340799] tp_core_init enter
+[    2.343857] TP I2C protocol handler initialized
+[    2.348413] litp_dev: TP Control driver registered, major 253 
+[    2.359315] mstar_get_time 75 1444638399
+[    2.363248] mstar_get_alarm 122
+[    2.366398] mstar_get_alarm 130 -21600
+[    2.375129] mstar_get_time 75 1444638399
+[    2.379151] rtc-mstar rtc-mstar.0: rtc core: registered rtc-mstar as rtc0
+[    2.385968] i2c /dev entries driver
+[    2.389637] IR XIAOMI protocol handler initialized
+[    2.394534] usbcore: registered new interface driver uvcvideo
+[    2.395001] usb 2-1: New USB device found, idVendor=0a5c, idProduct=bd27
+[    2.395006] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    2.395010] usb 2-1: Product: Remote Download Wireless Adapter
+[    2.395013] usb 2-1: Manufacturer: Broadcom
+[    2.395017] usb 2-1: SerialNumber: 000000000001
+[    2.428696] USB Video Class driver (1.1.1)
+[    2.432987] device-mapper: uevent: version 1.0.3
+[    2.437785] device-mapper: ioctl: 4.24.0-ioctl (2013-01-15) initialised: dm-devel@redhat.com
+[    2.446301] Bluetooth: HCI UART driver ver 2.2
+[    2.450757] Bluetooth: HCI H4 protocol initialized
+[    2.455848] mmcblk0: mmc0:0001 8GND3R 7.28 GiB 
+[    2.460586] mmcblk0boot0: mmc0:0001 8GND3R partition 1 4.00 MiB
+[    2.466706] mmcblk0boot1: mmc0:0001 8GND3R partition 2 4.00 MiB
+[    2.472858] emmc_partition()
+[    2.476052]  [emmc]Start_block=4096, block_count=6144
+[    2.481134] Start_block=10240, block_count=4096
+[    2.485673] Start_block=14336, block_count=1024
+[    2.490210] Start_block=15360, block_count=32768
+[    2.494835] Start_block=48128, block_count=16384
+[    2.499459] Start_block=64512, block_count=16384
+[    2.504079] Start_block=80896, block_count=16384
+[    2.508941] Start_block=97280, block_count=16384
+[    2.513570] Start_block=113664, block_count=512
+[    2.518109] Start_block=114176, block_count=2097152
+[    2.522995] Start_block=2211328, block_count=2097152
+[    2.527967] Start_block=4308480, block_count=131072
+[    2.532852] Start_block=4439552, block_count=307200
+[    2.537738] Start_block=4746752, block_count=307200
+[    2.542622] Start_block=5053952, block_count=40960
+[    2.547658] Start_block=5094912, block_count=40960
+[    2.552459] Start_block=5135872, block_count=16384
+[    2.557259] Start_block=5152256, block_count=32768
+[    2.562057] Start_block=5185024, block_count=32768
+[    2.566856] Start_block=5217792, block_count=16384
+[    2.571654] Start_block=5234176, block_count=16384
+[    2.576452] Start_block=5250560, block_count=9437184
+[    2.581424] Start_block=14687744, block_count=4096
+[    2.586452] 
+[    2.587945]  mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 p21 p22 p23emmc_partition()
+[    2.601422] 0x0
+[    2.603195]  mmcblk0boot1: unknown partition table
+[    2.608275] emmc_partition()
+[    2.611504] 0x5eaa
+[    2.613534]  mmcblk0boot0: unknown partition table
+[    2.618506] hidraw: raw HID events driver (C) Jiri Kosina
+[    2.624129] usbcore: registered new interface driver usbhid
+[    2.629719] usbhid: USB HID core driver
+[    2.633900] zram: Created 1 device(s) ...
+[    2.638264] ashmem: initialized
+[    2.641515] logger: created 256K log 'log_main'
+[    2.646137] logger: created 256K log 'log_events'
+[    2.650927] logger: created 256K log 'log_radio'
+[    2.655632] logger: created 256K log 'log_system'
+[    2.660734] [mstar_rtc_init] RTC module init!!!!
+[    2.665412] Mstar_emac: [ PHY Addr ] ==> :0
+[    2.669636] Mstar_emac: alloRAM_VA_BASE = 0xf0200000 alloRAM_PA_BASE= 0x50f00000  alloRAM_SIZE= 0x100000
+[    2.679840] RBQP_BASE = 50f04000
+[    2.683400] =====MDrv_IR_Input_Init====
+[    2.687285] Registered IR keymap rc-xiaomi
+[    2.691515] input: XIAOMI Smart TV IR Receiver as /devices/virtual/rc/rc0/input1
+[    2.699019] rc0: XIAOMI Smart TV IR Receiver as /devices/virtual/rc/rc0
+[    2.705740] >> [sdmmc] ms_sdmmc Driver Initializing... 
+[    2.739350] >> [sdmmc_0] Probe Devices...(Ret:0) 
+[    2.739358] >> [sdmmc_0] Get CD => (0)
+[    2.748402] [4294907755][MAD_ALSA][001715]     6Linux Kernel Version : 3.10.23
+[    2.755732] [4294907757][MAD_ALSA][001717]     6ALSA Kernel Version : XX.XX.XX
+[    2.763052] [4294907758][MAD_ALSA][001721]     6MStar ALSA Driver Version : 3.1.9
+[    2.770632] [4294907760][MAD_ALSA][001722]     6Initiate MStar ALSA driver engine
+[    2.778211] [4294907761][MAD_ALSA][001587]     6Go to register MStar ALSA driver
+[    2.786197] [4294907763][MAD_ALSA][001651]     6MStar ALSA driver is registered to slot 0
+[    2.794521] [4294907765][MAD_ALSA][001987]     6Initiate MStar ALSA core driver (customized)
+[    2.803064] [4294907766][MAD_ALSA][000285]     6Hal Driver 'MAD MONACO' is hooked.
+[    2.810731] [4294907768][MAD_ALSA][000286]     6MStar Core Version : 3.1.24
+[    2.817950] [35mFunction = CPU_calibrating_init, Line = 1044, [cpu 3] do CPU_calibrating_init[m
+[    2.826840] [35mFunction = init_procfs_msg, Line = 1018, [cpu 3] current_frequency = 1008000[m
+[    2.835641] [32mFunction = cpufreq_add_dev, Line = 909, adding CPU 0[m
+[    2.842428] [31mFunction = cpufreq_governor_dbs, Line = 365, [cpu 0] initialize cpu 0 timer[m
+[    2.851152] [31mFunction = cpufreq_governor_dbs, Line = 389, [cpu 0] do first DVFS sampling[m
+[    2.859876] [32mFunction = cpufreq_add_dev, Line = 909, adding CPU 1[m
+[    2.866642] [31mFunction = cpufreq_governor_dbs, Line = 365, [cpu 1] initialize cpu 1 timer[m
+[    2.875354] [31mFunction = cpufreq_governor_dbs, Line = 389, [cpu 1] do first DVFS sampling[m
+[    2.884067] [32mFunction = cpufreq_add_dev, Line = 909, adding CPU 2[m
+[    2.890827] [31mFunction = cpufreq_governor_dbs, Line = 365, [cpu 2] initialize cpu 2 timer[m
+[    2.899542] [31mFunction = cpufreq_governor_dbs, Line = 389, [cpu 2] do first DVFS sampling[m
+[    2.908255] [32mFunction = cpufreq_add_dev, Line = 909, adding CPU 3[m
+[    2.915024] [31mFunction = cpufreq_governor_dbs, Line = 365, [cpu 3] initialize cpu 3 timer[m
+[    2.923739] [31mFunction = cpufreq_governor_dbs, Line = 389, [cpu 3] do first DVFS sampling[m
+[    2.932621] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 948, for Kernel_Protect for MIU0[m
+[    2.941858] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 948, for Kernel_Protect for MIU0[m
+[    2.951089] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 948, for Kernel_Protect for MIU0[m
+[    2.960320] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 948, for Kernel_Protect for MIU0[m
+[    2.969567] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 971, for Kernel_Protect for MIU1[m
+[    2.978799] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 971, for Kernel_Protect for MIU1[m
+[    2.988030] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 971, for Kernel_Protect for MIU1[m
+[    2.997260] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 971, for Kernel_Protect for MIU1[m
+[    3.006492] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 994, for Kernel_Protect for MIU2[m
+[    3.015723] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 994, for Kernel_Protect for MIU2[m
+[    3.024953] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 994, for Kernel_Protect for MIU2[m
+[    3.034182] [35mFunction = HAL_MIU_ParseOccupiedResource, Line = 994, for Kernel_Protect for MIU2[m
+[    3.043418] [35mFunction = init_glob_miu_kranges, Line = 1976, [INIT] for LX0 kprotect: from 0x20200000 to 0x50F00000[m
+[    3.054394] [35mFunction = init_glob_miu_kranges, Line = 1983, [DONE] for LX0 kprotect: from 0x20200000 to 0x50F00000[m
+[    3.065362] [35mFunction = init_glob_miu_kranges, Line = 1988, lx_mem2_addr is 0xA6600000[m
+[    3.073909] [35mFunction = init_glob_miu_kranges, Line = 1989, lx_mem2_size is 0x19A00000[m
+[    3.082447] [35mFunction = init_glob_miu_kranges, Line = 1992, miu_index is 1, offset is 0x6600000[m
+[    3.091764] [35mFunction = init_glob_miu_kranges, Line = 2002, [INIT] for LX2 kprotect: from 0xA6600000 to 0xC0000000[m
+[    3.102740] [35mFunction = init_glob_miu_kranges, Line = 2009, [DONE] for LX2 kprotect: from 0xA6600000 to 0xC0000000[m
+[    3.113707] [35mFunction = init_glob_miu_kranges, Line = 2015, lx_mem3_addr is 0xE0000000[m
+[    3.122242] [35mFunction = init_glob_miu_kranges, Line = 2016, lx_mem3_size is 0xE500000[m
+[    3.130690] [35mFunction = init_glob_miu_kranges, Line = 2019, miu_index is 2, offset is 0x0[m
+[    3.139487] [35mFunction = init_glob_miu_kranges, Line = 2029, [INIT] for LX3 kprotect: from 0xE0000000 to 0xEE500000[m
+[    3.150460] [35mFunction = init_glob_miu_kranges, Line = 2037, [DONE] for LX3 kprotect: from 0xE0000000 to 0xEE500000[m
+[    3.161581] btwake_control_init Driver Ver 1.1btwake_control_probe
+[    3.167815] btwake_control_probe() -set_bt_wake(1)
+ create /proc/bluetooth directory
+[    3.175723] create /proc/bluetooth/sleep directory
+[    3.180525] create /proc/bluetooth/sleep/lpm entry
+[    3.185328] create /proc/bluetooth/sleep/bt_brcm_wakelock entry
+[    3.192092] usbcore: registered new interface driver snd-usb-audio
+[    3.198383] oprofile: no performance counters
+[    3.202806] oprofile: using timer interrupt.
+[    3.207175] Netfilter messages via NETLINK v0.30.
+[    3.211940] nf_conntrack version 0.5.0 (16384 buckets, 65536 max)
+[    3.218350] ctnetlink v0.93: registering with nfnetlink.
+[    3.223707] NF_TPROXY: Transparent proxy support initialized, version 4.1.0
+[    3.230682] NF_TPROXY: Copyright (c) 2006-2007 BalaBit IT Ltd.
+[    3.236702] xt_time: kernel timezone is -0000
+[    3.241288] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    3.246776] TCP: cubic registered
+[    3.250105] Initializing XFRM netlink socket
+[    3.254662] NET: Registered protocol family 10
+[    3.259781] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    3.265367] sit: IPv6 over IPv4 tunneling driver
+[    3.270677] NET: Registered protocol family 17
+[    3.275164] NET: Registered protocol family 15
+[    3.279693] Bridge firewalling registered
+[    3.283799] Bluetooth: RFCOMM TTY layer initialized
+[    3.288708] Bluetooth: RFCOMM socket layer initialized
+[    3.293877] Bluetooth: RFCOMM ver 1.11
+[    3.297656] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    3.302981] Bluetooth: BNEP filters: protocol multicast
+[    3.308223] Bluetooth: BNEP socket layer initialized
+[    3.313196] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    3.319130] Bluetooth: HIDP socket layer initialized
+[    3.324106] 8021q: 802.1Q VLAN Support v1.8
+[    3.328784] VFP support v0.3: implementor 41 architecture 3 part 30 variant d rev 0
+[    3.336493] Registering SWP/SWPB emulation handler
+[    3.341530] registered taskstats version 1
+[    3.351186] mstar_get_time 75 1444638400
+[    3.355140] rtc-mstar rtc-mstar.0: setting system clock to 2015-10-12 08:26:40 UTC (1444638400)
+[    3.364080] ALSA device list:
+[    3.367062]   #0: MStar MPEG Audio Decoder No.00
+[    3.371907] [AT][KR][start init][6437]
+[    3.375676] [AutoTest][Kernel][start Initprocess][6437]
+[    3.382569] init: hardware version id is 516
+[    3.479315] type=1403 audit(1444638400.614:2): policy loaded auid=4294967295 ses=4294967295
+[    3.524239] init: init.gladiator.usb.rc: 28: invalid service name 'entrapment-usb-sh'
+[    3.533379] init: starting 'ueventd'
+[    3.729153] init: /dev/hw_random not found
+[    3.742635] init: /dev/hw_random not found
+[    3.751764] EXT4-fs (mmcblk0p11): mounted filesystem with ordered data mode. Opts: (null)
+[    3.760094] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/system1,target=/system,type=ext4)=0
+[    3.770619] EXT4-fs (mmcblk0p12): Ignoring removed nomblk_io_submit option
+[    3.780140] EXT4-fs (mmcblk0p12): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+[    3.790855] fs_mgr: check_fs(): mount(/dev/block/platform/mstar_mci.0/by-name/cache,/cache,ext4)=0
+[    3.801412] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/mstar_mci.0/by-name/cache
+[    3.836727] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[    3.841349] e2fsck: /dev/block/platform/mstar_mci.0/by-name/cache: clean, 17/4096 files, 1308/16384 blocks
+[    3.853987] EXT4-fs (mmcblk0p12): mounted filesystem with ordered data mode. Opts: nodiscard,data=ordered,journal_checksum
+[    3.865143] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/cache,target=/cache,type=ext4)=0
+[    3.875356] EXT4-fs (mmcblk0p22): Ignoring removed nomblk_io_submit option
+[    3.885914] EXT4-fs (mmcblk0p22): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+[    3.896621] fs_mgr: check_fs(): mount(/dev/block/platform/mstar_mci.0/by-name/userdata,/data,ext4)=0
+[    3.906581] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/mstar_mci.0/by-name/userdata
+[    3.930496] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[    3.935084] e2fsck: /dev/block/platform/mstar_mci.0/by-name/userdata: clean, 3242/294912 files, 392233/1179648 blocks
+[    3.950046] EXT4-fs (mmcblk0p22): mounted filesystem with ordered data mode. Opts: nodiscard,data=ordered,journal_checksum
+[    3.961214] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/userdata,target=/data,type=ext4)=0
+[    3.973755] EXT4-fs (mmcblk0p14): mounted filesystem with ordered data mode. Opts: (null)
+[    3.982030] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/tvservice1,target=/tvservice,type=ext4)=0
+[    3.995167] EXT4-fs (mmcblk0p16): mounted filesystem with ordered data mode. Opts: (null)
+[    4.003424] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/tvconfig1,target=/tvconfig,type=ext4)=0
+[    4.014247] EXT4-fs (mmcblk0p17): Ignoring removed nomblk_io_submit option
+[    4.023510] EXT4-fs (mmcblk0p17): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+[    4.034200] fs_mgr: check_fs(): mount(/dev/block/platform/mstar_mci.0/by-name/tvdatabase,/tvdatabase,ext4)=0
+[    4.044822] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/mstar_mci.0/by-name/tvdatabase
+[    4.062428] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[    4.067020] e2fsck: /dev/block/platform/mstar_mci.0/by-name/tvdatabase: clean, 28/512 files, 1167/2048 blocks
+[    4.080008] EXT4-fs (mmcblk0p17): mounted filesystem with ordered data mode. Opts: nodiscard,data=ordered,journal_checksum
+[    4.091151] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/tvdatabase,target=/tvdatabase,type=ext4)=0
+[    4.102217] EXT4-fs (mmcblk0p18): Ignoring removed nomblk_io_submit option
+[    4.111682] EXT4-fs (mmcblk0p18): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=remount-ro
+[    4.122392] fs_mgr: check_fs(): mount(/dev/block/platform/mstar_mci.0/by-name/tvcustomer,/tvcustomer,ext4)=0
+[    4.133017] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/mstar_mci.0/by-name/tvcustomer
+[    4.150619] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[    4.155210] e2fsck: /dev/block/platform/mstar_mci.0/by-name/tvcustomer: clean, 39/1024 files, 1231/4096 blocks
+[    4.168258] EXT4-fs (mmcblk0p18): mounted filesystem with ordered data mode. Opts: nodiscard,data=ordered,journal_checksum
+[    4.179441] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/tvcustomer,target=/tvcustomer,type=ext4)=0
+[    4.190525] EXT4-fs (mmcblk0p20): Ignoring removed nomblk_io_submit option
+[    4.199670] EXT4-fs (mmcblk0p20): mounted filesystem without journal. Opts: nomblk_io_submit,errors=remount-ro
+[    4.210049] fs_mgr: check_fs(): mount(/dev/block/platform/mstar_mci.0/by-name/persist,/persist,ext4)=0
+[    4.220283] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/mstar_mci.0/by-name/persist
+[    4.236348] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[    4.240945] e2fsck: /dev/block/platform/mstar_mci.0/by-name/persist: clean, 17/2048 files, 314/8192 blocks
+[    4.252963] EXT4-fs (mmcblk0p20): mounted filesystem without journal. Opts: nodiscard,data=ordered,journal_checksum
+[    4.263764] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/persist,target=/persist,type=ext4)=0
+[    4.274351] EXT4-fs (mmcblk0p21): Ignoring removed nomblk_io_submit option
+[    4.282939] EXT4-fs (mmcblk0p21): mounted filesystem without journal. Opts: nomblk_io_submit,errors=remount-ro
+[    4.293305] fs_mgr: check_fs(): mount(/dev/block/platform/mstar_mci.0/by-name/tvinfo,/tvinfo,ext4)=0
+[    4.303344] fs_mgr: Running /system/bin/e2fsck on /dev/block/platform/mstar_mci.0/by-name/tvinfo
+[    4.319419] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[    4.323991] e2fsck: /dev/block/platform/mstar_mci.0/by-name/tvinfo: clean, 11/2048 files, 308/8192 blocks
+[    4.335783] EXT4-fs (mmcblk0p21): mounted filesystem without journal. Opts: nodiscard,data=ordered,journal_checksum
+[    4.346598] fs_mgr: __mount(source=/dev/block/platform/mstar_mci.0/by-name/tvinfo,target=/tvinfo,type=ext4)=0
+[    4.365895] mali mali.0: Continuing without Mali clock control
+[    4.371894] mali mali.0: GPU identified as 0x0750 r1p0 status 0
+[    4.378626] mali mali.0: Probed as mali0
+[    4.385904] tfat: module license 'Commercial. For support email exfat-support@tuxera.com' taints kernel.
+[    4.395505] Disabling lock debugging due to kernel taint
+[    4.402501] Tuxera FAT 12/16/32 driver version 3014.9.10 [Flags: R/W MODULE].
+[    4.418444] Tuxera NTFS driver 3014.9.13 [Flags: R/W MODULE].
+[    4.430002] Tuxera exFAT driver version 3014.9.10 [Flags: R/W MODULE].
+[    4.475039] init: load all props
+[    4.519521] type=1400 audit(1444638401.659:3): avc:  denied  { setenforce } for  pid=1 comm="init" scontext=u:r:init:s0 tcontext=u:object_r:kernel:s0 tclass=security
+[    4.534351] type=1404 audit(1444638401.674:4): enforcing=1 old_enforcing=0 auid=4294967295 ses=4294967295
+[    4.642294] init: starting 'logd'
+[    4.646138] init: starting 'healthd'
+[    4.652416] binder: 109:109 transaction failed 29189, size 0-0
+[    4.652608] init: starting 'lmkd'
+[    4.653762] init: starting 'servicemanager'
+[    4.654784] init: starting 'vold'
+[    4.656231] init: starting 'surfaceflinger'
+[    4.657006] init: starting 'resourcemanager'
+[    4.659046] init: starting 'netd'
+[    4.661000] init: starting 'debuggerd'
+[    4.661389] init: cannot find '/system/bin/debuggerd64', disabling 'debuggerd64'
+[    4.662931] init: starting 'drm'
+[    4.664987] init: starting 'media'
+[    4.666914] init: starting 'installd'
+[    4.668785] init: starting 'flash_recovery'
+[    4.671846] init: starting 'keystore'
+[    4.673737] init: starting 'sensord'
+[    4.675181] init: starting 'sdcard'
+[    4.682656] init: starting 'logcat'
+[    4.699126] init: starting 'tvservice'
+[    4.703252] init: starting 'livecap'
+[    4.704962] init: starting 'browserserver'
+[    4.709740] init: starting 'cursorservice'
+[    4.710720] init: Warning!  Service multicast needs a SELinux domain defined; please fix!
+[    4.710729] init: starting 'multicast'
+[    4.711657] init: starting 'mtkbt'
+[    4.713810] init: starting 'tee'
+[    4.714555] init: starting 'bdupdate'
+[    4.735436] init: starting 'zygote'
+[    4.736080] init: bootenv device: /dev/block/platform/mstar_mci.0/by-name/MPOOL
+[    4.901202] init: bootenv.var.mn is in backlist in factory mode
+[    4.908195] init: bootenv.var.bt_mac is in backlist in factory mode
+[    4.925603] init: bootenv.var.serialno is in backlist in factory mode
+[    4.933725] init: bootenv.var.eth_macaddr is in backlist in factory mode
+[    4.965472] init: found property Factory.var.Brightness:[0]
+[    4.979430] init: found property Factory.var.AgingStatus:[false]
+[    4.987259] init: found property Factory.var.Contrast:[0]
+[    4.996965] init: found property Factory.var.BurnSour:[0]
+[    5.002680] init: found property Factory.var.3D:[0]
+[    5.008017] init: found property Factory.var.AgingTimerCount:[0]
+[    5.014520] init: found property Factory.var.BootCount:[3]
+[    5.023567] init: found property Factory.var.Backlight:[0]
+[    5.029106] init: found property bootenv.var.eth_macaddr:[10:48:B1:00:00:02]
+[    5.036254] init: found property bootenv.var.mn:[T6XP5814XX02287]
+[    5.049409] init: found property bootenv.var.serialno:[55MC11F8E00390B]
+[    5.056922] init: found property bootenv.var.bt_mac:[10:48:B1:00:00:01]
+[    5.064882] init: bootenv:property bootenv.var.wifi_mac not found in bootenv!
+[    5.077820] init: bootenv:backup property not found yet!
+[    5.083957] init: tp_i2c open failed 2
+[    5.091215] init: process 'flash_recovery', pid 121 exited,status=00000000
+[    5.098405] init: process 'multicast', pid 132 exited,status=00000000
+[    5.119620] init: process 'mtkbt', pid 133 exited,status=00000100
+[    5.154909] init: starting 'console'
+[    5.164557] [Ipanic Driver] ipanic log partition assgined /dev/block/platform/mstar_mci.0/by-name/kernelog: start_sect 14687744 nr_sects 4096
+shell@gladiator:/ $ [    5.770610] healthd: No charger supplies found
+[    5.775184] healthd: No battery devices found
+[    5.981377] init: starting 'bootanim'
+[    6.109721] --------->MBX DRIVER OPEN
+[    6.113797] _MDrv_MBXIO_FASYNC is invoked
+[    6.281001] type=1400 audit(1444638403.419:5): avc: denied { write } for pid=287 comm="BootAnimation" name="property_service" dev="tmpfs" ino=251 scontext=u:r:bootanim:s0 tcontext=u:object_r:property_socket:s0 tclass=sock_file
+[    7.677867] genirq: Flags mismatch irq 162. 00000000 (IR) vs. 00000000 (IR)
+[    7.695274] [35mFunction = on_demand_handshake_proc_open, Line = 787, [cpu 0] set start_userspace_ondemand_handshake to be 1[m
+[    7.928244] warning: `main' uses 32-bit capabilities (legacy support in use)
+[    8.893099] request_suspend_state: wakeup (3->0) at 8438753468 (2015-10-12 08:26:45.468201664 UTC)
+[    8.902071] request_suspend_state,169,old_sleep=0,new_state=0
+[    8.954180] [4294908996][MAD_ALSA][000558]     6Open 'subdevice #0'(0) of MStar ALSA playback device
+[    8.963805] [4294908998][MAD_ALSA][000408]     6Open software timer.
+[    8.970389] [4294909000][MAD_ALSA][000713]     6Configure PCM HW resource
+TVOS *checkPoint*
+[   10.995359] [4294909405][MAD_ALSA][001080]     6Open 'subdevice #0'(0) of MStar ALSA capture device
+[   11.004726] [4294909407][MAD_ALSA][001206]     6Configure PCM HW resource
+[   11.018051] [4294909409][MAD_ALSA][001217]     6Free PCM HW resource
+[   11.024594] [4294909411][MAD_ALSA][001146]     6Close 'subdevice #0'(0) of MStar ALSA capture device
+[   11.035979] [4294909413][MAD_ALSA][001438]     6Exit MStar PCM Capture1 engine
+[   11.578658] healthd: battery none chg=
+[   12.765910] init: starting 'dhcpcd_eth0'
+[   13.227961] wow enable 1
+[   13.263834] init: starting 'loadwifi'
+[   13.280076] wifi_load_driver BCM43569
+[   13.285088] dhd_cfg "dhd_cfg=wow_key=eb;wow_en=1;"
+[   13.441701] utmi off
+[   13.444010] usb 2-1: USB disconnect, device number 2
+[   13.489639] Vendor 0xa5c ID 0xbd27
+[   13.489639] claiming interface 0
+[   13.489639] Found device: vend=0xa5c prod=0xbd27
+[   13.489639] File Length: 641894
+[   13.489639] ID : Chip 0xaa31 Rev 0x0RamSize 786432 RemapBase 0x00180800 BoardType 0 BoardRev 0
+[   13.489639] start
+[   13.489639] rdl.state 0x4
+[   13.489639] elapsed download time 0.108761
+[   13.592625] dhd_module_init in
+[   13.595856] no wifi platform data, skip
+[   13.599742] root hub reinitial [usbdis]
+[   13.600788] usbcore: registered new interface driver dbus_usbdev
+[   13.727603] type=1400 audit(1444638410.294:6): avc: granted { write } for pid=603 comm="iaomi.tvservice" name="tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.760383] type=1400 audit(1444638410.294:7): avc: granted { write } for pid=603 comm="iaomi.tvservice" path="/data/system/tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.783642] type=1400 audit(1444638410.294:8): avc: granted { write } for pid=603 comm="iaomi.tvservice" name="tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.804784] type=1400 audit(1444638410.294:9): avc: granted { setattr } for pid=603 comm="iaomi.tvservice" name="tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.825420] type=1400 audit(1444638410.294:10): avc: granted { write } for pid=603 comm="iaomi.tvservice" name="tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.846466] type=1400 audit(1444638410.294:11): avc: granted { write } for pid=603 comm="iaomi.tvservice" path="/data/system/tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.868585] type=1400 audit(1444638410.294:12): avc: granted { write } for pid=603 comm="iaomi.tvservice" name="tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.869461] ==20150116==> hub_port_init 1 #0
+[   13.869462] Plug in USB Port1
+[   13.869465] utmi on
+[   13.898713] type=1400 audit(1444638410.324:13): avc: granted { setattr } for pid=603 comm="iaomi.tvservice" name="tvsettings" dev="mmcblk0p22" ino=577 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   13.949645] [USB fd204800], portstatus: 0x403, portchange: 0x10
+[   14.034402] usb 2-1: new high-speed USB device number 3 using Mstar-ehci-1
+[   14.041723] [USB] device reset again is not needed
+[   14.091151] usb 2-1: New USB device found, idVendor=0a5c, idProduct=0bdc
+[   14.097890] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[   14.106250] usb 2-1: Product: BCMUSB 802.11 Wireless Adapter
+[   14.111994] usb 2-1: Manufacturer: Broadcom
+[   14.118932] usb 2-1: SerialNumber: 25257
+[   14.124169] wl_cfg80211_attach in
+[   14.127656] wl_setup_wiphy in
+[   14.131172] alloc_rdev: cannot get rdev because rdev_buf unused rdev_buf_size 0 alloc_size 71152, call kzalloc
+[   14.142017] alloc_rdev: save d7320000 71152 to rdev_buf
+[   14.147315] wl_setup_wiphy wiphy_new out
+[   14.151976] wl_setup_wiphy out
+[   14.155250] dhd_deferred_work_init: work queue initialized 
+[   14.160890] 
+[   14.160890] Dongle Host Driver, version 1.201.9 (r)
+[   14.160890] Compiled from 
+[   14.170083] CFG80211-ERROR) wl_event_handler : tsk Enter, tsk = 0xd73213cc
+[   14.178958] Register interface [wlan0]  MAC: 00:90:4c:11:22:33
+[   14.178958] 
+[   14.399410] tx_timer_lock init
+[   14.402719] DBUS: vid=0xa5c pid=0xbdc devid=0x4322 bustype=0x0 mtu=512
+[   14.411885] mstar_set_time 94 1444638411
+[   14.447125] mstar_get_time 75 1444638411
+[   14.603570] init: process 'loadwifi', pid 744 exited,status=00000000
+[   15.057654] init: starting 'cpudvfsscaling'
+[   15.107546] init: starting 'bcm_supplicant'
+[   15.171318] dhd_dbus_state_change: DBUS current state=2
+[   15.180261] Firmware up: op_mode=0x0005, MAC=bc:30:7e:0b:62:a9
+[   15.192976] dhd_preinit_config() dhd_config is wow_key=eb;wow_en=1;
+[   15.199358] dhd_preinit_proc name = wow_key  value=eb
+[   15.204453] dhd_preinit_proc: wow_key = 235
+[   15.208678] dhd_preinit_proc name = wow_en  value=1
+[   15.213626] dhd_preinit_proc: wow_en = 1
+[   15.217581] dhd_preinit_ioctls wow filter:113 0 0 42 0xffffffffff00ffffffffffffffffffffffff 0xffffffffffffbc307e0b62a9a71b69f64d94
+[   15.230396] Firmware version = wl0: Mar 12 2015 14:27:52 version 7.35.143.35 (r525000) FWID 01-aec2b2fc
+[   15.265244] wl_host_event: Invalid ifidx 0 for wl0
+[   15.352610] CFGP2P-ERROR) wl_cfgp2p_add_p2p_disc_if : P2P interface registered
+[   15.365012] WLC_E_IF: NO_IF set, event Ignored
+[   15.447409] type=1400 audit(1444638412.522:14): avc: granted { write } for pid=1187 comm="id.providers.tv" name="user_setting.db" dev="mmcblk0p17" ino=13 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   15.474806] type=1400 audit(1444638412.522:15): avc: granted { write } for pid=1187 comm="id.providers.tv" path="/tvdatabase/Database/user_setting.db" dev="mmcblk0p17" ino=13 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   15.500554] type=1400 audit(1444638412.557:16): avc: granted { write } for pid=1187 comm="id.providers.tv" name="factory.db" dev="mmcblk0p17" ino=17 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   15.523104] type=1400 audit(1444638412.557:17): avc: granted { write } for pid=1187 comm="id.providers.tv" path="/tvdatabase/Database/factory.db" dev="mmcblk0p17" ino=17 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   15.560722] dhd_set_suspend: force extra Suspend setting 
+[   15.572570] type=1400 audit(1444638412.647:18): avc: granted { write } for pid=1214 comm="Binder_2" name="user_setting.db-journal" dev="mmcblk0p17" ino=14 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   15.595295] type=1400 audit(1444638412.647:19): avc: granted { write } for pid=1214 comm="Binder_2" path="/tvdatabase/Database/user_setting.db-journal" dev="mmcblk0p17" ino=14 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+[   15.722553] dhd_set_suspend: Remove extra suspend setting 
+[   15.786672] sync 1340 start
+[   15.790059] parent setting.handler 1298 start
+[   15.936603] sync 1340 end
+[   15.940045] parent setting.handler 1298 end
+[   16.851937] mstar_set_time 94 1444638413
+[   16.861956] mstar_get_time 75 1444638413
+[   18.834550] init: process 'bootanim', pid 263 exited,status=00000000
+[   19.020673] init: starting 'xiaomi-post-boot'
+[   19.033623] init.post-boot.sh: remount_persist_in_factorymode start
+[   19.054282] init.post-boot.sh: remount_persist_in_factorymode done
+[   19.060704] init.post-boot.sh: get backup version start
+[   19.077324] init: starting 'backup_version'
+[   19.077463] init.post-boot.sh: get backup version done
+[   19.162242] type=1400 audit(1444638416.235:20): avc: denied { create } for pid=1807 comm="ln" name="usr" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file
+[   19.188088] EXT4-fs (mmcblk0p10): mounted filesystem with ordered data mode. Opts: (null)
+[   19.261597] backup system: get app version 1.1.90.0
+[   19.298380] backup system: get app version ext d
+[   19.332939] backup system: get app branch ext branch
+[   19.364232] backup system: get system version eng.shenpengru.20150922.194743
+[   19.402838] backup system: get release version 5.0.1
+[   19.443371] init: process 'backup_version', pid 1780 exited,status=00000000
+[   20.004708] mstar_set_time 94 1444638417
+[   20.013944] mstar_get_time 75 1444638417
+[   20.095386] init: process 'cpudvfsscaling', pid 1236 exited,status=00000000
+[   20.286876] type=1400 audit(1444638417.351:21): avc: granted { remove_name } for pid=1977 comm="Thread-72" name="assistant" dev="mmcblk0p22" ino=890 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   20.307714] type=1400 audit(1444638417.351:22): avc: granted { rmdir } for pid=1977 comm="Thread-72" name="assistant" dev="mmcblk0p22" ino=890 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   20.327759] type=1400 audit(1444638417.351:23): avc: granted { add_name } for pid=1977 comm="Thread-72" name="assistant" scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   20.346833] type=1400 audit(1444638417.351:24): avc: granted { create } for pid=1977 comm="Thread-72" name="assistant" scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   20.365680] type=1400 audit(1444638417.376:25): avc: granted { setattr } for pid=1979 comm="chmod" name="assistant" dev="mmcblk0p22" ino=890 scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   20.522508] init: Warning!  Service swapon needs a SELinux domain defined; please fix!
+[   20.531385] init: starting 'swapon'
+[   20.554797] init: starting 'virtualkeypad'
+[   20.582457] Adding 524284k swap on /dev/block/zram0.  Priority:-1 extents:1 across:524284k SSFS
+[   20.593589] init: process 'swapon', pid 2005 exited,status=00000000
+[   20.617233] input: MStar Smart TV Keypad as /devices/virtual/input/input2
+[   21.293589] type=1400 audit(1444638418.356:26): avc: granted { add_name } for pid=1405 comm="Thread-80" name="duokanAppTmp" scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   21.313837] type=1400 audit(1444638418.356:27): avc: granted { create } for pid=1405 comm="Thread-80" name="duokanAppTmp" scontext=u:r:system_app:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir
+[   21.335143] init: process 'xiaomi-post-boot', pid 1775 exited,status=00000000
+[   22.639935] init: process 'bdupdate', pid 135 exited,status=0000ff00
+[   22.646830] init: starting 'bdupdate'
+[   23.176434] init: starting 'mdnsd'
