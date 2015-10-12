@@ -1,0 +1,47 @@
+
+[440535.901489] utmi off
+[440535.903823] usb 5-1: USB disconnect, device number 99
+[440535.941056] init: no such service 'fuse_06BD-EAB4'
+[440536.008130] root hub reinitial [usbdis]
+[440538.602786] utmi off
+
+
+[440538.722774] ==20150116==> hub_port_init 1 #0
+[440538.727141] Plug in USB Port5
+[440538.730231] utmi on
+[440538.808023] [USB fd2a6200], portstatus: 0x403, portchange: 0x10                  <<<<<
+[440538.892770] usb 5-1: new high-speed USB device number 100 using Mstar-ehci-5     <<<<<
+[440538.901528] utmi on
+[440538.983020] [USB fd2a6200], portstatus: 0x403, portchange: 0x12                  <<<<<
+[440539.119935] usb 5-1: New USB device found, idVendor=058f, idProduct=6387
+[440539.127101] usb 5-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[440539.134469] usb 5-1: Product: Mass Storage
+[440539.139017] usb 5-1: Manufacturer: Generic
+[440539.143548] usb 5-1: SerialNumber: 677A66C4
+
+
+[440539.150673] usb-storage 5-1:1.0: USB Mass Storage device detected
+[440539.157117] usb-storage 5-1:1.0: Quirks match for vid 058f pid 6387: 20
+[440539.163961] usb-storage 5-1:1.0: This device (058f,6387,010e S 06 P 50) has unneeded SubClass and Protocol entries in unusual_devs.h (kernel 3.10.23)
+[440539.163961]    Please send a copy of this message to <linux-usb@vger.kernel.org> and <usb-storage@lists.one-eyed-alien.net>
+
+
+[440539.189392] scsi222 : usb-storage 5-1:1.0
+[440539.196925] scsi 222:0:0:0: Direct-Access     Generic  Flash Disk       8.07 PQ: 0 ANSI: 4
+[440539.212225] sd 222:0:0:0: [sda] 7987200 512-byte logical blocks: (4.08 GB/3.80 GiB)
+[440539.223656] sd 222:0:0:0: [sda] Write Protect is off
+[440539.229588] sd 222:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[440539.243080] emmc_partition()
+[440539.247357] 0xc033
+[440539.249604]  sda: sda1
+[440539.256062] sd 222:0:0:0: [sda] Attached SCSI removable disk
+
+
+[440546.094931] tfat: fail_safe is enabled
+[440546.100078] tfat: cluster_heap_lbo 0x79e000
+[440546.104406] tfat: 12 blkbits for normal inodes
+[440546.108990] tfat: fat start lbo 0x4000
+[440546.112862] tfat: 12 blkbits for main FAT32 inode
+[440546.330118] tfat info: FAT32 volume name 'SHEN', version 0.0.
+[440546.336015] tfat warning (device sda1, pid 162): fat_fill_super(): FAT volume SHEN is dirty.  You should unmount and repair it.
+[440546.350096] init: no such service 'fuse_06BD-EAB4'

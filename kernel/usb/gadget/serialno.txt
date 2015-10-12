@@ -1,0 +1,26 @@
+===============================================================================================
+lk:
++++
+
+	bootable/bootloader/app/mt_boot_mt_boot.c
+
+	设定 command line 中参数: "androidboot.serialno"
+
+		(1) DEFAULT_SERIAL_NUM: 0123456789ABCDE
+		(2)  USB_UNIQUE_SERIAL: get_serial(key, chip_code, serial_num) /* EFUSE Key + Hardware version register */
+
+===============================================================================================
+init:
++++++
+
+	system/core/init
+
+	根据 "androidboot.serialno" 来设定 property "ro.boot.serialno" = "ro.serialno"
+
+===============================================================================================
+init.usb.rc:
+++++++++++++
+
+	根据 ro.serialno 来设定 /sys/class/android_usb/android0/iSerial
+
+===============================================================================================
