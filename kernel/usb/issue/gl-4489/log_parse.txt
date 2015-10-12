@@ -113,7 +113,7 @@
  177 <6>[    2.066298] Mstar-xhci-1 Mstar-xhci-1.0: new USB bus registered, assigned bus number 6
  178 <4>[    2.066329] Supported page size register = 0x1
  179 <6>[    2.166999] Mstar-xhci-1 Mstar-xhci-1.0: irq 194, io mem 0xfd320000
- 180 <6>[    2.173345] usb usb6: New USB device found, idVendor=1d6b, idProduct=0002
+ 180 <6>[    2.173345] usb usb6: New USB device found, idVendor=1d6b, idProduct=0002			<=== PID: 0002  2.0 root hub
  181 <6>[    2.180148] usb usb6: New USB device strings: Mfr=3, Product=2, SerialNumber=1
  182 <6>[    2.187381] usb usb6: Product: Mstar xHCI Host Controller
  183 <6>[    2.192789] usb usb6: Manufacturer: Linux 3.10.23 mstar-xhci-hcd

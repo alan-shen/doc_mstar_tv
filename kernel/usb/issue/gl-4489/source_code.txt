@@ -33,22 +33,23 @@ kernel/drivers/usb/host             -       usb host controller drivers
 											| xhci-ring.o    |
                                             | xhci-mstar.o   |
                                             +----------------+
-kernel/drivers/usb/gadget           -       use device/peripheral controller
-                                            +----------------+
-											| udc-core.o     |
-                                            | android.o      |
-											| g_android.o    |
-											| composite.o    |
-											| libcomposite.o |
-											| config.o       |
-											| usbstring.o    |
-                                            | configfs.o     |
-											| epautoconf.o   |
-											| functions.o    |
-                                            | usb_f_acm.o    |
-                                            | f_acm.o        |
-											| u_serial.o     |
-                                            +----------------+
+kernel/drivers/usb/usb-common.c     -       USB中几个通用的字符串
+											+----------------------+
+											| usb_otg_state_string |
+											| usb_speed_string     | low-speed/full-speed/high-speed/wireless/super-speed |
+											| usb_state_string     |
+											+----------------------++-----------------+
+																	| not attached    |
+																	| attached        |
+																	| powered         |
+																	| reconnecting    |
+																	| unauthenticated |
+																	| default         |
+																	| addresssed      |
+																	| configured      |
+																	| suspended       |
+																	+-----------------+
+
 kernel/drivers/usb/misc             -       USB Miscellaneous driver ?
                                             +----------------+
                                             | NOTHING...     |
@@ -74,23 +75,6 @@ kernel/drivers/usb/storage          -       USB Storage driver configuration
 											| usb.o          |
 											| usual-tables.o |
                                             +----------------+
-
-kernel/drivers/usb/usb-common.c     -       USB中几个通用的字符串
-											+----------------------+
-											| usb_otg_state_string |
-											| usb_speed_string     | low-speed/full-speed/high-speed/wireless/super-speed |
-											| usb_state_string     |
-											+----------------------++-----------------+
-																	| not attached    |
-																	| attached        |
-																	| powered         |
-																	| reconnecting    |
-																	| unauthenticated |
-																	| default         |
-																	| addresssed      |
-																	| configured      |
-																	| suspended       |
-																	+-----------------+
 
 ========================================================================================================
 kernel/drivers/usb/class            -       usb class drivers
