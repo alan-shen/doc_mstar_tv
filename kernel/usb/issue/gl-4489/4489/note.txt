@@ -1,0 +1,308 @@
+=====================================
+wifi 链接成功
++++++++++++++
+
+wl_bss_connect_done succeeded with
+=====================================
+vim drivers/usb/core/bc-mstar.c
+vim drivers/usb/host/ehci-hub.c +1061
+vim drivers/usb/core/hub.c +4452
+=====================================
+
+
+<4>[    6.656541] utmi off
+<4>[    6.775864] ==20150116==> hub_port_init 1 #0
+<4>[    6.780403] Plug in USB Port5
+<4>[    6.783684] utmi on
+<4>[    6.866103] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+<6>[    6.950875] usb 5-1: new high-speed USB device number 2 using Mstar-ehci-5
+<4>[    6.959159] utmi on
+<4>[    7.041145] [USB fd2a6200], portstatus: 0x2, portchange: 0x12
+<4>[    7.047142] hub_port_disable: 1  hub->err: 0
+<4>[    7.080896] Force Retry, current speed HIGH
+<4>[    7.085094] hub_port_disable: 1  hub->err: 0
+<4>[    7.089517] ##[USB] bad dev High Speed retry (0) ##
+<4>[    7.140513] --------->MBX DRIVER OPEN
+<4>[    7.144569] _MDrv_MBXIO_FASYNC is invoked
+<4>[    7.595903] portstatus:0x1 portchange:0x1
+<4>[    7.715857] ==20150116==> hub_port_init 1 #0
+<4>[    7.720235] Plug in USB Port5
+<4>[    7.723296] utmi on
+<4>[    7.801076] [USB fd2a6200], portstatus: 0x403, portchange: 0x10 
+<6>[    7.885828] usb 5-1: new high-speed USB device number 3 using Mstar-ehci-5
+<3>[    8.508866] genirq: Flags mismatch irq 162. 00000000 (IR) vs. 00000000 (IR) 
+<4>[    8.528111] ^[[35mFunction = on_demand_handshake_proc_open, Line = 787, [cpu 2] set start_userspace_ondemand_handshake to be 1^[[m
+<4>[   11.736143] [4294909554][MAD_ALSA][000558]     ^A6Open 'subdevice #0'(0) of MStar ALSA playback device
+<4>[   11.746602] [4294909556][MAD_ALSA][000408]     ^A6Open software timer.
+<4>[   11.753219] [4294909557][MAD_ALSA][000713]     ^A6Configure PCM HW resource
+<4>[   13.810290] [4294909968][MAD_ALSA][001080]     ^A6Open 'subdevice #0'(0) of MStar ALSA capture device
+<4>[   13.820216] [4294909970][MAD_ALSA][001206]     ^A6Configure PCM HW resource
+<4>[   13.840937] [4294909975][MAD_ALSA][001217]     ^A6Free PCM HW resource
+<4>[   13.852837] [4294909977][MAD_ALSA][001146]     ^A6Close 'subdevice #0'(0) of MStar ALSA capture device
+<4>[   13.867543] [4294909980][MAD_ALSA][001438]     ^A6Exit MStar PCM Capture1 engine
+<4>[   22.951881] utmi on
+<4>[   23.031110] [USB fd2a6200], portstatus: 0x403, portchange: 0x12 
+<3>[   23.115849] usb 5-1: device descriptor read/64, error -110 
+<4>[   38.287886] utmi on
+<4>[   38.366090] [USB fd2a6200], portstatus: 0x403, portchange: 0x12 
+<3>[   38.450831] usb 5-1: device descriptor read/64, error -110 
+<4>[   38.560813] hub_port_disable: 1  hub->err: 0 
+<4>[   38.590840] ==20150116==> hub_port_init 1 #1 
+<4>[   38.595120] Plug in USB Port5
+<4>[   38.598106] utmi on
+<4>[   38.676068] [USB fd2a6200], portstatus: 0x403, portchange: 0x12 
+<6>[   38.760825] usb 5-1: new high-speed USB device number 4 using Mstar-ehci-5
+<7>[   39.456967] SELinux: initialized (dev tmpfs, type tmpfs), uses transition SIDs 
+<6>[   42.160741] warning: `main' uses 32-bit capabilities (legacy support in use) 
+<6>[   49.498259] request_suspend_state: wakeup (3->0) at 49047469480 (2015-08-12 05:23:40.653258823 UTC) 
+<4>[   49.507319] request_suspend_state,169,old_sleep=0,new_state=0
+<4>[   53.827709] utmi on
+<4>[   53.906080] [USB fd2a6200], portstatus: 0x403, portchange: 0x12 
+<3>[   53.990851] usb 5-1: device descriptor read/64, error -110 
+<14>[   65.803706] healthd: battery none chg= 
+<4>[   69.162066] utmi on
+<4>[   69.241125] [USB fd2a6200], portstatus: 0x403, portchange: 0x12 
+<3>[   69.325848] usb 5-1: device descriptor read/64, error -110
+<4>[   69.435836] hub_port_disable: 1  hub->err: 0
+<4>[   69.465874] ==20150116==> hub_port_init 1 #2
+<4>[   69.470199] Plug in USB Port5
+<4>[   69.473286] utmi on
+<4>[   69.551066] [USB fd2a6200], portstatus: 0x2, portchange: 0x12
+<4>[   69.556953] hub_port_disable: 1  hub->err: 0
+<4>[   69.590871] Force Retry, current speed HIGH
+<4>[   69.595094] hub_port_disable: 1  hub->err: 0
+<4>[   69.599617] ##[USB] bad dev High Speed retry (1) ##
+<4>[   70.105859] portstatus:0x1 portchange:0x1
+<4>[   70.225864] ==20150116==> hub_port_init 1 #0
+<4>[   70.230174] Plug in USB Port5
+<4>[   70.233206] utmi on
+<4>[   70.316097] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+<6>[   70.400843] usb 5-1: new high-speed USB device number 6 using Mstar-ehci-5
+<4>[   85.467466] utmi on
+<4>[   85.546109] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[   85.630864] usb 5-1: device descriptor read/64, error -110
+<4>[  100.802856] utmi on
+<4>[  100.881081] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  100.965842] usb 5-1: device descriptor read/64, error -110
+<4>[  101.075833] hub_port_disable: 1  hub->err: 0
+<4>[  101.105839] ==20150116==> hub_port_init 1 #1
+<4>[  101.110159] Plug in USB Port5
+<4>[  101.113268] utmi on
+<4>[  101.191051] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  101.275848] usb 5-1: new high-speed USB device number 7 using Mstar-ehci-5
+<4>[  116.342557] utmi on
+<4>[  116.421088] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  116.505857] usb 5-1: device descriptor read/64, error -110
+<4>[  131.677481] utmi on
+<4>[  131.756096] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  131.840877] usb 5-1: device descriptor read/64, error -110
+<4>[  131.950807] hub_port_disable: 1  hub->err: 0
+<4>[  131.980859] ==20150116==> hub_port_init 1 #2
+<4>[  131.985151] Plug in USB Port5
+<4>[  131.988191] utmi on
+<4>[  132.071051] [USB fd2a6200], portstatus: 0x2, portchange: 0x12
+<4>[  132.076881] hub_port_disable: 1  hub->err: 0
+<4>[  132.110859] Force Retry, current speed HIGH
+<4>[  132.115098] hub_port_disable: 1  hub->err: 0
+<4>[  132.119558] ##[USB] bad dev High Speed retry (2) ##
+<4>[  132.625832] portstatus:0x1 portchange:0x1
+<4>[  132.745869] ==20150116==> hub_port_init 1 #0
+<4>[  132.750151] Plug in USB Port5
+<4>[  132.753168] utmi on
+<4>[  132.831045] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+<6>[  132.915850] usb 5-1: new high-speed USB device number 9 using Mstar-ehci-5
+<14>[  140.198069] healthd: battery none chg=
+<11>[  141.183623] init: process 'bootanim', pid 352 exited,status=00000000
+<7>[  142.694915] logd.writer/139: send signal 0.
+<7>[  142.694976] current logd.writer(139) kill task init(1) signal 0
+<7>[  142.694988] current logd.writer(139) kill task logd(108) signal 0
+<7>[  142.694998] current logd.writer(139) kill task installd(120) signal 0
+<7>[  142.695014] current logd.writer(139) kill task debuggerd(117) signal 0
+<7>[  142.695046] current logd.writer(139) kill task secure_daemon(133) signal 0
+<7>[  142.695056] current logd.writer(139) kill task vold(113) signal 0
+<7>[  142.695114] current logd.writer(139) kill task resourcemanager(115) signal 0
+<7>[  142.695124] current logd.writer(139) kill task cursorservice(130) signal 0
+<4>[  147.981654] utmi on
+<4>[  148.061136] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  148.145823] usb 5-1: device descriptor read/64, error -110
+<4>[  163.317874] utmi on
+<4>[  163.396045] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  163.480836] usb 5-1: device descriptor read/64, error -110
+<4>[  163.590846] hub_port_disable: 1  hub->err: 0
+<4>[  163.620852] ==20150116==> hub_port_init 1 #1
+<4>[  163.625135] Plug in USB Port5
+<4>[  163.628130] utmi on
+<4>[  163.706144] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  163.790859] usb 5-1: new high-speed USB device number 10 using Mstar-ehci-5
+<7>[  175.493684] current logd.writer(139) kill task netd(116) signal 0
+<4>[  178.857069] utmi on
+<4>[  178.936103] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  179.020856] usb 5-1: device descriptor read/64, error -110
+<4>[  194.191923] utmi on
+<4>[  194.271083] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  194.355880] usb 5-1: device descriptor read/64, error -110
+<4>[  194.465859] hub_port_disable: 1  hub->err: 0
+<4>[  194.495860] ==20150116==> hub_port_init 1 #2
+<4>[  194.500196] Plug in USB Port5
+<4>[  194.503294] utmi on
+<4>[  194.581061] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  194.665885] usb 5-1: new high-speed USB device number 11 using Mstar-ehci-5
+<3>[  205.125858] usb 5-1: device not accepting address 11, error -110
+<4>[  205.131968] hub_port_disable: 1  hub->err: 0
+<4>[  205.165905] ==20150116==> hub_port_init 1 #3
+<4>[  205.170268] Plug in USB Port5
+<4>[  205.173322] utmi on
+<4>[  205.251093] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  205.335858] usb 5-1: new high-speed USB device number 12 using Mstar-ehci-5
+<7>[  213.247832] current logd.writer(139) kill task tvos(142) signal 0
+<3>[  215.790923] usb 5-1: device not accepting address 12, error -110
+<4>[  215.797205] hub_port_disable: 1  hub->err: 0
+<4>[  215.830842] Force Retry, current speed HIGH
+<3>[  215.835085] hub 5-0:1.0: unable to enumerate USB device on port 1
+<4>[  215.841371] hub_port_disable: 1  hub->err: 0
+<4>[  215.845860] ##[USB] bad dev High Speed retry (3) ##
+<4>[  216.350848] portstatus:0x1 portchange:0x1
+<4>[  216.470876] ==20150116==> hub_port_init 1 #0
+<4>[  216.475220] Plug in USB Port5
+<4>[  216.478273] utmi on
+<4>[  216.561050] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+<6>[  216.645862] usb 5-1: new high-speed USB device number 13 using Mstar-ehci-5
+<4>[  231.711562] utmi on
+<4>[  231.791115] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  231.875867] usb 5-1: device descriptor read/64, error -110
+<7>[  234.829345] current logd.writer(139) kill task main(135) signal 0
+<4>[  247.062717] utmi on
+<6>[  247.112488] input: eventserver-Mouse as /devices/virtual/input/input3
+<6>[  247.118374] input: eventserver-Joystick as /devices/virtual/input/input4
+<4>[  247.146113] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  247.225844] usb 5-1: device descriptor read/64, error -110
+<7>[  247.261432] current putmethod.latin(2858) kill task putmethod.latin(2858) signal 9
+<7>[  247.296776] current Binder_F(1953) kill task putmethod.latin(2858) signal 9
+<4>[  247.335830] hub_port_disable: 1  hub->err: 0
+<4>[  247.365839] ==20150116==> hub_port_init 1 #1
+<4>[  247.365850] Plug in USB Port5
+<4>[  247.365855] utmi on
+<4>[  247.446058] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  247.530838] usb 5-1: new high-speed USB device number 14 using Mstar-ehci-5
+
+<11>[  256.210430] init: service 'loadwifi' is being killed
+
+<3>[  278.080823] usb 5-1: device descriptor read/64, error -110
+<4>[  278.190807] hub_port_disable: 1  hub->err: 0
+<4>[  278.220834] ==20150116==> hub_port_init 1 #2
+<4>[  278.220844] Plug in USB Port5
+<4>[  278.220850] utmi on
+<11>[  278.247329] init: service 'loadwifi' is being killed
+<7>[  278.252375] init/1: send signal 9.
+<11>[  278.253143] init: process 'loadwifi', pid 3083 exited,status=00000009
+<4>[  278.301107] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  278.380836] usb 5-1: new high-speed USB device number 15 using Mstar-ehci-5
+<3>[  288.830814] usb 5-1: device not accepting address 15, error -110
+<4>[  288.836879] hub_port_disable: 1  hub->err: 0
+<4>[  288.865841] ==20150116==> hub_port_init 1 #3
+<4>[  288.865851] Plug in USB Port5
+<4>[  288.865856] utmi on
+<4>[  288.946057] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  289.025838] usb 5-1: new high-speed USB device number 16 using Mstar-ehci-5
+<3>[  299.480811] usb 5-1: device not accepting address 16, error -110
+<4>[  299.486941] hub_port_disable: 1  hub->err: 0
+<4>[  299.515807] Force Retry, current speed HIGH
+<3>[  299.515824] hub 5-0:1.0: unable to enumerate USB device on port 1
+<4>[  299.522022] hub_port_disable: 1  hub->err: 0
+<4>[  299.522046] ##[USB] bad dev High Speed retry (4) ##
+
+<4>[  300.145817] ==20150116==> hub_port_init 1 #0
+<4>[  300.145826] Plug in USB Port5
+<4>[  300.145831] utmi on
+<4>[  300.226096] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+<6>[  300.305850] usb 5-1: new high-speed USB device number 17 using Mstar-ehci-5
+
+<4>[  330.697632] utmi on
+<4>[  330.776062] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  330.855862] usb 5-1: device descriptor read/64, error -110
+<4>[  330.965823] hub_port_disable: 1  hub->err: 0
+<4>[  330.995832] ==20150116==> hub_port_init 1 #1
+<4>[  330.995841] Plug in USB Port5
+<4>[  330.995846] utmi on
+<4>[  331.076063] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+
+<4>[  346.216876] utmi on
+<4>[  346.296078] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  346.375843] usb 5-1: device descriptor read/64, error -110
+
+<3>[  361.705853] usb 5-1: device descriptor read/64, error -110
+<4>[  361.815819] hub_port_disable: 1  hub->err: 0
+<4>[  361.845875] ==20150116==> hub_port_init 1 #2
+<4>[  361.845886] Plug in USB Port5
+<4>[  361.845892] utmi on
+<4>[  361.926090] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  362.005860] usb 5-1: new high-speed USB device number 19 using Mstar-ehci-5
+
+<3>[  372.455836] usb 5-1: device not accepting address 19, error -110
+<4>[  372.462079] hub_port_disable: 1  hub->err: 0
+<4>[  372.490854] ==20150116==> hub_port_init 1 #3
+<4>[  372.490865] Plug in USB Port5
+<4>[  372.490871] utmi on
+<4>[  372.571062] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  372.650857] usb 5-1: new high-speed USB device number 20 using Mstar-ehci-5
+
+<3>[  383.100826] usb 5-1: device not accepting address 20, error -110
+<4>[  383.106962] hub_port_disable: 1  hub->err: 0
+<4>[  383.135839] Force Retry, current speed HIGH
+<3>[  383.135857] hub 5-0:1.0: unable to enumerate USB device on port 1
+<4>[  383.142131] hub_port_disable: 1  hub->err: 0
+<4>[  383.142162] ##[USB] bad dev High Speed retry (5) ##
+<4>[  383.645851] portstatus:0x1 portchange:0x1
+<4>[  383.765856] ==20150116==> hub_port_init 1 #0
+<4>[  383.765868] Plug in USB Port5
+<4>[  383.765874] utmi on
+<4>[  383.846107] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+<6>[  383.925854] usb 5-1: new high-speed USB device number 21 using Mstar-ehci-5
+
+<4>[  398.986769] utmi on
+<4>[  399.066085] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  399.145861] usb 5-1: device descriptor read/64, error -110
+
+<4>[  414.317904] utmi on
+<4>[  414.396073] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<3>[  414.475858] usb 5-1: device descriptor read/64, error -110
+<4>[  414.585845] hub_port_disable: 1  hub->err: 0
+<4>[  414.615835] ==20150116==> hub_port_init 1 #1
+<4>[  414.615846] Plug in USB Port5
+<4>[  414.615851] utmi on
+
+<4>[  427.836260] utmi on
+<4>[  427.836281] [USB] device has gone before bus reset
+<4>[  427.836297] hub_port_disable: 1  hub->err: 0
+<7>[  427.845407] current logd.writer(139) kill task mi.mitv.upgrade(1741) signal 0
+<7>[  427.845552] current logd.writer(139) kill task system_server(514) signal 0
+<7>[  427.845663] current logd.writer(139) kill task mediaserver(119) signal 0
+<7>[  427.845699] current logd.writer(139) kill task resourcemanager(115) signal 0
+<4>[  427.865869] ==20150116==> hub_port_init 1 #2
+<4>[  427.865880] Plug in USB Port5
+<4>[  427.865887] utmi on
+<4>[  427.865899] [USB] device has gone before bus reset
+<4>[  427.865916] hub_port_disable: 1  hub->err: 0
+<4>[  427.895861] ==20150116==> hub_port_init 1 #3
+<4>[  427.895872] Plug in USB Port5
+<4>[  427.895878] utmi on
+<4>[  427.895892] [USB] device has gone before bus reset
+<4>[  427.895909] hub_port_disable: 1  hub->err: 0
+<4>[  427.925843] hub_port_disable: 1  hub->err: 0
+<4>[  427.925887] utmi off
+
+<4>[  428.850429] utmi off
+<7>[  428.940290] current logd.writer(139) kill task Thread-87(2217) signal 0
+<4>[  428.965862] ==20150116==> hub_port_init 1 #0
+<4>[  428.965874] Plug in USB Port5
+<4>[  428.965880] utmi on
+<4>[  429.046092] [USB fd2a6200], portstatus: 0x403, portchange: 0x10
+
+<4>[  459.785843] hub_port_disable: 1  hub->err: 0
+<4>[  459.815844] ==20150116==> hub_port_init 1 #1
+<4>[  459.815854] Plug in USB Port5
+<4>[  459.815860] utmi on
+<4>[  459.896066] [USB fd2a6200], portstatus: 0x403, portchange: 0x12
+<6>[  459.975845] usb 5-1: new high-speed USB device number 26 using Mstar-ehci-5
+
+

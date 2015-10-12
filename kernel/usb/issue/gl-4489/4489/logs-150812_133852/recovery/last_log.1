@@ -1,0 +1,182 @@
+__bionic_open_tzdata: couldn't find any tzdata when looking for Asia/Shanghai!
+__bionic_open_tzdata: couldn't find any tzdata when looking for GMT!
+__bionic_open_tzdata: couldn't find any tzdata when looking for posixrules!
+Starting recovery (pid 80) on Tue Aug 11 06:22:22 2015
+recovery filesystem table
+=========================
+  0 /boot1 emmc /dev/block/mmcblk0boot0 0
+  1 /boot2 emmc /dev/block/mmcblk0boot1 0
+  2 /MBOOT emmc /dev/block/platform/mstar_mci.0/by-name/MBOOT 0
+  3 /MPOOL emmc /dev/block/platform/mstar_mci.0/by-name/MPOOL 0
+  4 /misc emmc /dev/block/platform/mstar_mci.0/by-name/misc 0
+  5 /recovery emmc /dev/block/platform/mstar_mci.0/by-name/recovery 0
+  6 /boot emmc /dev/block/platform/mstar_mci.0/by-name/boot 0
+  7 /tee emmc /dev/block/platform/mstar_mci.0/by-name/tee 0
+  8 /system ext4 /dev/block/platform/mstar_mci.0/by-name/system 0
+  9 /data ext4 /dev/block/platform/mstar_mci.0/by-name/userdata 0
+  10 /cache ext4 /dev/block/platform/mstar_mci.0/by-name/cache 0
+  11 /tvservice ext4 /dev/block/platform/mstar_mci.0/by-name/tvservice 0
+  12 /tvconfig ext4 /dev/block/platform/mstar_mci.0/by-name/tvconfig 0
+  13 /tvdatabase ext4 /dev/block/platform/mstar_mci.0/by-name/tvdatabase 0
+  14 /tvcustomer ext4 /dev/block/platform/mstar_mci.0/by-name/tvcustomer 0
+  15 /tvinfo ext4 /dev/block/platform/mstar_mci.0/by-name/tvinfo 0
+  16 /persist ext4 /dev/block/platform/mstar_mci.0/by-name/persist 0
+  17 /RTPM ext4 /dev/block/platform/mstar_mci.0/by-name/RTPM 0
+  18 /udisk vfat /dev/block/sda# 0
+  19 /tmp ramdisk ramdisk 0
+E:Bad boot message
+"¨s¿"
+I:Got arguments from /cache/recovery/command
+arg is [w]
+arg is [l]
+locale is [zh_CN]
+stage is []
+reason is [(null)]
+open_png /res/images/font.png 
+[35mFunction = SARRegisterToUtopia, Line = 1999, SAR Register finished[m
+[35mFunction = SEMRegisterToUtopia, Line = 393, SEM_Init is opened[m
+[35mFunction = SEMRegisterToUtopia, Line = 395, SEM Register finished[m
+MFERegisterToUtopia
+
+[MIU INFO] miu openMDrv_SYS_GlobalInit finishedMDrv_PNL_Init u32PnlRiuBaseAddr = b6840000
+MDrv_PNL_Init u32PnlRiuBaseAddr = b6840000
+D:projectID=0x3 
+V:select_model_via_project_id:Model_3=/config/model/Customer_3.ini
+V:panel:m_pPanelName=/config/model/Customer_3.ini
+D:panel:m_pPanelName = /config/panel/LSC480FN02.ini  panel:m_p4K2KPanelName = (null) the ursaVersion is 0
+D:4K2KUI Enable = 0
+D:OSD Mirror Enable = 0, Mirror Type = 3
+D:miuno = 0, addr = 3ec80000,size = 1000[35m[HAL_CMDQ_SetBank] Set Verify Code Setting...[m
+[35mFunction = HAL_CMDQ_Set_MIU_SELECT, Line = 285, set miu_0[m
+[35mFunction = HAL_CMDQ_Set_Timer, Line = 227, Set Timer: 0xFF[m
+[35mFunction = HAL_CMDQ_Set_Ratio, Line = 233, Set Ratio: 0xF[m
+[35mFunction = HAL_CMDQ_Set_Start_Pointer, Line = 210, set SATRT_ADDR: 0x3EC8000[m
+[35mFunction = HAL_CMDQ_Set_End_Pointer, Line = 216, set END_ADDR: 0x3EC80FF[m
+I:fbdev_getMaskPhyAdr MIU0 mask=3fffffffI:gfx_Init invoked maskPhyAddr=3fffffffI:GOP FB in miu0 0x31000000, map to 0x0
+I:OSD: x=0 y=0 w=1920 h=1080 pitch=7680 fmt=31 addr=31000000 size=7e9000
+I:MStar graphic Config:
+I:OSD WIDTH    : 1920
+I:OSD HEIGHT   : 1080
+I:PANEL WIDTH  : 3840
+I:PANEL HEIGHT : 2160
+I:PANEL HSTART : 110
+I:MIRROE MODE  : 0 ,H : 0,V : 0
+I:EnableCropUiEnableFeature : 0
+I:GOP          : 0
+I:GWIN         : 0
+I:FORMAT       : 31
+I:TILE TYPE    : 1
+D:leeo,remove bootlogo
+fb0 reports (possibly inaccurate):
+  vi.bits_per_pixel = 32
+  vi.red.offset   =   0   .length =   8
+  vi.green.offset =   8   .length =   8
+  vi.blue.offset  =  16   .length =   8
+[fbdev_init][195]vi.yres:1080,fi.line_length:7680,fi.smem_len:0x7E9000,fi.smem_start:0x31000000,bits:0xAF45B000
+framebuffer: 10 (1920 x 1080)
+[gr_init][388]use fbdev to show Recovery UI
+[gr_init][391]overscan_percent:0
+open_png /res/images/icon_installing.png 
+libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+open_png /res/images/icon_error.png 
+open_png /res/images/progress_empty.png 
+open_png /res/images/progress_fill.png 
+open_png /res/images/stage_empty.png 
+open_png /res/images/stage_fill.png 
+open_png /res/images/installing_text.png 
+       installing_text: zh_CN (206 x 33 @ 1768)
+open_png /res/images/erasing_text.png 
+          erasing_text: zh_CN (110 x 33 @ 1768)
+open_png /res/images/no_command_text.png 
+       no_command_text: zh_CN (79 x 33 @ 1768)
+open_png /res/images/error_text.png 
+            error_text: zh_CN (84 x 33 @ 1768)
+open_png /res/images/indeterminate01.png 
+open_png /res/images/indeterminate02.png 
+open_png /res/images/indeterminate03.png 
+open_png /res/images/indeterminate04.png 
+open_png /res/images/indeterminate05.png 
+open_png /res/images/indeterminate06.png 
+open_png /res/images/icon_installing_overlay01.png 
+open_png /res/images/icon_installing_overlay02.png 
+open_png /res/images/icon_installing_overlay03.png 
+open_png /res/images/icon_installing_overlay04.png 
+open_png /res/images/icon_installing_overlay05.png 
+open_png /res/images/icon_installing_overlay06.png 
+open_png /res/images/icon_installing_overlay07.png 
+virtual void ScreenRecoveryUI::SetBackground(RecoveryUI::Icon): icon 0 
+Command: "/sbin/recovery" "--wipe_data" "--locale=zh_CN"
+dev_uuid : (null)
+dev_label : (null)
+status : 0
+virtual void ScreenRecoveryUI::SetBackground(RecoveryUI::Icon): icon 2 
+Wiping data...
+
+-- Wiping data...
+virtual void ScreenRecoveryUI::SetBackground(RecoveryUI::Icon): icon 2 
+Formatting /cache...
+Creating filesystem with parameters:
+    Size: 67108864
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 4096
+    Inode size: 256
+    Journal blocks: 1024
+    Label: 
+    Blocks: 16384
+    Block groups: 1
+    Reserved block group size: 7
+Created filesystem with 11/4096 inodes and 1294/16384 blocks
+warning: wipe_block_device: Discard failed
+
+Data wipe complete.
+virtual void ScreenRecoveryUI::SetBackground(RecoveryUI::Icon): icon 2 
+Formatting /cache...
+Creating filesystem with parameters:
+    Size: 67108864
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 4096
+    Inode size: 256
+    Journal blocks: 1024
+    Label: 
+    Blocks: 16384
+    Block groups: 1
+    Reserved block group size: 7
+Created filesystem with 11/4096 inodes and 1294/16384 blocks
+warning: wipe_block_device: Discard failed
+
+writing
+01 03 0c 00 
+Creating filesystem with parameters:
+    Size: 8388608
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 512
+    Inode size: 256
+    Journal blocks: 1024
+    Label: 
+    Blocks: 2048
+    Block groups: 1
+    Reserved block group size: 7
+Created filesystem with 11/512 inodes and 1070/2048 blocks
+warning: wipe_block_device: Discard failed
+
+received 7
+04 0e 04 01 03 0c 00 
+writing
+01 0c 20 02 01 00 
+received 7
+04 0e 04 01 0c 20 00 
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /tvconfig/TvBackup/Database/user_setting.db /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /tvconfig/TvBackup/Database/user_setting.db-journal /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /tvconfig/TvBackup/Database/customer.db /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /tvconfig/TvBackup/Database/customer.db-journal /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /tvconfig/Database/factory.db /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /tvconfig/Database/factory.db-journal /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /persist/factory.db /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox cp -r /persist/factory.db-journal /tvdatabase/Database"
+[int mstar_system(const char*): 44] cmdstring="busybox chmod -R 755 /tvdatabase/*"
+[int mstar_system(const char*): 44] cmdstring="busybox chmod -R 644 /tvdatabase/Database/*"
+[int mstar_system(const char*): 44] cmdstring="busybox chown -R 1000:1000 /tvdatabase/Database/*"
+I:Saving locale "zh_CN"

@@ -1,0 +1,267 @@
+__bionic_open_tzdata: couldn't find any tzdata when looking for Asia/Shanghai!
+__bionic_open_tzdata: couldn't find any tzdata when looking for GMT!
+__bionic_open_tzdata: couldn't find any tzdata when looking for posixrules!
+Starting recovery (pid 81) on Fri Aug  7 08:42:07 2015
+recovery filesystem table
+=========================
+  0 /boot1 emmc /dev/block/mmcblk0boot0 0
+  1 /boot2 emmc /dev/block/mmcblk0boot1 0
+  2 /MBOOT emmc /dev/block/platform/mstar_mci.0/by-name/MBOOT 0
+  3 /MPOOL emmc /dev/block/platform/mstar_mci.0/by-name/MPOOL 0
+  4 /misc emmc /dev/block/platform/mstar_mci.0/by-name/misc 0
+  5 /recovery emmc /dev/block/platform/mstar_mci.0/by-name/recovery 0
+  6 /boot emmc /dev/block/platform/mstar_mci.0/by-name/boot 0
+  7 /tee emmc /dev/block/platform/mstar_mci.0/by-name/tee 0
+  8 /system ext4 /dev/block/platform/mstar_mci.0/by-name/system 0
+  9 /data ext4 /dev/block/platform/mstar_mci.0/by-name/userdata 0
+  10 /cache ext4 /dev/block/platform/mstar_mci.0/by-name/cache 0
+  11 /tvservice ext4 /dev/block/platform/mstar_mci.0/by-name/tvservice 0
+  12 /tvconfig ext4 /dev/block/platform/mstar_mci.0/by-name/tvconfig 0
+  13 /tvdatabase ext4 /dev/block/platform/mstar_mci.0/by-name/tvdatabase 0
+  14 /tvcustomer ext4 /dev/block/platform/mstar_mci.0/by-name/tvcustomer 0
+  15 /tvinfo ext4 /dev/block/platform/mstar_mci.0/by-name/tvinfo 0
+  16 /persist ext4 /dev/block/platform/mstar_mci.0/by-name/persist 0
+  17 /RTPM ext4 /dev/block/platform/mstar_mci.0/by-name/RTPM 0
+  18 /udisk vfat /dev/block/sda# 0
+  19 /tmp ramdisk ramdisk 0
+W:try mount /dev/block/sda1 ...
+E:Can not find: /udisk/update-MiTV2S-48.zip
+I:Got arguments from /udisk/xiaomi_update-gladiator
+arg is [u]
+arg is [w]
+locale is [zh_CN]
+stage is []
+reason is [(null)]
+open_png /res/images/font.png 
+[35mFunction = SARRegisterToUtopia, Line = 1999, SAR Register finished[m
+[35mFunction = SEMRegisterToUtopia, Line = 393, SEM_Init is opened[m
+[35mFunction = SEMRegisterToUtopia, Line = 395, SEM Register finished[m
+MFERegisterToUtopia
+
+[MIU INFO] miu openMDrv_SYS_GlobalInit finishedMDrv_PNL_Init u32PnlRiuBaseAddr = b6940000
+MDrv_PNL_Init u32PnlRiuBaseAddr = b6940000
+D:projectID=0x3 
+V:select_model_via_project_id:Model_3=/config/model/Customer_3.ini
+V:panel:m_pPanelName=/config/model/Customer_3.ini
+D:panel:m_pPanelName = /config/panel/LSC480FN02.ini  panel:m_p4K2KPanelName = (null) the ursaVersion is 0
+D:4K2KUI Enable = 0
+D:OSD Mirror Enable = 0, Mirror Type = 3
+D:miuno = 0, addr = 3ec80000,size = 1000[35m[HAL_CMDQ_SetBank] Set Verify Code Setting...[m
+[35mFunction = HAL_CMDQ_Set_MIU_SELECT, Line = 285, set miu_0[m
+[35mFunction = HAL_CMDQ_Set_Timer, Line = 227, Set Timer: 0xFF[m
+[35mFunction = HAL_CMDQ_Set_Ratio, Line = 233, Set Ratio: 0xF[m
+[35mFunction = HAL_CMDQ_Set_Start_Pointer, Line = 210, set SATRT_ADDR: 0x3EC8000[m
+[35mFunction = HAL_CMDQ_Set_End_Pointer, Line = 216, set END_ADDR: 0x3EC80FF[m
+I:fbdev_getMaskPhyAdr MIU0 mask=3fffffffI:gfx_Init invoked maskPhyAddr=3fffffffI:GOP FB in miu0 0x31000000, map to 0x0
+I:OSD: x=0 y=0 w=1920 h=1080 pitch=7680 fmt=31 addr=31000000 size=7e9000
+I:MStar graphic Config:
+I:OSD WIDTH    : 1920
+I:OSD HEIGHT   : 1080
+I:PANEL WIDTH  : 3840
+I:PANEL HEIGHT : 2160
+I:PANEL HSTART : 110
+I:MIRROE MODE  : 0 ,H : 0,V : 0
+I:EnableCropUiEnableFeature : 0
+I:GOP          : 0
+I:GWIN         : 0
+I:FORMAT       : 31
+I:TILE TYPE    : 1
+D:leeo,remove bootlogo
+fb0 reports (possibly inaccurate):
+  vi.bits_per_pixel = 32
+  vi.red.offset   =   0   .length =   8
+  vi.green.offset =   8   .length =   8
+  vi.blue.offset  =  16   .length =   8
+[fbdev_init][195]vi.yres:1080,fi.line_length:7680,fi.smem_len:0x7E9000,fi.smem_start:0x31000000,bits:0xAF55B000
+framebuffer: 10 (1920 x 1080)
+[gr_init][388]use fbdev to show Recovery UI
+[gr_init][391]overscan_percent:0
+open_png /res/images/icon_installing.png 
+libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+open_png /res/images/icon_error.png 
+open_png /res/images/progress_empty.png 
+open_png /res/images/progress_fill.png 
+open_png /res/images/stage_empty.png 
+open_png /res/images/stage_fill.png 
+open_png /res/images/installing_text.png 
+       installing_text: zh_CN (206 x 33 @ 1768)
+open_png /res/images/erasing_text.png 
+          erasing_text: zh_CN (110 x 33 @ 1768)
+open_png /res/images/no_command_text.png 
+       no_command_text: zh_CN (79 x 33 @ 1768)
+open_png /res/images/error_text.png 
+            error_text: zh_CN (84 x 33 @ 1768)
+open_png /res/images/indeterminate01.png 
+open_png /res/images/indeterminate02.png 
+open_png /res/images/indeterminate03.png 
+open_png /res/images/indeterminate04.png 
+open_png /res/images/indeterminate05.png 
+open_png /res/images/indeterminate06.png 
+open_png /res/images/icon_installing_overlay01.png 
+open_png /res/images/icon_installing_overlay02.png 
+open_png /res/images/icon_installing_overlay03.png 
+open_png /res/images/icon_installing_overlay04.png 
+open_png /res/images/icon_installing_overlay05.png 
+open_png /res/images/icon_installing_overlay06.png 
+open_png /res/images/icon_installing_overlay07.png 
+virtual void ScreenRecoveryUI::SetBackground(RecoveryUI::Icon): icon 0 
+Command: "/sbin/recovery" "--update_package=/udisk/update-gladiator.zip" "--wipe_data"
+dev_uuid : (null)
+dev_label : (null)
+status : 0
+virtual void ScreenRecoveryUI::SetBackground(RecoveryUI::Icon): icon 1 
+Finding update package...
+writing
+01 03 0c 00 
+received 7
+04 0e 04 01 03 0c 00 
+writing
+01 0c 20 02 01 00 
+received 7
+04 0e 04 01 0c 20 00 
+I:Update location: /udisk/update-gladiator.zip
+confirm uuid and package path
+W:try mount /dev/block/sda1 ...
+Opening update package...
+I:read key e=3 hash=20
+I:read key e=3 hash=20
+I:2 key(s) loaded from /res/keys
+Verifying update package...
+I:comment is 1276 bytes; signature 1258 bytes from end
+I:whole-file signature verified against RSA key 0
+I:verify_file returned 0
+Installing update...
+Start to upgrade partitionCreating filesystem with parameters:
+    Size: 1073741824
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 4096
+    Label: 
+    Flexbg size: 8
+    Flexbg groups: 1
+    Blocks: 262144
+    Block groups: 8
+    Reserved block group size: 63
+Created filesystem with 11/65536 inodes and 8276/262144 blocks
+[int mstar_system(const char*): 44] cmdstring="busybox echo 0 > /sys/block/mmcblk0boot0/force_ro"
+warning: wipe_block_device: Discard failed
+
+[int mstar_system(const char*): 44] cmdstring="busybox sync"
+
+minzip: Extracted 3 file(s)
+report_fake_key write event success 
+report_fake_key write event success 
+report_fake_key write event success 
+report_fake_key write event success 
+report_fake_key write event success 
+minzip: Extracted 2520 file(s)
+created [/system/app/Bluetooth/lib]
+created [/system/app/Bluetooth/lib/arm]
+created [/system/priv-app/DefaultContainerService/lib]
+created [/system/priv-app/DefaultContainerService/lib/arm]
+created [/system/app/Gallery2/lib]
+created [/system/app/Gallery2/lib/arm]
+created [/system/app/LatinIME/lib]
+created [/system/app/LatinIME/lib/arm]
+created [/system/app/PacProcessor/lib]
+created [/system/app/PacProcessor/lib/arm]
+created [/system/app/PicoTts/lib]
+created [/system/app/PicoTts/lib/arm]
+created [/system/app/webview/lib]
+created [/system/app/webview/lib/arm]
+Updating /tvconfig image...
+Updating tv images...
+Updating tee image...
+Uppack nuttx_config.bin...
+[0;34m[update_nuttx_config,694]: [0mNuttxConfig
+the length for /tmp/nuttx_config.bin is 2006
+[0;34m[update_nuttx_config,724]: [0mpSignConfigPhyBuf =bebfadd4 
+[0;34m[update_nuttx_config,734]: [0m****pSignConfigPhyBuf : bebfadd4 
+[0;34m[update_nuttx_config,735]: [0m****pSigPhyBuf : bebfaed4 
+[0;34m[update_nuttx_config,736]: [0m****SigLen : 220 
+[0;34m[update_nuttx_config,737]: [0m****pConfigPhyBuf : bebfb0f4 
+[0;34m[update_nuttx_config,738]: [0m****ConfigLen : 4b6 
+[0;34m[NConfigSave,598]: [0mIN
+[0;34m[NConfigSave,642]: [0mCrc32 =d916a581
+[0;34m[NConfigSave,644]: [0mBurn NConfig to blcok
+[0;34m[NConfigSave,652]: [0mvolume dev /dev/block/platform/mstar_mci.0/by-name/MPOOL
+[0;34m[set_secure_info_block,207]: [0mIN
+[0;34m[set_secure_info_block,227]: [0mOK
+[0;34m[NConfigSave,657]: [0mBurn NConfig to  backup blcok
+[0;34m[set_secure_info_block,207]: [0mIN
+[0;34m[set_secure_info_block,227]: [0mOK
+[0;34m[NConfigSave,660]: [0mret : 0 , ret_bk : 0 
+[0;34m[NConfigSave,661]: [0mOK
+[0;34m[NConfigSave,669]: [0mOK
+[0;34m[update_nuttx_config,745]: [0mupdate nuttx config finished
+Updating /RTPM image...
+Updating mboot image...
+Reloading the environment variable in misc partition...
+[int try_update_binary(const char*, ZipArchive*, int*): 421] reload panel now ...
+[int try_update_binary(const char*, ZipArchive*, int*): 417] reload env now ...
+minzip: Extracted 3 file(s)
+minzip: Extracted 2 file(s)
+[0;34m[update_secure_info,543]: [0mupdate secure info partition:boot filename:/tmp/secure_info_boot.bin
+[0;34m[load_secure_info,302]: [0mIN
+[0;34m[load_secure_info,305]: [0mSECUREINFO_OFFSET:0x1d4000
+[0;34m[load_secure_info,306]: [0mSECUREINFO_BACKUP_OFFSET:0x1da000
+[0;34m[load_secure_info,307]: [0mSECURITY_INFO size:0x14EC
+[0;34m[load_secure_info,308]: [0mstart to Load Signature from first section
+[0;34m[read_secure_info,240]: [0mIN
+[0;34m[get_secure_info_block,174]: [0mIN
+[0;34m[get_secure_info_block,178]: [0mv->blk_device:/dev/block/platform/mstar_mci.0/by-name/MPOOL, offset:0x1D4000, Length:0x14EC
+[0;34m[get_secure_info_block,194]: [0mOK
+[0;34m[read_secure_info,261]: [0mOK
+[0;34m[load_secure_info,311]: [0mLoad Signature from first section OK
+[0;34m[load_secure_info,323]: [0mOK
+[0;34m[print_secure_info,505]: [0mboot.data:
+53 45 43 55 52 49 54 59 01 00 00 00 a0 18 6f 00 0d 67 39 2d d2 4f 78 92 7f a1 50 74 c9 5a bc 51 a4 c7 26 6e d3 03 ce 8b 62 ce a0 e3 19 10 78 f6 ee b2 68 6d 80 48 e2 eb 82 5d 4f be 6c fc f1 18 17 f7 29 36 da 50 08 8f ab 5e 56 9d a8 0c 67 4f 21 f7 3c b8 5c cd 85 71 41 ab 30 71 48 18 ea bc d0 0e 2a ad e8 9d 51 77 ed 27 42 1f 0d 40 0b 8f 97 3d 9c 50 f9 0c 44 12 19 57 1b 95 63 d4 7d 20 63 87 03 66 5c 52 6a 1a 38 54 6a 81 bf 9d af 25 e3 da a6 db dd d1 9f 6e bf e3 1a 5e 01 53 3f 46 8a d0 67 3f c5 6d 45 0f d0 83 f2 bf e2 f5 c5 b3 ef 89 f8 ba 65 b0 e5 62 b5 1a cc db 6e 03 af 51 cd 88 8c f6 73 50 69 56 00 78 f6 b7 ae 02 a1 2c 2b db 65 84 13 6d a3 2e a2 ea f0 15 f3 ff 6d a2 ef 1e 8c 95 46 92 f7 0e c9 a1 e5 34 cb 9f db db 33 24 04 8d ff 67 bd 40 18 ae 54 5c c7 fe 7f a6 b9 3a c5 a0 44 be 5a b5 33 78 71 3c aa 71 dc 62 
+
+[0;34m[print_secure_info,507]: [0mboot.data_interleave:
+49 4e 54 45 52 4c 56 45 01 00 00 00 a0 18 6f 00 0d 67 39 2d d2 4f 78 92 7f a1 50 74 c9 5a bc 51 a4 c7 26 6e d3 03 ce 8b 62 ce a0 e3 19 10 78 f6 ee b2 68 6d 80 48 e2 eb 82 5d 4f be 6c fc f1 18 17 f7 29 36 da 50 08 8f ab 5e 56 9d a8 0c 67 4f 21 f7 3c b8 5c cd 85 71 41 ab 30 71 48 18 ea bc d0 0e 2a ad e8 9d 51 77 ed 27 42 1f 0d 40 0b 8f 97 3d 9c 50 f9 0c 44 12 19 57 1b 95 63 d4 7d 20 63 87 03 66 5c 52 6a 1a 38 54 6a 81 bf 9d af 25 e3 da a6 db dd d1 9f 6e bf e3 1a 5e 01 53 3f 46 8a d0 67 3f c5 6d 45 0f d0 83 f2 bf e2 f5 c5 b3 ef 89 f8 ba 65 b0 e5 62 b5 1a cc db 6e 03 af 51 cd 88 8c f6 73 50 69 56 00 78 f6 b7 ae 02 a1 2c 2b db 65 84 13 6d a3 2e a2 ea f0 15 f3 ff 6d a2 ef 1e 8c 95 46 92 f7 0e c9 a1 e5 34 cb 9f db db 33 24 04 8d ff 67 bd 40 18 ae 54 5c c7 fe 7f a6 b9 3a c5 a0 44 be 5a b5 33 78 71 3c aa 71 dc 62 
+
+[0;34m[save_secure_info,333]: [0msave SecureInfo
+[0;34m[write_secure_info,273]: [0mIN
+[0;34m[set_secure_info_block,207]: [0mIN
+[0;34m[set_secure_info_block,227]: [0mOK
+[0;34m[write_secure_info,293]: [0mOK
+[0;34m[write_secure_info,273]: [0mIN
+[0;34m[set_secure_info_block,207]: [0mIN
+[0;34m[set_secure_info_block,227]: [0mOK
+[0;34m[write_secure_info,293]: [0mOK
+[0;34m[save_secure_info,344]: [0msave SecureInfo OK
+[0;34m[update_secure_info,586]: [0mupdate secureinfo for boot finished
+[0;34m[update_secure_info,543]: [0mupdate secure info partition:tee filename:/tmp/secure_info_tee.bin
+[0;34m[load_secure_info,302]: [0mIN
+[0;34m[load_secure_info,305]: [0mSECUREINFO_OFFSET:0x1d4000
+[0;34m[load_secure_info,306]: [0mSECUREINFO_BACKUP_OFFSET:0x1da000
+[0;34m[load_secure_info,307]: [0mSECURITY_INFO size:0x14EC
+[0;34m[load_secure_info,308]: [0mstart to Load Signature from first section
+[0;34m[read_secure_info,240]: [0mIN
+[0;34m[get_secure_info_block,174]: [0mIN
+[0;34m[get_secure_info_block,178]: [0mv->blk_device:/dev/block/platform/mstar_mci.0/by-name/MPOOL, offset:0x1D4000, Length:0x14EC
+[0;34m[get_secure_info_block,194]: [0mOK
+[0;34m[read_secure_info,261]: [0mOK
+[0;34m[load_secure_info,311]: [0mLoad Signature from first section OK
+[0;34m[load_secure_info,323]: [0mOK
+[0;34m[print_secure_info,516]: [0mtee.data:
+53 45 43 55 52 49 54 59 01 00 00 00 d0 d4 16 00 59 d9 f2 7d 10 4f dc b9 4b 38 fd 9c 5f 6e eb ed d9 44 d4 b2 65 59 d2 3c 63 e9 6a f7 98 e5 be b5 86 d5 b7 bf 9c 3d 03 7c bc ff 7d a3 65 ca 41 c0 7c 57 21 13 58 6f 3e dc 45 a7 0a 61 81 75 6b 2b 09 0c 7c 63 4e ce 02 89 54 5d e1 02 0f f1 d6 6d 08 34 f0 e3 ba 88 05 f4 58 42 6c 4f b0 bf 21 c8 45 d1 76 99 ee 2f 52 f6 43 af ee a2 ff 0f 43 35 99 32 ee d9 4f 33 38 a3 c3 cd 67 81 b3 99 4b 5b e1 bd ab ba 32 85 17 c7 e0 9e 4f 08 e1 89 2c f8 4e 2c 45 bd 8d 97 09 0a 65 08 da 8e ec 7a 06 c7 9c 7b bf d6 c1 16 d8 f5 98 a2 44 9a ab 31 de f1 50 ed ad 2f 6d 4d 21 01 e5 5a a0 73 f5 85 64 71 87 3c 32 b7 d5 1c 27 19 ba d9 4c 49 b0 3e 58 c8 e6 94 42 d8 ae ba 07 fb ee 95 a7 05 3a ba e9 aa 87 e8 3d a8 14 68 40 a4 69 dc 2f e7 c4 0a b0 22 c9 6c 73 fb e9 eb 8d ec 92 03 52 6f bd fc d9 04 
+
+[0;34m[print_secure_info,518]: [0mtee.data_interleave:
+49 4e 54 45 52 4c 56 45 01 00 00 00 d0 d4 16 00 59 d9 f2 7d 10 4f dc b9 4b 38 fd 9c 5f 6e eb ed d9 44 d4 b2 65 59 d2 3c 63 e9 6a f7 98 e5 be b5 86 d5 b7 bf 9c 3d 03 7c bc ff 7d a3 65 ca 41 c0 7c 57 21 13 58 6f 3e dc 45 a7 0a 61 81 75 6b 2b 09 0c 7c 63 4e ce 02 89 54 5d e1 02 0f f1 d6 6d 08 34 f0 e3 ba 88 05 f4 58 42 6c 4f b0 bf 21 c8 45 d1 76 99 ee 2f 52 f6 43 af ee a2 ff 0f 43 35 99 32 ee d9 4f 33 38 a3 c3 cd 67 81 b3 99 4b 5b e1 bd ab ba 32 85 17 c7 e0 9e 4f 08 e1 89 2c f8 4e 2c 45 bd 8d 97 09 0a 65 08 da 8e ec 7a 06 c7 9c 7b bf d6 c1 16 d8 f5 98 a2 44 9a ab 31 de f1 50 ed ad 2f 6d 4d 21 01 e5 5a a0 73 f5 85 64 71 87 3c 32 b7 d5 1c 27 19 ba d9 4c 49 b0 3e 58 c8 e6 94 42 d8 ae ba 07 fb ee 95 a7 05 3a ba e9 aa 87 e8 3d a8 14 68 40 a4 69 dc 2f e7 c4 0a b0 22 c9 6c 73 fb e9 eb 8d ec 92 03 52 6f bd fc d9 04 
+
+[0;34m[save_secure_info,333]: [0msave SecureInfo
+[0;34m[write_secure_info,273]: [0mIN
+[0;34m[set_secure_info_block,207]: [0mIN
+[0;34m[set_secure_info_block,227]: [0mOK
+[0;34m[write_secure_info,293]: [0mOK
+[0;34m[write_secure_info,273]: [0mIN
+[0;34m[set_secure_info_block,207]: [0mIN
+[0;34m[set_secure_info_block,227]: [0mOK
+[0;34m[write_secure_info,293]: [0mOK
+[0;34m[save_secure_info,344]: [0msave SecureInfo OK
+[0;34m[update_secure_info,586]: [0mupdate secureinfo for tee finished
+script succeeded: result was [0.000000]
+I:Saving locale "zh_CN"

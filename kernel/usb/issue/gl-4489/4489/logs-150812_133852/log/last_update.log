@@ -1,0 +1,342 @@
+61624320 bytes free on /cache (21138858 needed)
+patch /tmp/update//system/.secureinfo/tee.bin: now 8d75271e
+patch /tmp/update//system/app/Bluetooth/Bluetooth.apk: now c0c488b3
+patch /tmp/update//system/app/Browser/Browser.apk: now bbc00e0d
+patch /tmp/update//system/app/Calendar/Calendar.apk: now b4cf2303
+patch /tmp/update//system/app/CaptivePortalLogin/CaptivePortalLogin.apk: now d29101df
+patch /tmp/update//system/app/CertInstaller/CertInstaller.apk: now 7b26267f
+patch /tmp/update//system/app/DocumentsUI/DocumentsUI.apk: now 9667e937
+patch /tmp/update//system/app/DownloadProviderUi/DownloadProviderUi.apk: now f492c4dc
+patch /tmp/update//system/app/HTMLViewer/HTMLViewer.apk: now e874398b
+patch /tmp/update//system/app/KeyChain/KeyChain.apk: now 81b7a43a
+patch /tmp/update//system/app/LatinIME/LatinIME.apk: now 54745993
+patch /tmp/update//system/app/MTvProvider/MTvProvider.apk: now 7d6cd53a
+patch /tmp/update//system/app/MTvService/MTvService.apk: now 64eb40e0
+patch /tmp/update//system/app/Music/Music.apk: now ca8ab04f
+patch /tmp/update//system/app/PacProcessor/PacProcessor.apk: now 2d5ea908
+patch /tmp/update//system/app/PackageInstaller/PackageInstaller.apk: now 93a79d72
+patch /tmp/update//system/app/Provision/Provision.apk: now a78c31c5
+patch /tmp/update//system/app/QuickSearchBox/QuickSearchBox.apk: now 13e26a40
+patch /tmp/update//system/app/SoundRecorder/SoundRecorder.apk: now 35263fc9
+patch /tmp/update//system/app/TvService/TvService.apk: now f04e5d98
+patch /tmp/update//system/app/UserDictionaryProvider/UserDictionaryProvider.apk: now 0b8c2311
+patch /tmp/update//system/bin/vold: now ebaabcae
+patch /tmp/update//system/etc/recovery-resource.dat: now d70f99b4
+patch /tmp/update//system/framework/framework-res.apk: now a41e8211
+patch /tmp/update//system/framework/mifactorymiddleware.jar: now 2d0e067d
+patch /tmp/update//system/lib/libmiplayer.so: now 599353ac
+patch /tmp/update//system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk: now ffcfa5a6
+patch /tmp/update//system/priv-app/CalendarProvider/CalendarProvider.apk: now fca95d7e
+patch /tmp/update//system/priv-app/Contacts/Contacts.apk: now 7dd6f624
+patch /tmp/update//system/priv-app/ContactsProvider/ContactsProvider.apk: now 73a66351
+patch /tmp/update//system/priv-app/DefaultContainerService/DefaultContainerService.apk: now 484c8d7c
+patch /tmp/update//system/priv-app/DownloadProvider/DownloadProvider.apk: now 0cf14cfd
+patch /tmp/update//system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk: now ba8d80ed
+patch /tmp/update//system/priv-app/FusedLocation/FusedLocation.apk: now 8d020043
+patch /tmp/update//system/priv-app/InputDevices/InputDevices.apk: now c8b18ef4
+patch /tmp/update//system/priv-app/Launcher2/Launcher2.apk: now cf8fb7f9
+patch /tmp/update//system/priv-app/ManagedProvisioning/ManagedProvisioning.apk: now d6fd55c2
+patch /tmp/update//system/priv-app/MediaProvider/MediaProvider.apk: now 0b15de60
+patch /tmp/update//system/priv-app/ProxyHandler/ProxyHandler.apk: now 4d05ea31
+patch /tmp/update//system/priv-app/Settings/Settings.apk: now 007727de
+patch /tmp/update//system/priv-app/SettingsProvider/SettingsProvider.apk: now 96e5070c
+patch /tmp/update//system/priv-app/Shell/Shell.apk: now 9e289d3d
+patch /tmp/update//system/priv-app/TeleService/TeleService.apk: now 0be9853d
+patch /tmp/update//system/priv-app/TelephonyProvider/TelephonyProvider.apk: now e0b7d4fd
+patch /tmp/update//system/priv-app/TvProvider/TvProvider.apk: now d82cce32
+patch /tmp/update//system/priv-app/VpnDialogs/VpnDialogs.apk: now 0dfabd65
+minzip: Extracted 3 file(s)
+minzip: Extracted 12 file(s)
+minzip: Extracted 4 file(s)
+patch /tmp/update//system/build.prop: now e8000973
+minzip: Extracted 2 file(s)
+hardware version id is 516
+[0;34m[store_secure_info_ota,675]: [0mstore secure info partition:tee filename:/cache/secure_info_tee.bin
+[0;34m[load_secure_info_ota,318]: [0mIN
+[0;34m[load_secure_info_ota,321]: [0mSECUREINFO_OFFSET:0x1d4000
+[0;34m[load_secure_info_ota,322]: [0mSECUREINFO_BACKUP_OFFSET:0x1da000
+[0;34m[load_secure_info_ota,323]: [0mstart to Load Signature from first section
+[0;34m[read_secure_info_ota,265]: [0mIN
+[0;34m[read_secure_info_ota,285]: [0mOK
+[0;34m[load_secure_info_ota,326]: [0mLoad Signature from first section OK
+[0;34m[load_secure_info_ota,338]: [0mOK
+[0;34m[print_secure_info,595]: [0mtee.data:
+53 45 43 55 52 49 54 59 01 00 00 00 d0 d4 16 00 
+4e 98 09 0d ec 7a c0 57 51 b1 b5 dc 0c a2 c0 48 
+51 41 84 d8 7a 74 25 5f 14 4d f8 3a ea 12 33 9d 
+93 10 1e 28 7d b5 75 11 a6 97 a6 e0 a7 69 f2 5a 
+12 2a 61 94 00 77 f2 ef d3 5e be 8d 2a b6 b6 fe 
+29 48 3b d9 bd 27 6a d0 a2 39 d2 67 be 0c ff a7 
+71 d9 eb 64 c5 4b 88 fc a4 23 30 c3 d2 46 2d 2b 
+a8 0a 34 03 41 7e 21 6c 63 4a d0 a6 2f 7a 78 a0 
+0e d0 d7 fa c8 5d 93 60 e4 1e 48 e8 ba b3 ad 3b 
+d5 28 e7 4a 28 d2 b1 ab da 55 ec 80 35 28 15 5b 
+9a c1 36 1a 96 9a c2 69 e7 6b 2c 60 ef ea 99 95 
+e7 6b fb e5 62 88 ea 34 ec 89 00 10 35 87 8f 7c 
+bb 43 3e c9 2f 89 18 47 1e f2 dc 72 c0 ca 79 c0 
+8c db 08 bc f1 5a f4 87 87 b8 9c 7d 99 8b 52 de 
+f3 24 6a 8c 06 73 0e d2 7c 01 fa 5c 86 f9 1f 17 
+2f 7f f0 92 5a c2 c8 06 f0 5e ec 0a 5f b4 54 5e 
+6e 97 65 8d 55 f7 68 bf 7c 0e 5e 87 81 a3 ed 96 
+
+
+[0;34m[print_secure_info,597]: [0mtee.data_interleave:
+49 4e 54 45 52 4c 56 45 01 00 00 00 d0 d4 16 00 
+4e 98 09 0d ec 7a c0 57 51 b1 b5 dc 0c a2 c0 48 
+51 41 84 d8 7a 74 25 5f 14 4d f8 3a ea 12 33 9d 
+93 10 1e 28 7d b5 75 11 a6 97 a6 e0 a7 69 f2 5a 
+12 2a 61 94 00 77 f2 ef d3 5e be 8d 2a b6 b6 fe 
+29 48 3b d9 bd 27 6a d0 a2 39 d2 67 be 0c ff a7 
+71 d9 eb 64 c5 4b 88 fc a4 23 30 c3 d2 46 2d 2b 
+a8 0a 34 03 41 7e 21 6c 63 4a d0 a6 2f 7a 78 a0 
+0e d0 d7 fa c8 5d 93 60 e4 1e 48 e8 ba b3 ad 3b 
+d5 28 e7 4a 28 d2 b1 ab da 55 ec 80 35 28 15 5b 
+9a c1 36 1a 96 9a c2 69 e7 6b 2c 60 ef ea 99 95 
+e7 6b fb e5 62 88 ea 34 ec 89 00 10 35 87 8f 7c 
+bb 43 3e c9 2f 89 18 47 1e f2 dc 72 c0 ca 79 c0 
+8c db 08 bc f1 5a f4 87 87 b8 9c 7d 99 8b 52 de 
+f3 24 6a 8c 06 73 0e d2 7c 01 fa 5c 86 f9 1f 17 
+2f 7f f0 92 5a c2 c8 06 f0 5e ec 0a 5f b4 54 5e 
+6e 97 65 8d 55 f7 68 bf 7c 0e 5e 87 81 a3 ed 96 
+
+
+[0;34m[save_secure_info_ota,348]: [0msave SecureInfo
+[0;34m[write_secure_info_ota,298]: [0mIN
+[0;34m[set_secure_info_block_ota,227]: [0mIN
+[0;34m[set_secure_info_block_ota,251]: [0mOK
+[0;34m[write_secure_info_ota,308]: [0mOK
+[0;34m[write_secure_info_ota,298]: [0mIN
+[0;34m[set_secure_info_block_ota,227]: [0mIN
+[0;34m[set_secure_info_block_ota,251]: [0mOK
+[0;34m[write_secure_info_ota,308]: [0mOK
+[0;34m[save_secure_info_ota,359]: [0msave SecureInfo OK
+[0;34m[store_secure_info_ota,719]: [0mupdate secureinfo for tee finished
+[0;34m[load_secure_info_ota,318]: [0mIN
+[0;34m[load_secure_info_ota,321]: [0mSECUREINFO_OFFSET:0x1d4000
+[0;34m[load_secure_info_ota,322]: [0mSECUREINFO_BACKUP_OFFSET:0x1da000
+[0;34m[load_secure_info_ota,323]: [0mstart to Load Signature from first section
+[0;34m[read_secure_info_ota,265]: [0mIN
+[0;34m[read_secure_info_ota,285]: [0mOK
+[0;34m[load_secure_info_ota,326]: [0mLoad Signature from first section OK
+[0;34m[load_secure_info_ota,338]: [0mOK
+[0;34m[ensure_secure_info_writed_ota,659]: [0mupdate secure info success!
+
+[0;34m[store_nuttx_config_ota,841]: [0mNuttxConfig
+the length for /cache/nuttx_config.bin is 2006
+[0;34m[store_nuttx_config_ota,864]: [0mu32SignConfigPhyAddr =b46f9c08 
+[0;34m[store_nuttx_config_ota,874]: [0m****u32SignConfigPhyAddr : b46f9c08 
+[0;34m[store_nuttx_config_ota,875]: [0m****u32SigPhyAddr : b46f9d08 
+[0;34m[store_nuttx_config_ota,876]: [0m****u32SigLen : 220 
+[0;34m[store_nuttx_config_ota,877]: [0m****u32ConfigPhyAddr : b46f9f28 
+[0;34m[store_nuttx_config_ota,878]: [0m****u32ConfigLen : 4b6 
+20 02 00 00 00 01 00 00 b6 04 00 00 20 03 00 00 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+53 45 43 55 52 49 54 59 01 00 00 00 b6 04 00 00 
+26 bc fa 03 9e ed df 19 81 43 25 0d 99 4b 1f c6 
+c6 cc a2 50 cf 25 b2 b5 29 46 08 e1 3b 87 ca 88 
+eb 12 a4 32 db fc 8c f5 53 ef df cc 92 a7 15 8d 
+48 c5 cf c5 72 cd 81 72 b0 ef cf 13 fe 6f 7b d0 
+3f c6 aa b7 1b 35 be 8a d4 c0 60 3c 0a 67 c5 5d 
+52 81 f4 81 9b ab 93 fa ef 89 3b 22 0c df f4 64 
+96 37 de ee 0b 05 2e b4 a2 8c 38 8c b9 34 62 40 
+18 3d 07 f8 77 cb b6 48 dc cc 34 ff ec 74 96 c9 
+0f 64 63 95 6d ef ec 77 cb 1d be d9 87 d3 cf fe 
+22 cc 79 60 bd fd 2c 40 74 84 6e 70 87 75 41 cd 
+fc 2b 1d 06 d3 03 1a ab 0b 20 86 0b a9 af fc 1d 
+25 7e f9 c8 a1 05 a6 47 57 a2 41 96 fd 68 ef 20 
+f0 6e 3f b3 3c 95 05 8d b0 88 cd b0 ee b7 4e da 
+f8 ad 2c f6 5a 64 66 96 86 fd ac 95 fb 6a 45 e9 
+48 1f 5b dc 4a f1 5b 94 4c 19 2a d7 22 57 86 9e 
+5a 8e 34 8e f3 6c 76 e9 47 1d d3 1a a2 e6 c0 b7 
+49 4e 54 45 52 4c 56 45 01 00 00 00 b6 04 00 00 
+26 bc fa 03 9e ed df 19 81 43 25 0d 99 4b 1f c6 
+c6 cc a2 50 cf 25 b2 b5 29 46 08 e1 3b 87 ca 88 
+eb 12 a4 32 db fc 8c f5 53 ef df cc 92 a7 15 8d 
+48 c5 cf c5 72 cd 81 72 b0 ef cf 13 fe 6f 7b d0 
+3f c6 aa b7 1b 35 be 8a d4 c0 60 3c 0a 67 c5 5d 
+52 81 f4 81 9b ab 93 fa ef 89 3b 22 0c df f4 64 
+96 37 de ee 0b 05 2e b4 a2 8c 38 8c b9 34 62 40 
+18 3d 07 f8 77 cb b6 48 dc cc 34 ff ec 74 96 c9 
+0f 64 63 95 6d ef ec 77 cb 1d be d9 87 d3 cf fe 
+22 cc 79 60 bd fd 2c 40 74 84 6e 70 87 75 41 cd 
+fc 2b 1d 06 d3 03 1a ab 0b 20 86 0b a9 af fc 1d 
+25 7e f9 c8 a1 05 a6 47 57 a2 41 96 fd 68 ef 20 
+f0 6e 3f b3 3c 95 05 8d b0 88 cd b0 ee b7 4e da 
+f8 ad 2c f6 5a 64 66 96 86 fd ac 95 fb 6a 45 e9 
+48 1f 5b dc 4a f1 5b 94 4c 19 2a d7 22 57 86 9e 
+5a 8e 34 8e f3 6c 76 e9 47 1d d3 1a a2 e6 c0 b7 
+a6 01 00 00 00 01 00 00 00 01 00 00 a6 02 00 00 
+40 00 00 00 a6 03 00 00 40 00 00 00 e6 03 00 00 
+40 00 00 00 26 04 00 00 40 00 00 00 66 04 00 00 
+10 00 00 00 a6 04 00 00 ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+08 00 00 00 19 00 00 00 00 00 c9 3e 00 00 00 01 
+00 00 00 00 00 00 00 00 00 00 00 80 00 00 30 00 
+00 00 00 00 00 00 00 00 00 00 c9 3f 00 00 0c 00 
+00 00 00 00 00 00 00 00 00 00 90 37 00 00 80 01 
+00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 30 
+00 01 03 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 01 00 00 30 00 00 00 00 01 01 00 00 
+00 00 01 00 00 b0 01 00 00 90 04 01 00 00 00 00 
+01 00 00 30 01 00 00 80 00 01 00 00 00 00 01 00 
+00 30 00 00 00 80 01 01 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 01 00 00 30 00 00 00 00 
+01 01 00 00 00 00 01 00 20 53 06 00 00 04 00 01 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+01 00 70 19 3a 00 00 88 00 00 00 00 00 00 01 00 
+00 c9 3e 00 00 00 01 00 01 00 00 00 01 00 00 c9 
+3f 00 00 0c 00 00 05 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 01 00 00 d5 3f 00 00 10 
+00 00 00 00 00 00 01 00 00 e5 3f 00 00 10 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+01 00 10 1e 1e 00 00 40 01 02 00 00 00 00 01 00 
+00 90 37 00 00 80 01 00 07 00 00 00 ff 00 00 00 
+80 ff ff ff ff ff 00 00 00 00 ff 00 00 00 c0 ff 
+ff ff ff ff 00 00 00 00 ff ff ff ff ff ff ff ff 
+ff ff 00 00 00 00 ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff 20 00 d0 00 11 00 20 00 00 00 
+00 30 00 00 fc 07 00 c0 ff 07 20 20 00 00 00 00 
+00 00 00 00 00 40 00 06 00 00 00 00 00 00 00 40 
+00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 20 00 00 00 00 00 
+00 00 00 00 00 40 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 c2 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 04 1f 00 6a 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 11 22 33 44 55 66 77 88 99 
+aa bb cc dd ee ff 
+
+[0;34m[NConfigSave_ota,749]: [0mIN
+[0;34m[NConfigSave_ota,793]: [0mCrc32 =1b1d4b27
+[0;34m[NConfigSave_ota,795]: [0mBurn NConfig to blcok
+[0;34m[NConfigSave_ota,801]: [0mvolume dev /dev/block/platform/mstar_mci.0/by-name/MPOOL
+[0;34m[set_secure_info_block_ota,227]: [0mIN
+[0;34m[set_secure_info_block_ota,251]: [0mOK
+[0;34m[NConfigSave_ota,804]: [0mBurn NConfig to  backup blcok
+[0;34m[set_secure_info_block_ota,227]: [0mIN
+[0;34m[set_secure_info_block_ota,251]: [0mOK
+[0;34m[NConfigSave_ota,807]: [0mret : 0 , ret_bk : 0 
+[0;34m[NConfigSave_ota,808]: [0mOK
+[0;34m[NConfigSave_ota,815]: [0mOK
+[0;34m[store_nuttx_config_ota,886]: [0mupdate nuttx config finished
+[0;34m[store_secure_info_ota,675]: [0mstore secure info partition:boot filename:/cache/secure_info_boot.bin
+[0;34m[load_secure_info_ota,318]: [0mIN
+[0;34m[load_secure_info_ota,321]: [0mSECUREINFO_OFFSET:0x1d4000
+[0;34m[load_secure_info_ota,322]: [0mSECUREINFO_BACKUP_OFFSET:0x1da000
+[0;34m[load_secure_info_ota,323]: [0mstart to Load Signature from first section
+[0;34m[read_secure_info_ota,265]: [0mIN
+[0;34m[read_secure_info_ota,285]: [0mOK
+[0;34m[load_secure_info_ota,326]: [0mLoad Signature from first section OK
+[0;34m[load_secure_info_ota,338]: [0mOK
+[0;34m[print_secure_info,584]: [0mboot.data:
+53 45 43 55 52 49 54 59 01 00 00 00 b0 58 6f 00 
+58 b3 70 74 58 2e ac c9 c5 80 59 b1 aa a3 e6 d8 
+ba 53 b1 f1 00 69 2f 6a 88 d7 de 1f 37 ed ec 3b 
+59 f9 47 d6 ae d5 36 63 b1 50 58 55 8c b8 d7 dc 
+5e a3 49 dc 20 69 c6 1c 75 c6 04 6c c8 f6 e8 81 
+0d c5 d9 93 92 8e ba 67 0e 82 74 66 a5 96 a9 06 
+d3 d3 f5 a3 52 8b 22 b6 65 f7 c0 fe 72 15 3e 95 
+25 51 31 88 e4 75 39 50 b7 18 07 cc 68 44 cc c7 
+22 24 9a b9 6b 88 42 e2 a7 6c b1 9d 6b be e2 8d 
+92 d2 80 65 21 71 75 54 43 44 8a 25 fe da 14 dc 
+2b 3b 4c ff 19 26 49 dd c1 36 ab eb 4a 0e e2 52 
+c9 d3 03 42 b6 f5 b4 b7 9d 8c 39 53 c0 e1 a5 38 
+48 b8 41 cc ae ca 07 7f b2 7a f1 c2 fe d0 7e ed 
+b9 86 64 e0 18 7a 92 34 55 2f ce 68 1d df 12 74 
+aa 15 ef f9 17 1c 82 61 b8 fe 85 e0 94 21 e0 00 
+61 9f 4f f6 9e cd cf 60 22 dc f9 e2 35 08 25 42 
+8e 8f 3a 59 6d 20 a2 14 f8 a1 9c 91 bc c8 5e 81 
+
+
+[0;34m[print_secure_info,586]: [0mboot.data_interleave:
+49 4e 54 45 52 4c 56 45 01 00 00 00 b0 58 6f 00 
+58 b3 70 74 58 2e ac c9 c5 80 59 b1 aa a3 e6 d8 
+ba 53 b1 f1 00 69 2f 6a 88 d7 de 1f 37 ed ec 3b 
+59 f9 47 d6 ae d5 36 63 b1 50 58 55 8c b8 d7 dc 
+5e a3 49 dc 20 69 c6 1c 75 c6 04 6c c8 f6 e8 81 
+0d c5 d9 93 92 8e ba 67 0e 82 74 66 a5 96 a9 06 
+d3 d3 f5 a3 52 8b 22 b6 65 f7 c0 fe 72 15 3e 95 
+25 51 31 88 e4 75 39 50 b7 18 07 cc 68 44 cc c7 
+22 24 9a b9 6b 88 42 e2 a7 6c b1 9d 6b be e2 8d 
+92 d2 80 65 21 71 75 54 43 44 8a 25 fe da 14 dc 
+2b 3b 4c ff 19 26 49 dd c1 36 ab eb 4a 0e e2 52 
+c9 d3 03 42 b6 f5 b4 b7 9d 8c 39 53 c0 e1 a5 38 
+48 b8 41 cc ae ca 07 7f b2 7a f1 c2 fe d0 7e ed 
+b9 86 64 e0 18 7a 92 34 55 2f ce 68 1d df 12 74 
+aa 15 ef f9 17 1c 82 61 b8 fe 85 e0 94 21 e0 00 
+61 9f 4f f6 9e cd cf 60 22 dc f9 e2 35 08 25 42 
+8e 8f 3a 59 6d 20 a2 14 f8 a1 9c 91 bc c8 5e 81 
+
+
+[0;34m[save_secure_info_ota,348]: [0msave SecureInfo
+[0;34m[write_secure_info_ota,298]: [0mIN
+[0;34m[set_secure_info_block_ota,227]: [0mIN
+[0;34m[set_secure_info_block_ota,251]: [0mOK
+[0;34m[write_secure_info_ota,308]: [0mOK
+[0;34m[write_secure_info_ota,298]: [0mIN
+[0;34m[set_secure_info_block_ota,227]: [0mIN
+[0;34m[set_secure_info_block_ota,251]: [0mOK
+[0;34m[write_secure_info_ota,308]: [0mOK
+[0;34m[save_secure_info_ota,359]: [0msave SecureInfo OK
+[0;34m[store_secure_info_ota,719]: [0mupdate secureinfo for boot finished
+[0;34m[load_secure_info_ota,318]: [0mIN
+[0;34m[load_secure_info_ota,321]: [0mSECUREINFO_OFFSET:0x1d4000
+[0;34m[load_secure_info_ota,322]: [0mSECUREINFO_BACKUP_OFFSET:0x1da000
+[0;34m[load_secure_info_ota,323]: [0mstart to Load Signature from first section
+[0;34m[read_secure_info_ota,265]: [0mIN
+[0;34m[read_secure_info_ota,285]: [0mOK
+[0;34m[load_secure_info_ota,326]: [0mLoad Signature from first section OK
+[0;34m[load_secure_info_ota,338]: [0mOK
+[0;34m[ensure_secure_info_writed_ota,659]: [0mupdate secure info success!
+
+minzip: Extracted 3 file(s)
