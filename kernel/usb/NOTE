@@ -16,6 +16,70 @@ Feature:
 
 Device 和 Host 模式是如何切换的???
 -----------------------------------------------------------------------------
+/sys/devices/bus.8/11270000.SSUSB/mode		(echo 0: to device, 1: to host)
+
+drivers/misc/mediatek/ssusb/mu3d/xhci-mtk.c
+
+/*
+* if there is not iddig-pin but also use dual-mode, should set FORCE_IDDIG/RG_IDDIG,                                                                                          
+* such as type A port,  to emulate iddig detection.
+* in order to support both with-iddig-pin and without-iddig-pin cases,                                                                                                        
+* make use of it anyway.
+* when OTG cable plug in, iddig is low level, otherwise is high level                                                                                                         
+*/
+void ssusb_otg_iddig_en(struct ssusb_mtk *ssusb)                                                                                                                              
+{   
+    mu3d_setmsk(ssusb->sif_base, U3D_U2PHYDTM1, FORCE_IDDIG);                                                                                                                 
+    /*port0 is otg */
+    mu3d_setmsk(ssusb->sif_base, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_OTG_SEL);                                                                                                    
+}                                                                                                                                                                             
+
+/* tell mac switch to host mode */
+void ssusb_otg_plug_in(struct ssusb_mtk *ssusb)                                                                                                                               
+{   
+    mu3d_clrmsk(ssusb->sif_base, U3D_U2PHYDTM1, RG_IDDIG);						<==== IDDIG Pin 看起来是在这里是告诉USB MAC用来切换 Host/Device Mode 用的, 而非OTG切换功能.
+}                                                                                                                                                                             
+
+/* tell mac switch to device mode */
+void ssusb_otg_plug_out(struct ssusb_mtk *ssusb)                                                                                                                              
+{   
+    mu3d_setmsk(ssusb->sif_base, U3D_U2PHYDTM1, RG_IDDIG);                                                                                                                    
+}
+
+/*
+* only for box platform, which port0 is type A, but also need to support dual-mode,
+* and no iddig pin can be used;
+* you can switch to host through:
+* echo 1 > /sys/devices/bus.X/11270000.SSUSB/mode
+* when 'echo 0' to switch to device mode;
+*/
+void ssusb_mode_switch_manual(struct ssusb_mtk *ssusb, int to_host)
+{
+    struct otg_switch_mtk *otg_switch = &ssusb->otg_switch;
+    struct vbus_ctrl_info *vbus = &otg_switch->p0_vbus;
+
+    if (to_host) {
+        mu3d_dbg(K_DEBUG, "%s to host\n", __func__);
+        /* open port power and switch resource to host */
+        switch_port_to_host(ssusb);
+        /*mtk_host_wakelock_lock(&otg_switch->xhci_wakelock);*/
+        switch_set_state(&otg_switch->otg_state, 1); 
+        ssusb_set_vbus(vbus, 1); 
+    } else {
+        mu3d_dbg(K_DEBUG, "%s to device\n", __func__);
+        ssusb_set_vbus(vbus, 0); 
+        switch_port_to_device(ssusb, true);
+        switch_set_state(&otg_switch->otg_state, 0); 
+        /*mtk_host_wakelock_unlock(&otg_switch->xhci_wakelock);*/
+    }   
+
+    mu3d_dbg(K_WARNIN, "xhci switch resource to %s,  switch(%d)\n",
+             (to_host) ? "host" : "device",
+             switch_get_state(&otg_switch->otg_state));
+
+}
+
+-----------------------------------------------------------------------------
 root@kungfupanda:/sys/bus/usb/devices # ll
 total 0
 lrwxrwxrwx    1 root     root             0 Jan  1 08:01 1-0:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1/1-0:1.0
