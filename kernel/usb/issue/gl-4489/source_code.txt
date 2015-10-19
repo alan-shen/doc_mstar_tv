@@ -84,6 +84,7 @@ kernel/drivers/usb/mon              -       usb monitor ??
 kernel/drivers/usb/phy              -       Physical Layer USB driver configuration
 kernel/drivers/usb/wusbcore         -       无线USB驱动. Wireless USB Core configuration
 kernel/drivers/usb/atm              -       ATM/xDSL的驱动. xDSL是各种类型DSL(Digital Subscriber Line)数字用户线路)的总称,包括ADSL等等
+kernel/drivers/usb/gadget           -       usb gadget drivers(usb device)
 ========================================================================================================
 一些厂商的 USB Host Controller 驱动:
 ++++++++++++++++++++++++++++++++++++
@@ -100,6 +101,7 @@ kernel/drivers/usb/renesas_usbhs    -       Renesas USBHS Controller Drivers
                                             | 瑞萨电子
 kernel/drivers/usb/musb             -       Inventra Highspeed Dual Role Controller (TI, ADI, ...)
                                             | USB控制器Inventra
+========================================================================================================
 ========================================================================================================
 USB Controller 设备注册的地方:
 ++++++++++++++++++++++++++++++
@@ -155,6 +157,7 @@ arch/arm/arm-boards/monaco/platform.c
 307 #endif
 308 };
 
+========================================================================================================
 ========================================================================================================
 Usb设备被识别流程（总结）
 ++++++++++++++++++++++++++

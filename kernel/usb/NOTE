@@ -1,0 +1,47 @@
+==============================================================================
+M11(MT8693):
+++++++++++++
+
+MUSB: drivers/misc/mediatek/ssusb/mu3d
+
+Feature:
+	1.Hardware define as Device_Only/Host_Only/Dual_USB_Function;
+	2.Multiple ports on Host function;
+	3.Concurrent Host/Device function;(并行)
+	4.Shared hardware on Dual function;
+	5.No OTG support;
+
+不支持OTG(可以看到 Kernel Config 中没有选 OTG 相关的配置), 
+但是该模组可以支持Device+Host,即可以在 Device 和 Host 之间切换, 既可以做 UDC 有可以做 HCD.
+
+Device 和 Host 模式是如何切换的???
+-----------------------------------------------------------------------------
+root@kungfupanda:/sys/bus/usb/devices # ll
+total 0
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 1-0:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1/1-0:1.0
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 1-2 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1/1-2
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 1-2:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1/1-2/1-2:1.0
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 2-0:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-0:1.0
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 2-1 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 2-1:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1/2-1:1.0
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 2-1:1.1 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1/2-1:1.1
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 2-1:1.2 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1/2-1:1.2
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 usb1 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1
+lrwxrwxrwx    1 root     root             0 Jan  1 08:01 usb2 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2
+==============================================================================
+Gladiator(MStar928):
+++++++++++++++++++++
+
+SRC: drivers/usb
+
+USB Host:
+
+-----------------------------------------------------------------------------
+
+==============================================================================
+Host 的话在
+
+	/sys/bus/usb/devices
+
+下可以看到设备.
+==============================================================================

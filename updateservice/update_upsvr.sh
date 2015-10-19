@@ -27,10 +27,10 @@ def_wait_device () {
 PRODUCT_OUT="/work/inception/android/out/target/product/gladiator"
 #SYSTEM_BIN_COPYLIST="updateservice runupdate simg2img img2simg make_ext4fs ext2simg ext4fixup"
 #SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libsparse.so libext4_utils.so"
-#SYSTEM_BIN_COPYLIST="updateservice runupdate mi_md5chk mi_md5list"
-#SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libmitvmd5.so"
-SYSTEM_BIN_COPYLIST="updateservice updatetest runupdate mitv_updater mitvcopy"
-SYSTEM_LIB_COPYLIST="libupdateservice.so"
+SYSTEM_BIN_COPYLIST="updateservice runupdate mi_md5chk mi_md5list"
+SYSTEM_LIB_COPYLIST="libpostupdate.so libupdate.so libupdateservice.so libmitvmd5.so"
+#SYSTEM_BIN_COPYLIST="updateservice updatetest runupdate mitv_updater mitvcopy"
+#SYSTEM_LIB_COPYLIST="libupdateservice.so"
 
 main () {
 	def_colors
