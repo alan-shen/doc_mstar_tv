@@ -1,0 +1,37 @@
+
+/drivers/usb/storage/usb.c
+
+module_usb_driver(usb_storage_driver);
+
+#define module_usb_driver(__usb_driver) \
+    module_driver(__usb_driver, usb_register, \
+               usb_deregister)
+
+#define module_driver(__driver, __register, __unregister, ...) \
+static int __init __driver##_init(void) \
+{ \
+    return __register(&(__driver) , ##__VA_ARGS__); \
+} \
+module_init(__driver##_init); \
+static void __exit __driver##_exit(void) \
+{ \
+    __unregister(&(__driver) , ##__VA_ARGS__); \
+} \
+module_exit(__driver##_exit);
+
+1124 #define usb_register(driver) \
+1125     usb_register_driver(driver, THIS_MODULE, KBUILD_MODNAME)
+
+---------------------------------------------------------------------
+
+static int __init usb_storage_driver_init(void)
+{
+	return usb_register(&(usb_storage_driver), );
+}
+module_init(usb_storage_driver_init);
+
+static int __exit usb_storage_driver_exit(void)
+{
+	return usb_unregister(&(usb_storage_driver), );
+}
+module_exit(usb_storage_driver_exit);
