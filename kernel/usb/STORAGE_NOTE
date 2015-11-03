@@ -35,3 +35,220 @@ static int __exit usb_storage_driver_exit(void)
 	return usb_unregister(&(usb_storage_driver), );
 }
 module_exit(usb_storage_driver_exit);
+
+===============================================================================
+
+struct usb_device_id {
+    /* which fields to match against? */
+    __u16       match_flags;
+
+    /* Used for product specific matches; range is inclusive */
+    __u16       idVendor;
+    __u16       idProduct;
+    __u16       bcdDevice_lo;
+    __u16       bcdDevice_hi;
+
+    /* Used for device class matches */
+    __u8        bDeviceClass;
+    __u8        bDeviceSubClass;
+    __u8        bDeviceProtocol;
+
+    /* Used for interface class matches */
+    __u8        bInterfaceClass;
+    __u8        bInterfaceSubClass;
+    __u8        bInterfaceProtocol;
+
+    /* Used for vendor-specific interface matches */
+    __u8        bInterfaceNumber;
+
+    /* not matched against */
+    kernel_ulong_t  driver_info
+        __attribute__((aligned(sizeof(kernel_ulong_t))));
+};
+
+---------------------------------------------------
+
+struct usb_device_id usb_storage_usb_ids[] = {                                                                                                                                
+#   include "unusual_devs.h"                                                                                                                                                  
+    { }     /* Terminating entry */                                                                                                                                           
+};
+
+---------------------------------------------------
+
+#define UNUSUAL_DEV(id_vendor, id_product, bcdDeviceMin, bcdDeviceMax, \                                                                                                      
+            vendorName, productName, useProtocol, useTransport, \                                                                                                             
+            initFunction, flags) \                                                                                                                                            
+{ USB_DEVICE_VER(id_vendor, id_product, bcdDeviceMin, bcdDeviceMax), \                                                                                                        
+  .driver_info = (flags) }
+
+#define USB_DEVICE_VER(vend, prod, lo, hi) \                                                                                                                                  
+    .match_flags = USB_DEVICE_ID_MATCH_DEVICE_AND_VERSION, \                                                                                                                  
+    .idVendor = (vend), \                                                                                                                                                     
+    .idProduct = (prod), \                                                                                                                                                    
+    .bcdDevice_lo = (lo), \                                                                                                                                                   
+    .bcdDevice_hi = (hi)
+
+define USUAL_DEV(useProto, useTrans) \                                                                                                                                       
+{ USB_INTERFACE_INFO(USB_CLASS_MASS_STORAGE, useProto, useTrans) }
+
+#define USB_INTERFACE_INFO(cl, sc, pr) \
+    .match_flags = USB_DEVICE_ID_MATCH_INT_INFO, \
+    .bInterfaceClass = (cl), \
+    .bInterfaceSubClass = (sc), \
+    .bInterfaceProtocol = (pr)
+
+---------------------------------------------------
+drivers/usb/storage/unusual_devs.h
+
+UNUSUAL_DEV(  0x03eb, 0x2002, 0x0100, 0x0100,     
+        "ATMEL",     
+        "SND1 Storage",     
+        USB_SC_DEVICE, USB_PR_DEVICE, NULL,     
+        US_FL_IGNORE_RESIDUE),
+
+
+===>
+{ 
+	USB_DEVICE_VER(0x03eb, 0x2002, 0x0100, 0x0100),
+	driver_info = US_FL_IGNORE_RESIDUE
+}
+===>
+{
+    .match_flags = USB_DEVICE_ID_MATCH_DEVICE_AND_VERSION,                                                                                                                   
+    .idVendor     = 0x03eb,                                                                                                                                                      
+    .idProduct    = 0x2002,                                                                                                                                                     
+    .bcdDevice_lo = 0x0100,                                                                                                                                                    
+    .bcdDevice_hi = 0x0100,
+	.driver_info  = US_FL_IGNORE_RESIDUE
+}
+
+struct usb_device_id usb_storage_usb_ids[] = {
+	
+}
+
+===============================================================================
+
+ 630 static void get_transport(struct us_data *us)                                                                                                                            
+ 631 {                                                                                                                                                                        
+ 632     switch (us->protocol) {                                                                                                                                              
+ 633     case USB_PR_CB:                                                                                                                                                      
+ 634         us->transport_name = "Control/Bulk";                                                                                                                             
+ 635         us->transport = usb_stor_CB_transport;                                                                                                                           
+ 636         us->transport_reset = usb_stor_CB_reset;                                                                                                                         
+ 637         us->max_lun = 7;                                                                                                                                                 
+ 638         break;                                                                                                                                                           
+ 639                                                                                                                                                                          
+ 640     case USB_PR_CBI:                                                                                                                                                     
+ 641         us->transport_name = "Control/Bulk/Interrupt";                                                                                                                   
+ 642         us->transport = usb_stor_CB_transport;                                                                                                                           
+ 643         us->transport_reset = usb_stor_CB_reset;                                                                                                                         
+ 644         us->max_lun = 7;                                                                                                                                                 
+ 645         break;                                                                                                                                                           
+ 646                                                                                                                                                                          
+ 647     case USB_PR_BULK:                                                                                                                                                    
+ 648         us->transport_name = "Bulk";                                                                                                                                     
+ 649         us->transport = usb_stor_Bulk_transport;              <<<<<<
+ 650         us->transport_reset = usb_stor_Bulk_reset;            <<<<<<                                                                                                           
+ 651         break;                                                                                                                                                           
+ 652     }                                                                                                                                                                    
+ 653 }                                                                                                                                                                        
+ 654                                                                                                                                                                          
+ 655 /* Get the protocol settings */                                                                                                                                          
+ 656 static void get_protocol(struct us_data *us)                                                                                                                             
+ 657 {                                                                                                                                                                        
+ 658     switch (us->subclass) {                                                                                                                                              
+ 659     case USB_SC_RBC:                                                                                                                                                     
+ 660         us->protocol_name = "Reduced Block Commands (RBC)";                                                                                                              
+ 661         us->proto_handler = usb_stor_transparent_scsi_command;                                                                                                           
+ 662         break;                                                                                                                                                           
+ 663                                                                                                                                                                          
+ 664     case USB_SC_8020:                                                                                                                                                    
+ 665         us->protocol_name = "8020i";                                                                                                                                     
+ 666         us->proto_handler = usb_stor_pad12_command;                                                                                                                      
+ 667         us->max_lun = 0;                                                                                                                                                 
+ 668         break;                                                                                                                                                           
+ 669                                                                                                                                                                          
+ 670     case USB_SC_QIC:                                                                                                                                                     
+ 671         us->protocol_name = "QIC-157";                                                                                                                                   
+ 672         us->proto_handler = usb_stor_pad12_command;                                                                                                                      
+ 673         us->max_lun = 0;                                                                                                                                                 
+ 674         break;                                                                                                                                                           
+ 675                                                                                                                                                                          
+ 676     case USB_SC_8070:                                                                                                                                                    
+ 677         us->protocol_name = "8070i";
+ 678         us->proto_handler = usb_stor_pad12_command;
+ 679         us->max_lun = 0;
+ 680         break;
+ 681 
+ 682     case USB_SC_SCSI:
+ 683         us->protocol_name = "Transparent SCSI";                 <<<<<
+ 684         us->proto_handler = usb_stor_transparent_scsi_command;  <<<<<
+ 685         break;
+ 686 
+ 687     case USB_SC_UFI:
+ 688         us->protocol_name = "Uniform Floppy Interface (UFI)";
+ 689         us->proto_handler = usb_stor_ufi_command;
+ 690         break;
+ 691     }
+ 692 }
+
+ 302 static int usb_stor_control_thread(void * __us)                                                                                                                          
+ 303 {   
+ 304     struct us_data *us = (struct us_data *)__us;                                                                                                                         
+ 305     struct Scsi_Host *host = us_to_host(us);                                                                                                                             
+ 306     
+ 307     for (;;) {
+
+ 373         /* we've got a command, let's do it! */
+ 374         else {
+ 375             US_DEBUG(usb_stor_show_command(us, us->srb));
+ 376             us->proto_handler(us->srb, us);                     <<<<<
+ 377             usb_mark_last_busy(us->pusb_dev);
+ 378         }
+
+drivers/usb/storage/protocol.c
+
+118 void usb_stor_transparent_scsi_command(struct scsi_cmnd *srb,          
+119                        struct us_data *us)
+120 {  
+121     /* send the command to the transport layer */                          
+122     usb_stor_invoke_transport(srb, us);                           <<<<<
+123 }
+
+drivers/usb/storage/transport.c
+
+ 623 void usb_stor_invoke_transport(struct scsi_cmnd *srb, struct us_data *us)                                                                                                
+ 624 {   
+ 625     int need_auto_sense;                                                                                                                                                 
+ 626     int result;                                                                                                                                                          
+ 627     
+ 628     /* send the command to the transport layer */                                                                                                                        
+ 629     scsi_set_resid(srb, 0);
+ 630     result = us->transport(srb, us);                              <<<<< (usb_stor_Bulk_transport())
+
+1084 int usb_stor_Bulk_transport(struct scsi_cmnd *srb, struct us_data *us)                                                                                                   
+1085 {
+
+1171     usb_stor_dbg(us, "Attempting to get CSW...\n");
+1172     result = usb_stor_bulk_transfer_buf(us, us->recv_bulk_pipe,   <<<<< 
+1173                 bcs, US_BULK_CS_WRAP_LEN, &cswlen);
+1174 
+
+ 417 int usb_stor_bulk_transfer_buf(struct us_data *us, unsigned int pipe,                                                                                                    
+ 418     void *buf, unsigned int length, unsigned int *act_len)                                                                                                               
+ 419 {                                                                                                                                                                        
+ 420     int result;                                                                                                                                                          
+ 421                                                                                                                                                                          
+ 422     usb_stor_dbg(us, "xfer %u bytes\n", length);                                                                                                                         
+ 423                                                                                                                                                                          
+ 424     /* fill and submit the URB */                                                                                                                                        
+ 425     usb_fill_bulk_urb(us->current_urb, us->pusb_dev, pipe, buf, length,           <<<<< 到URB了!!!
+ 426               usb_stor_blocking_completion, NULL);                                                                                                                       
+ 427     result = usb_stor_msg_common(us, 0);                                                                                                                                 
+ 428                                                                                                                                                                          
+ 429     /* store the actual length of the data transferred */                                                                                                                
+ 430     if (act_len)                                                                                                                                                         
+ 431         *act_len = us->current_urb->actual_length;                                                                                                                       
+ 432     return interpret_urb_result(us, pipe, length, result,                                                                                                                
+ 433             us->current_urb->actual_length);                                                                                                                             
+ 434 }
