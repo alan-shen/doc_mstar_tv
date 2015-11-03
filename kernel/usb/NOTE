@@ -14,6 +14,21 @@ Feature:
 不支持OTG(可以看到 Kernel Config 中没有选 OTG 相关的配置), 
 但是该模组可以支持Device+Host,即可以在 Device 和 Host 之间切换, 既可以做 UDC 有可以做 HCD.
 
+==============================================================================
+MOTE:
+
+	MTK 的 USB Controller 同时支持 HCD/UDC,
+	即既能跑 Host 又能跑 Device:
+		1.Host
+		2.Device, 同时支持 OTG.
+
+	Host 与 Device 可通过 sys 节点 /sys/devices/bus.8/11270000.SSUSB/mode 切换.
+
+	默认跑在 Device Mode 下, 其中能识别U盘的口的 IDDIG Pin 应该是被常拉低了, 所以跑 OTG 协议.
+	如果手动切换到 Host Mode 下, 可以发现 ADB 连不上了, PC 无法枚举出盒子.
+
+==============================================================================
+
 Device 和 Host 模式是如何切换的???
 -----------------------------------------------------------------------------
 /sys/devices/bus.8/11270000.SSUSB/mode		(echo 0: to device, 1: to host)
