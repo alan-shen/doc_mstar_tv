@@ -1,0 +1,4 @@
+cmccflagset	-	For set security flag, user can wipe or lock phone on the PC.
+forceota	-	Set the BCB info for boot to recovery auto.
+getgpt		-	Show the gpt partition info.
+udevmonitor	-	Show uevent information.
