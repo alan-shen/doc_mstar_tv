@@ -24,9 +24,9 @@ function setup_env () {
 function def_full_build () {
 	make -j8
 	if test $? -eq "0";then
-    	echo -e ${bblue}"full build success"${normal}
+		echo -e ${bblue}"=====================================full build success"${normal}
 	else
-    	echo -e ${bred}"full build error"${normal}
+		echo -e ${bred}"=====================================full build error"${normal}
     	exit 1
 	fi
 }
@@ -34,9 +34,9 @@ function def_full_build () {
 function def_sign_image () {
 	make sign-image -j8
 	if test $? -eq "0";then
-    	echo -e ${bblue}"sign success"${normal}
+		echo -e ${bblue}"=====================================sign success"${normal}
 	else
-    	echo -e ${bred}"sign error"${normal}
+		echo -e ${bred}"=====================================sign error"${normal}
     	exit 1
 	fi
 }
@@ -44,9 +44,9 @@ function def_sign_image () {
 function def_make_ota () {
 	make otapackage -j8
 	if test $? -eq "0";then
-    	echo -e ${bblue}"make ota success"${normal}
+		echo -e ${bblue}"=====================================make ota success"${normal}
 	else
-    	echo -e ${bred}"make ota error"${normal}
+		echo -e ${bred}"=====================================make ota error"${normal}
     	exit 1
 	fi
 }
@@ -62,5 +62,5 @@ def_make_ota
 def_sign_image
 
 END=`date`
-echo -e "${grey}Build start${normal}${yellow} @$START ${normal}"
-echo -e "${grey}Build end  ${normal}${yellow} @$END   ${normal}"
+echo -e "${cyan}Build start${normal}${yellow} @$START ${normal}"
+echo -e "${cyan}Build end  ${normal}${yellow} @$END   ${normal}"

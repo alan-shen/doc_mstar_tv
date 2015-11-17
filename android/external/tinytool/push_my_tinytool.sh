@@ -19,18 +19,33 @@ function check_android_env () {
 	if test -z ${ANDROID_PRODUCT_OUT};then
 		echo -e ${bred}"No android build envirment, need source first!\n"${normal}
 		echo -e ${blue}"\t# source build/envsetup.sh;lunch gladiator-userdebug\n"${normal}
+		echo -e ${blue}"\t# source build/envsetup.sh;lunch kungfupanda-userdebug\n"${normal}
 		exit 1
 	fi
 }
 
+function build_tools () {
+	mmm external/tinytool
+}
+
 function remount_device () {
-	adb connect 10.235.172.7
+	adb disconnect ${TARGET_IPADDR}
+
+	if test ${MY_PRODUCT} == 'GL';then
+		adb connect ${TARGET_IPADDR}
+		sleep 3
+	fi
+
+	adb ${OPTION_ADB} root
 	sleep 3
-	adb root
-	sleep 3
-	adb connect 10.235.172.7
-	sleep 3
-	adb remount
+
+	if test ${MY_PRODUCT} == 'GL';then
+		adb connect ${TARGET_IPADDR}
+		sleep 3
+	fi
+
+	adb ${OPTION_ADB} remount
+
 	if test $? -eq "0";then
 		return 0
 	else
@@ -49,15 +64,38 @@ function wait_adb_device () {
 }
 
 function push_tiny_tools () {
-	adb push ${ANDROID_PRODUCT_OUT}/system/bin/getgpt    /system/bin
-	adb push ${ANDROID_PRODUCT_OUT}/system/bin/tree      /system/bin
-	adb push ${ANDROID_PRODUCT_OUT}/system/bin/getuevent /system/bin
+	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/getgpt    /system/bin
+	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/tree      /system/bin
+	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/getuevent /system/bin
+}
+
+#for gladiator
+MY_PRODUCT=""
+OPTION_ADB=""
+TARGET_IPADDR="10.235.172.7"
+
+function get_product() {
+	if test ${TARGET_PRODUCT} == 'gladiator';then
+		echo -e ${bcyan}"gladiator"${normal}
+		MY_PRODUCT="GL"
+		OPTION_ADB=" -s ${TARGET_IPADDR}:5555 "
+	elif test ${TARGET_PRODUCT} == 'kungfupanda';then
+		echo -e ${bcyan}"kungfupanda"${normal}
+		MY_PRODUCT="KP"
+		OPTION_ADB=" "
+	else
+		echo -e ${bcyan}"not support this product now!"${normal}
+		MY_PRODUCT=""
+		exit 1
+	fi
 }
 
 #main
 
 def_colors
 check_android_env
+get_product
+#build_tools
 wait_adb_device
 push_tiny_tools
 
