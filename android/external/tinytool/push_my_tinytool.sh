@@ -60,13 +60,18 @@ function wait_adb_device () {
 		if test $? -eq "0";then
 			return 0
 		fi
+		echo -e ${bred}"remount device error, retry!"${normal}
 	done
 }
 
 function push_tiny_tools () {
+echo -e ${yellow}
+set -x
 	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/getgpt    /system/bin
 	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/tree      /system/bin
 	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/getuevent /system/bin
+set +x
+echo -e ${normal}
 }
 
 #for gladiator

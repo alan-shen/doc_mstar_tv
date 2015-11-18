@@ -1,0 +1,294 @@
+=======================================================================
+USB 平台驱动:
++++++++++++++
+
+drivers/misc/mediatek/ssusb/mu3d
+drivers/misc/mediatek/ssusb/mu3phy
+
+=======================================================================
+
+drivers/misc/mediatek/ssusb/mu3d/
+├── Makefile
+├── mt_us
+├── mu3d_hal_hw.h
+├── mu3d_hal_qmu_drv.c
+├── mu3d_hal_qmu_drv.h
+├── mu3d_hal_usb_dr
+├── mu3d_hal_usb_drv.h
+├── musb_core.c
+├── musb_cor
+├── musb_gat.c			/* gadget 相关, UDC 驱动 */
+├── musb_gadget_ep0.c
+├── musb_gadget.h
+├──sb_init.c				/* 初始化usb相关, 目前是 SSUSB_MODE_DRD, 同时支持 Host+Device */
+├── note.txt
+├── ssusb_io.h
+├── ssusb_sysfs.c
+├── ssusb_sysfs.h
+├── xhci-mtk.c
+└── xhci-mtk.h
+
+=======================================================================
+root@kungfupanda:/sys/devices/bus.8/11270000.SSUSB # tree -L 2                 
+.
+|-- cmode
+|-- driver -> ../../../bus/platform/drivers/musb-mtu3d
+|-- gadget
+|   |-- lun0
+|   |-- power
+|   |-- suspended
+|   `-- uevent
+|-- modalias
+|-- mode																	/* 切换usb mode, (echo 0: to device, 1: to host) */
+|-- power
+|   |-- autosuspend_delay_ms
+|   |-- control
+|   |-- runtime_active_time
+|   |-- runtime_status
+|   `-- runtime_suspended_time
+|-- reg
+|-- subsystem -> ../../../bus/platform
+|-- udc
+|   `-- 11270000.SSUSB
+|       |-- a_alt_hnp_support
+|       |-- a_hnp_support
+|       |-- b_hnp_enable
+|       |-- current_speed
+|       |-- device -> ../../../11270000.SSUSB
+|       |-- is_a_peripheral
+|       |-- is_otg															/* 是否支持 OTG */
+|       |-- maximum_speed
+|       |-- power
+|       |   |-- autosuspend_delay_ms
+|       |   |-- control
+|       |   |-- runtime_active_time
+|       |   |-- runtime_status
+|       |   `-- runtime_suspended_time
+|       |-- soft_connect
+|       |-- srp
+|       |-- state
+|       |-- subsystem -> ../../../../../class/udc
+|       `-- uevent
+|-- uevent
+`-- xhci-hcd.2.auto
+    |-- driver -> ../../../../bus/platform/drivers/xhci-hcd
+    |-- modalias
+    |-- pools
+    |-- power
+    |-- subsystem -> ../../../../bus/platform
+    |-- uevent
+    |-- usb1																/* Host, 与 /sys/bus/usb/devices 下的相同 */
+    `-- usb2																/* Host, 与 /sys/bus/usb/devices 下的相同 */
+
+=======================================================================
+Host 创建的sys节点:
++++++++++++++++++++
+两个Host
+(1) usb1 是中间这个usb port;
+(2) usb2 内置, 接 Wireless 模组.
+++++++++++++++++++++++++++++++++
+
+root@kungfupanda:/ # lsusb
+
+/dev/bus/usb/002/002: 0e8d:76a0 MediaTek Inc. Wireless  000000000
+/dev/bus/usb/002/001: 1d6b:0003 Linux 3.10.61+ xhci-hcd xHCI Host Controller xhci-hcd.2.auto
+/dev/bus/usb/001/001: 1d6b:0002 Linux 3.10.61+ xhci-hcd xHCI Host Controller xhci-hcd.2.auto
+
+root@kungfupanda:/sys/bus/usb/devices # ll
+total 0
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 1-0:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1/1-0:1.0
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 2-0:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-0:1.0
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 2-1 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 2-1:1.0 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1/2-1:1.0
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 2-1:1.1 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1/2-1:1.1
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 2-1:1.2 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2/2-1/2-1:1.2
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 usb1 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb1
+lrwxrwxrwx    1 root     root             0 Nov 16 10:16 usb2 -> ../../../devices/bus.8/11270000.SSUSB/xhci-hcd.2.auto/usb2
+
+=======================================================================
+Device 创建的sys节点:
++++++++++++++++++++++
+
+root@kungfupanda:/sys/class/android_usb/android0 # ll
+total 0
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 bDeviceClass			/* 默认设置在 android.c, 可通过 sys 节点重写 */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 bDeviceProtocol		/* 默认设置在 android.c, 可通过 sys 节点重写 */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 bDeviceSubClass		/* 默认设置在 android.c, 可通过 sys 节点重写 */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 bcdDevice				/* 默认设置在 android.c, 可通过 sys 节点重写 */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 enable					/* 使能 android comp0site usb device */
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_accessory
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_acm
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_adb
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_audio_source
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_ffs
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_mass_storage
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_mtp
+drwxr-xr-x    3 root     root             0 Nov 16 10:25 f_ptp
+drwxr-xr-x    3 root     root             0 Jan  1  2010 f_rndis
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 functions				/* 相当于设置 usb 的 configure, eg.(adb)/(adb,mtp)/(adb,acm) */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 iManufacturer			/* 默认设置在 android.c, 可通过 sys 节点重写 */ /*  */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 iProduct				/* 默认设置在 android.c, 可通过 sys 节点重写 */ /*  */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 iSerial				/* 默认设置在 android.c, 可通过 sys 节点重写 */ /*  */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 idProduct				/* 在 init.rc 中可以修改设备 PID */
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 idVendor				/* 在 init.rc 中可以修改设备 VID */
+drwxr-xr-x    2 root     root             0 Nov 16 10:25 power
+-r--r--r--    1 root     root          4096 Jan  1  2010 state
+lrwxrwxrwx    1 root     root             0 Nov 16 10:25 subsystem -> ../../../../class/android_usb
+-rw-r--r--    1 root     root          4096 Nov 16 10:25 uevent
+
+=======================================================================
+KP:
++++++
+
+obj-$(CONFIG_USB_GADGET)
+
+	udc-core.o  
+
+---------------------------------------------------------------
+
+obj-$(CONFIG_USB_G_ANDROID) += g_android.o
+g_android-y         := android.o
+	
+	g_android.o
+		android.o
+
+		#include "f_fs.c"					/* user mode file system API for USB composite function controllers */
+		#include "f_audio_source.c"			/* Gadget Function Driver for USB audio source device */
+		#include "f_mass_storage.c"			/* [ums] Mass Storage USB Composite Function */
+		#include "f_adb.c"					/* [adb] Android adb */
+		#include "f_mtp.c"					/* [mtp][ptp] */
+		#include "f_accessory.c"			/* Gadget Function Driver for Android USB accessories */
+		#include "f_rndis.c"				/* [rndis] RNDIS link function driver */
+		#include "rndis.c"					
+		#include "u_ether.c"				
+
+obj-$(CONFIG_USB_F_ACM)     += usb_f_acm.o
+usb_f_acm-y         := f_acm.o
+
+	usb_f_acm.o
+		f_acm.o								/* USB CDC serial (ACM) function driver */
+
+obj-$(CONFIG_USB_U_SERIAL)
+
+	u_serial.o
+
+---------------------------------------------------------------
+
+obj-$(CONFIG_USB_LIBCOMPOSITE)
+
+	libcomposite.o
+		usbstring.o
+		config.o
+		epautoconf.o
+		composite.o
+		functions.o
+		configfs.o
+
+=======================================================================
+[persist.sys.usb.config]: [mtp,adb]
+--------------------------------------
+在 PC Host 端枚举的盒子的 Device 信息:
+++++++++++++++++++++++++++++++++++++++
+
+Bus 002 Device 028: ID 18d1:0c02 Google Inc. 
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.10
+  bDeviceClass            0 (Defined at Interface level)
+  bDeviceSubClass         0 
+  bDeviceProtocol         0 
+  bMaxPacketSize0        64
+  idVendor           0x18d1 Google Inc.
+  idProduct          0x0c02 
+  bcdDevice           ff.ff
+  iManufacturer           2 Xiaomi
+  iProduct                3 Mibox Kungfupanda
+  iSerial                 4 0123456789ABCDEF
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength           62
+    bNumInterfaces          2
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0xc0
+      Self Powered
+    MaxPower                2mA
+	--------------------------------------------------------------
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           3
+      bInterfaceClass       255 Vendor Specific Class
+      bInterfaceSubClass    255 Vendor Specific Subclass
+      bInterfaceProtocol      0 
+      iInterface              5 MTP							<<<<<<<<<<<<   MTP
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0200  1x 512 bytes
+        bInterval               0
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x01  EP 1 OUT
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0200  1x 512 bytes
+        bInterval               0
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x82  EP 2 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x001c  1x 28 bytes
+        bInterval               6
+	--------------------------------------------------------------
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       0
+      bNumEndpoints           2
+      bInterfaceClass       255 Vendor Specific Class
+      bInterfaceSubClass     66 
+      bInterfaceProtocol      1 
+      iInterface              0 
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x83  EP 3 IN
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0200  1x 512 bytes
+        bInterval               0
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x02  EP 2 OUT
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0200  1x 512 bytes
+        bInterval               0
+Device Status:     0x0001
+  Self Powered
+=======================================================================
+
