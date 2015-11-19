@@ -1,0 +1,67 @@
+
+arch/arm64/mm/fault.c
+
+383 static struct fault_info {
+384     int (*fn)(unsigned long addr, unsigned int esr, struct pt_regs *regs);
+385     int sig;
+386     int code;       
+387     const char *name;   
+388 } fault_info[] = {  
+389     { do_bad,       SIGBUS,  0,     "ttbr address size fault"   },
+390     { do_bad,       SIGBUS,  0,     "level 1 address size fault"    },
+391     { do_bad,       SIGBUS,  0,     "level 2 address size fault"    },
+392     { do_bad,       SIGBUS,  0,     "level 3 address size fault"    },
+393     { do_translation_fault, SIGSEGV, SEGV_MAPERR,   "input address range fault" },
+394     { do_translation_fault, SIGSEGV, SEGV_MAPERR,   "level 1 translation fault" },
+395     { do_translation_fault, SIGSEGV, SEGV_MAPERR,   "level 2 translation fault" },
+396     { do_page_fault,    SIGSEGV, SEGV_MAPERR,   "level 3 translation fault" },
+397     { do_bad,       SIGBUS,  0,     "reserved access flag fault"    },
+398     { do_bad,       SIGSEGV, SEGV_ACCERR,   "level 1 access flag fault" },
+399     { do_bad,       SIGSEGV, SEGV_ACCERR,   "level 2 access flag fault" },
+400     { do_page_fault,    SIGSEGV, SEGV_ACCERR,   "level 3 access flag fault" },
+401     { do_bad,       SIGBUS,  0,     "reserved permission fault" },
+402     { do_bad,       SIGSEGV, SEGV_ACCERR,   "level 1 permission fault"  },
+403     { do_sect_fault,    SIGSEGV, SEGV_ACCERR,   "level 2 permission fault"  },
+404     { do_page_fault,    SIGSEGV, SEGV_ACCERR,   "level 3 permission fault"  },
+
+arch/arm64/mm/fault.c
+
+	do_translation_fault()	/* First Level Translation Fault Handler */
+	or
+	do_sect_fault()			/* Some section permission faults need to be handled gracefully */
+
+		do_bad_area()
+			__do_kernel_fault()
+				show_pte()
+				die("Oops",,)
+			__do_user_fault()
+				show_pte()
+				show_regs()
+
+
+
+
+[   10.139610] (0)[168:recovery]pgd = ffffffc077178000
+[   10.140214][00000004] *pgd=00000000b717f003, *pmd=0000000000000000
+[   10.140982] (0)[168:recovery]
+[   10.141360] (0)[168:recovery]CPU: 0 PID: 168 Comm: recovery Tainted: G        W    3.10.61+ #1
+[   10.142435] (0)[168:recovery]task: ffffffc07cc5d200 ti: ffffffc077688000 task.ti: ffffffc077688000
+[   10.143553] (0)[168:recovery]PC is at 0x436328
+[   10.144103] (0)[168:recovery]LR is at 0x40b638
+[   10.144658] (0)[168:recovery]pc : [<0000000000436328>] lr : [<000000000040b638>] pstate: 60000000
+[   10.146005] (0)[168:recovery]sp : 0000007fee9ccde0
+[   10.146598]x29: 0000007fee9ccde0 x28: 0000000000000000
+[   10.147247]x27: 00000000004e9000 x26: 0000000000000000
+[   10.147898]x25: 00000000004e6000 x24: 00000000004a5000
+[   10.148548]x23: 0000000000000000 x22: 0000007f8f444280
+[   10.149199]x21: 00000000004e9000 x20: 00000000004e9000
+[   10.149850]x19: 0000007f8f44e000 x18: 00000000000000b3
+[   10.150500]x17: 0000000000000001 x16: 0000000000000000
+[   10.151152]x15: 958b5256198fb2f1 x14: 958b5256198fb2f1
+[   10.151802]x13: 00000000004eb508 x12: 0000000000000001
+[   10.152453]x11: 00000000004a2c78 x10: 00000000004a2000
+[   10.153103]x9 : 0000000000000003 x8 : 0000000000000039
+[   10.153754]x7 : 0000007fee9ccbb8 x6 : 8000000000808080
+[   10.154405]x5 : 0000000000000000 x4 : 0000007f8f406160
+[   10.155056]x3 : 0000000000000000 x2 : 00000000004ea000
+[   10.155706]x1 : 0000000000000000 x0 : 00000000004ea000
