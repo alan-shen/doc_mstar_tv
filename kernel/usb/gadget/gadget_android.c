@@ -48,13 +48,91 @@ static struct usb_composite_driver android_usb_driver = {
 #endif
 };
 
+===================================================================================================
+drivers/usb/gadget/composite.c
++++++++++++++++++++++++++++++++
+
+static const struct usb_gadget_driver composite_driver_template = {
+    .bind       = composite_bind,
+    .unbind     = composite_unbind,
+
+    .setup      = composite_setup,
+    .disconnect = composite_disconnect,
+
+    .suspend    = composite_suspend,
+    .resume     = composite_resume,
+
+    .driver = {
+        .owner      = THIS_MODULE,
+    },   
+};
+
+===================================================================================================
+===================================================================================================
 static int __init init(void)
 {
 	dev->functions = supported_functions;
-	usb_composite_probe(&android_usb_driver);
+	usb_composite_probe(&android_usb_driver);								// bind gadget and udc!!
+		/**
+		 * [drivers/usb/gadget/composite.c ]
+		 * int usb_composite_probe(struct usb_composite_driver *driver)
+		 * {
+		 *     driver->gadget_driver = composite_driver_template;			<<<<<
+		 *     
+		 *     gadget_driver = &driver->gadget_driver;						// composite_driver_template
+		 *     gadget_driver->function =  (char *) driver->name;			// "android_usb"
+		 *     gadget_driver->driver.name = driver->name;					// "android_usb"
+		 *     gadget_driver->max_speed = driver->max_speed;				// USB_SPEED_SUPER
+		 *     
+		 *     return usb_gadget_probe_driver(gadget_driver);
+		 * }
+		 *     
+		 * [drivers/usb/gadget/udc-core.c ]
+		 * int usb_gadget_probe_driver(struct usb_gadget_driver *driver) 
+		 * {
+		 *     list_for_each_entry(udc, &udc_list, list) {
+		 *         // For now we take the first one							// 
+		 *         if (!udc->driver)
+		 *             goto found;
+		 *     }
+		 *     ret = udc_bind_to_driver(udc, driver);
+		 *     return ret;
+		 * }
+		 *     
+		 * static int udc_bind_to_driver(struct usb_udc *udc, struct usb_gadget_driver *driver)
+		 * {
+		 *     udc->driver = driver;
+		 *     udc->dev.driver = &driver->driver;
+		 *     udc->gadget->dev.driver = &driver->driver;
+		 *     
+		 *     driver->bind(udc->gadget, driver);							// composite_bind()    >>>>>> ???
+		 *     usb_gadget_udc_start(udc->gadget, driver);
+		 * }
+		 *     
+		 * static inline int usb_gadget_udc_start(struct usb_gadget *gadget, struct usb_gadget_driver *driver) 
+		 * {
+		 *     gadget->ops->udc_start(gadget, driver);						// drivers/misc/mediatek/ssusb/mu3d/musb_gadget.c:1412:	.udc_start = musb_gadget_start,
+		 * }
+		 */
 }
 
 late_initcall(init);
+
+===================================================================================================
+drivers/misc/mediatek/ssusb/mu3d/musb_gadget.c
+----------------------------------------------
+
+static const struct usb_gadget_ops musb_gadget_operations = {
+    .get_frame = musb_gadget_get_frame,
+    .wakeup = musb_gadget_wakeup,
+    .set_selfpowered = musb_gadget_set_self_powered,
+    /* .vbus_session                = musb_gadget_vbus_session, */
+    .vbus_draw = musb_gadget_vbus_draw,
+    .pullup = musb_gadget_pullup,
+    .udc_start = musb_gadget_start,
+    .udc_stop = musb_gadget_stop,
+    /*REVISIT-J: Do we need implement "get_config_params" to config U1/U2 */
+};
 
 ===================================================================================================
 static struct android_usb_function ffs_function = {          
@@ -159,5 +237,46 @@ static int android_bind(struct usb_composite_dev *cdev)
 static int __init init(void)
 {
 	dev->functions = supported_functions;
+	INIT_LIST_HEAD(&dev->enabled_functions);
+	INIT_WORK(&dev->work, android_work);
 }
+===================================================================================================
+
+static struct usb_configuration android_config_driver = {
+    .label      = "android",
+    .unbind     = android_unbind_config,
+    .setup      = android_setup_config,
+    .bConfigurationValue = 1, 
+    .bmAttributes   = USB_CONFIG_ATT_ONE | USB_CONFIG_ATT_SELFPOWER,
+    .MaxPower   = 2, /* 2ma */
+};
+
+static void android_enable(struct android_dev *dev)					// called by function driver, eg.adb_android_function_disable(),adb_ready_callback()
+{                                                   
+    struct usb_composite_dev *cdev = dev->cdev;               
+                                                               
+    if (WARN_ON(!dev->disable_depth))                      
+        return;                
+  
+    if (--dev->disable_depth == 0) {
+        usb_add_config(cdev, &android_config_driver,     
+                    android_bind_config);
+        usb_gadget_connect(cdev->gadget);
+    }                                  
+}                             
+                                                                    
+static void android_disable(struct android_dev *dev)
+{ 
+    struct usb_composite_dev *cdev = dev->cdev;
+                                                  
+    if (dev->disable_depth++ == 0) {
+        usb_gadget_disconnect(cdev->gadget);                               
+        /* Cancel pending control requests */  
+        usb_ep_dequeue(cdev->gadget->ep0, cdev->req);          
+        usb_remove_config(cdev, &android_config_driver);    
+    }                                                        
+}
+
+===================================================================================================
+===================================================================================================
 ===================================================================================================
