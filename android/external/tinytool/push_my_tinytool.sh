@@ -26,6 +26,7 @@ function check_android_env () {
 
 function build_tools () {
 	mmm external/tinytool
+	mmm external/tinyalsa
 }
 
 function remount_device () {
@@ -64,14 +65,28 @@ function wait_adb_device () {
 	done
 }
 
+SYSTEM_LIB_COPYLIST=""
+SYSTEM_BIN_COPYLIST="getgpt tree getevent"
+SYSTEM_BIN_AUDIO="tinyplay tinycap tinymix"
 function push_tiny_tools () {
-echo -e ${yellow}
-set -x
-	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/getgpt    /system/bin
-	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/tree      /system/bin
-	adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/getuevent /system/bin
-set +x
-echo -e ${normal}
+	# lib
+	for ilib in ${SYSTEM_LIB_COPYLIST}
+	do
+		echo -e ${yellow}send ${ilib}...${normal}
+		adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/lib/${ilib}    /system/lib
+	done
+	# binary
+	for ibin in ${SYSTEM_BIN_COPYLIST}
+	do
+		echo -e ${yellow}send ${ibin}...${normal}
+		adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/${ibin}    /system/bin
+	done
+	#tiny alsa
+	for ialsa in ${SYSTEM_BIN_AUDIO}
+	do
+		echo -e ${yellow}send ${ialsa}...${normal}
+		adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/${ialsa}    /system/bin
+	done
 }
 
 #for gladiator
