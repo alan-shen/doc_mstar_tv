@@ -13,7 +13,7 @@ struct android_dev {
 			    struct device *dev;                                                                                                                                                       
 			    char *dev_name;
 			    struct device_attribute **attributes;                                                                                                                                     
-				struct list_head enabled_list;
+				struct list_head enabled_list;						// functions_store()->android_enable_function()->加入到链表enabled_functions中
 
 			    int  (*init)         (struct android_usb_function *, struct usb_composite_dev *);                                                                                                   
 			    void (*cleanup)      (struct android_usb_function *);
@@ -59,7 +59,7 @@ struct android_dev {
 			------------------------------------------------------------
     struct device *dev;
 
-    bool enabled;
+    bool enabled;			// enable_store() 中设定, 表示usb设备是否使能.
     int disable_depth;
     struct mutex mutex;
     bool connected;
