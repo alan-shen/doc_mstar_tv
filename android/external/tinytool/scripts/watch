@@ -1,0 +1,7 @@
+#!/system/bin/sh
+
+while true
+do
+	du -sh $1
+	sleep 1
+done

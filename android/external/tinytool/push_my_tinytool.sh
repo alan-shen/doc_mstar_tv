@@ -67,7 +67,7 @@ function wait_adb_device () {
 
 SYSTEM_LIB_COPYLIST=""
 SYSTEM_BIN_COPYLIST="getgpt tree getevent"
-SYSTEM_BIN_AUDIO="tinyplay tinycap tinymix"
+SYSTEM_BIN_AUDIO="tinyplay tinycap tinymix tinypcminfo"
 function push_tiny_tools () {
 	# lib
 	for ilib in ${SYSTEM_LIB_COPYLIST}
@@ -87,6 +87,9 @@ function push_tiny_tools () {
 		echo -e ${yellow}send ${ialsa}...${normal}
 		adb ${OPTION_ADB} push ${ANDROID_PRODUCT_OUT}/system/bin/${ialsa}    /system/bin
 	done
+
+	# extrenal
+	adb ${OPTION_ADB} push external/tinytool/scripts/watch    /system/bin
 }
 
 #for gladiator
