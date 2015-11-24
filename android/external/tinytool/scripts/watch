@@ -1,7 +1,21 @@
 #!/system/bin/sh
 
+if test -z $1;then
+	echo "\n\tNothing to watch, please give something to watch!!\n"
+	echo   "\tJust support one para now.\n"
+	exit 1
+fi
+
 while true
 do
-	du -sh $1
+	if test -f $1 ;then
+		du -sh $1
+	elif test -d $1 ;then
+		du -sh $1
+	else
+		#clear
+		$1
+		echo
+	fi
 	sleep 1
 done
