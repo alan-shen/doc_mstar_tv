@@ -41,6 +41,7 @@ function check_android_env () {
 	if test -z ${ANDROID_PRODUCT_OUT};then
 		echo -e ${bred}"No android build envirment, need source first!\n"${normal}
 		echo -e ${blue}"\t# source build/envsetup.sh;lunch gladiator-userdebug\n"${normal}
+		echo -e ${blue}"\t# source build/envsetup.sh;lunch kungfupanda-userdebug\n"${normal}
 		exit 1
 	fi
 }

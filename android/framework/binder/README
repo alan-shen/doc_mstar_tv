@@ -1,0 +1,16 @@
+=======================================================================================
+
+frameworks/native/libs/binder/xxxx						其中IServiceManager.cpp中是接收从Java的ServerManager发来的各种请求(addserver, checkserver,...),与Binder Driver通讯的模块.
+frameworks/native/cmds/servicemanager/service_mangaer.c	是一个被init.rc中使用到的命令,用来在开机时启动service_manager这个类似daemon的东西
+
+frameworks/base/core/java/android/os/ServiceManager.java
+frameworks/base/core/java/android/os/ServiceManagerNative.java
+
+frameworks/base/services/java/com/android/server/SystemServer.java	大部分的系统service都在这里被注册
+
+=======================================================================================
+
+
+
+=======================================================================================
+
