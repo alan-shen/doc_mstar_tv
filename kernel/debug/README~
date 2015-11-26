@@ -1,0 +1,6 @@
+
+生成中间文件:
+
+	Makefile 
+
+ccflags-y += -save-temps

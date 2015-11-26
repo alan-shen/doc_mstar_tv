@@ -1,0 +1,7 @@
+
+生成编译中间文件:
+
+	Makefile 中添加:
+	ccflags-y += -save-temps
+
+	会在 KERNEL_OBJ 根目录生成对应目录文件的 *.i, *.s 中间文件.
