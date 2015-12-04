@@ -170,7 +170,7 @@ int read_png(const char* file_name, const char* locale/*,
         int len = row[4];
         char* loc = (char*)row+5;
 
-        printf("  %20s: %s (%d x %d @ %lu)\n", file_name, loc, w, h, y);
+        printf("  %20s: %-5s (%3d x %3d @ %lu)\n", file_name, loc, w, h, y);
         if (y+1+h >= height || matches_locale(loc, locale)) {
             surface = malloc_surface(w*h);
             if (surface == NULL) {
