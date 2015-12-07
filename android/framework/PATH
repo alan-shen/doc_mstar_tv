@@ -1,0 +1,47 @@
+frameworks/
+├── av
+│   ├── media
+│   │   ├── libmedia
+│   │   ├── libmediaplayerservice
+│   │   ├── mediaserver				// mediaserver
+│   │   ├── mtp
+│   │   └── ndk
+│   ├── services
+│   │   ├── audioflinger				// audioflinger
+│   │   ├── audiopolicy				// audiopolicy
+│   │   ├── medialog
+│   │   └── soundtrigger
+│   └── tools
+│       └── resampler_tools
+├── base
+│   ├── cmds
+│   │   ├── app_process
+│   │   ├── bootanimation
+│   │   ├── input
+│   │   ├── media
+│   │   ├── pm
+│   │   ├── settings
+│   │   ├── svc
+│   │   └── wm
+│   ├── core
+│   │   ├── java
+│   │   ├── jni
+│   │   ├── res
+│   │   └── tests
+├── native
+│   ├── cmds
+│   │   ├── dumpstate
+│   │   ├── dumpsys
+│   │   └── servicemanag				// servicemanager
+│   ├── include
+│   │   ├── binder
+│   │   ├── media
+│   │   └── ui
+│   ├── libs
+│   │   ├── bind						// binder
+│   │   └── ui
+│   └── services
+│       ├── powermanager
+│       ├── sensorservice
+│       └── surfaceflinger
+
