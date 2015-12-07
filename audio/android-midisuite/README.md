@@ -10,6 +10,15 @@
 	https://source.android.com/devices/audio/midi_test.html
 
 ===========================================================================================
+App	Description
+
+MidiScope or MidiScope			-	displays MIDI messages on-screen
+MidiKeyboard					-	sends MIDI messages by pressing an on-screen music keyboard
+MidiSynthExample or MidiSynth	-	simple MIDI synthesizer that uses sawtooth oscillators
+MidiBtlePairing					-	pairs an Android device with a BLE peripheral
+MidiTools						-	library dependency of the above apps
+
+===========================================================================================
 # android-midisuite
 
 ## Introduction
