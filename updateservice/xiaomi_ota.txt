@@ -1183,6 +1183,9 @@ Date:   Tue Mar 31 16:04:21 2015 +0800
     Reviewed-by: wangxingchao@xiaomi.com
     Signed-off-by: yangxiaohe <yangxiaohe@xiaomi.com>
 
+vendor/duokan/framework-exts/base/core/java/com/xiaomi/update/IUpdateService.aidl
+vendor/duokan/framework-exts/base/core/java/com/xiaomi/update/IUpdateServiceListener.aidl
+
 =================================================================================================================
 源代码:
 ++++++++

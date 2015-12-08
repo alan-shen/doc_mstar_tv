@@ -32,6 +32,7 @@ frameworks/
 │   ├── cmds
 │   │   ├── dumpstate
 │   │   ├── dumpsys
+│   │   ├service						// #service list 查看当前的service
 │   │   └── servicemanag				// servicemanager
 │   ├── include
 │   │   ├── binder
@@ -45,3 +46,4 @@ frameworks/
 │       ├── sensorservice
 │       └── surfaceflinger
 
+frameworks/base/services/core/java/com/android/server/power/ShutdownThread.java
