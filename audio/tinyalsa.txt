@@ -3,15 +3,30 @@
 Tinyalsa - Android ALSA lib, 简化接口.
 
 ===============================================================================================================================================
+
+源文件:
+	external/tinyalsa/pcm.c
+	external/tinyalsa/mixer.c
+
+头文件:
+	external/tinyalsa/include/tinyalsa/asoundlib.h
+
+工具:
+	external/tinyalsa/tinypcminfo.c
+	external/tinyalsa/tinycap.c
+	external/tinyalsa/tinymix.c
+	external/tinyalsa/tinyplay.c
+===============================================================================================================================================
 系统中所有用到 tinyalsa lib 的地方.
 +++++++++++++++++++++++++++++++++++
 
 ./vendor/duokan/framework-exts/base/cmds/bootanimation/Android.mk:25:    libtinyalsa
+./frameworks/base/cmds/bootanimation/Android.mk:31:    libtinyalsa
+
 ./cts/suite/audio_quality/executable/Android.mk:29:LOCAL_STATIC_LIBRARIES += libutils liblog libcutils libtinyalsa libtinyxml
 ./cts/suite/audio_quality/lib/Android.mk:29:LOCAL_STATIC_LIBRARIES += libutils liblog libtinyalsa libcutils libtinyxml
 ./cts/suite/audio_quality/test/Android.mk:31:LOCAL_STATIC_LIBRARIES := libutils libgtest_host libgtest_main_host  liblog libcutils libtinyalsa \
-./frameworks/base/cmds/bootanimation/Android.mk:31:    libtinyalsa
-./frameworks/base/libs/usb/tests/accessorytest/Android.mk:19:LOCAL_STATIC_LIBRARIES := libusbhost libcutils libtinyalsa
+
 ./external/tinyalsa/Android.mk:6:LOCAL_MODULE := libtinyalsa
 ./external/tinyalsa/Android.mk:17:LOCAL_MODULE := libtinyalsa
 ./external/tinyalsa/Android.mk:26:LOCAL_SHARED_LIBRARIES:= libcutils libutils libtinyalsa
@@ -19,14 +34,19 @@ Tinyalsa - Android ALSA lib, 简化接口.
 ./external/tinyalsa/Android.mk:47:LOCAL_SHARED_LIBRARIES:= libcutils libutils libtinyalsa
 ./external/tinyalsa/Android.mk:56:LOCAL_SHARED_LIBRARIES:= libcutils libutils libtinyalsa
 ./external/tinyalsa/Android.mk:65:LOCAL_SHARED_LIBRARIES:= libcutils libutils libtinyalsa
+
 ./external/bluetooth/bluedroid/main/Android.mk:132:	libtinyalsa \
 ./external/bluetooth/bluedroid/audio_a2dp_hw/Android.mk:34:        libtinyalsa \
+
 ./hardware/libhardware/modules/usbaudio/Android.mk:30:LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils
 ./hardware/intel/audio_media/hdmi/Android.mk:34:LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa
 ./hardware/mstar/audio/Android.mk:101:    libtinyalsa \
 ./hardware/qcom/audio/post_proc/Android.mk:20:	libtinyalsa
 ./hardware/qcom/audio/visualizer/Android.mk:27:	libtinyalsa
 ./hardware/qcom/audio/hal/Android.mk:31:	libtinyalsa \
-./system/extras/tests/audio/alsa/Android.mk:23:LOCAL_SHARED_LIBRARIES += libcutils libutils liblog libtinyalsa
+
 ./system/media/audio_route/Android.mk:9:LOCAL_SHARED_LIBRARIES:= liblog libcutils libutils libexpat libtinyalsa
+
+./frameworks/base/libs/usb/tests/accessorytest/Android.mk:19:LOCAL_STATIC_LIBRARIES := libusbhost libcutils libtinyalsa
+./system/extras/tests/audio/alsa/Android.mk:23:LOCAL_SHARED_LIBRARIES += libcutils libutils liblog libtinyalsa
 ===============================================================================================================================================
