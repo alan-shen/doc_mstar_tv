@@ -17,6 +17,15 @@ Tinyalsa - Android ALSA lib, 简化接口.
 	external/tinyalsa/tinymix.c
 	external/tinyalsa/tinyplay.c
 ===============================================================================================================================================
+
+shell@gladiator:/system/lib/hw # ll audio*
+-rw-r--r--    1 0        0            21784 Nov 24 02:48 audio.a2dp.default.so				<<<<< external/bluetooth/bluedroid/audio_a2dp_hw
+-rw-r--r--    1 0        0             5404 Nov 12 05:50 audio.primary.default.so			<<<<< hardware/libhardware/modules/audio
+-rw-r--r--    1 0        0            87660 Nov 12 05:50 audio_policy.default.so			<<<<< hardware/libhardware/modules/audio
+
+-rw-r--r--    1 0        0            26008 Nov 24 02:48 audio.primary.monaco.so			<<<<< hardware/mstar/audio
+
+===============================================================================================================================================
 系统中所有用到 tinyalsa lib 的地方.
 +++++++++++++++++++++++++++++++++++
 
@@ -38,12 +47,8 @@ Tinyalsa - Android ALSA lib, 简化接口.
 ./external/bluetooth/bluedroid/main/Android.mk:132:	libtinyalsa \
 ./external/bluetooth/bluedroid/audio_a2dp_hw/Android.mk:34:        libtinyalsa \
 
-./hardware/libhardware/modules/usbaudio/Android.mk:30:LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils
-./hardware/intel/audio_media/hdmi/Android.mk:34:LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa
+./hardware/libhardware/modules/usbaudio/Android.mk:30:LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils					<<< 未使用
 ./hardware/mstar/audio/Android.mk:101:    libtinyalsa \
-./hardware/qcom/audio/post_proc/Android.mk:20:	libtinyalsa
-./hardware/qcom/audio/visualizer/Android.mk:27:	libtinyalsa
-./hardware/qcom/audio/hal/Android.mk:31:	libtinyalsa \
 
 ./system/media/audio_route/Android.mk:9:LOCAL_SHARED_LIBRARIES:= liblog libcutils libutils libexpat libtinyalsa
 
