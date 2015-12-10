@@ -1,0 +1,82 @@
+===============================================================================================================================================
+提供给 audioflinger 使用的接口定义:
+++++++++++++++++++++++++++++++++++
+
+	hardware/libhardware/include/hardware/audio.h
+
+===============================================================================================================================================
+audioflinger/AudioFlinger.cpp:332:            if ((dev->get_supported_devices != NULL) &&
+audioflinger/AudioFlinger.cpp:333:                    (dev->get_supported_devices(dev) & devices) == devices)
+audioflinger/AudioFlinger.cpp:787:            dev->hwDevice()->set_master_volume(dev->hwDevice(), value);
+audioflinger/AudioFlinger.cpp:855:        ret = dev->set_mode(dev, mode);
+audioflinger/AudioFlinger.cpp:885:        status_t result = dev->set_mic_mute(dev, state);
+audioflinger/AudioFlinger.cpp:905:    dev->get_mic_mute(dev, &state);
+audioflinger/AudioFlinger.cpp:932:            dev->hwDevice()->set_master_mute(dev->hwDevice(), muted);
+audioflinger/AudioFlinger.cpp:1101:                status_t result = dev->set_parameters(dev, keyValuePairs.string());
+audioflinger/AudioFlinger.cpp:1252:    ret = dev->set_voice_volume(dev, value);
+audioflinger/AudioFlinger.cpp:1612:    rc = dev->init_check(dev);
+audioflinger/AudioFlinger.cpp:1630:            if (NULL != dev->get_master_volume) {
+audioflinger/AudioFlinger.cpp:1632:                if (OK == dev->get_master_volume(dev, &mv)) {
+audioflinger/AudioFlinger.cpp:1647:        if ((NULL != dev->set_master_volume) &&
+audioflinger/AudioFlinger.cpp:1648:            (OK == dev->set_master_volume(dev, mMasterVolume))) {
+audioflinger/AudioFlinger.cpp:1654:        if ((NULL != dev->set_master_mute) &&
+audioflinger/AudioFlinger.cpp:1655:            (OK == dev->set_master_mute(dev, mMasterMute))) {
+audioflinger/AudioFlinger.cpp:1770:    status_t status = hwDevHal->open_output_stream(hwDevHal,
+audioflinger/AudioFlinger.cpp:1846:            mPrimaryHardwareDev->hwDevice()->set_mode(mPrimaryHardwareDev->hwDevice(), mMode);
+audioflinger/Threads.cpp:2859:        status = hwDevice->create_audio_patch(hwDevice,
+audioflinger/Threads.cpp:2876:        status = hwDevice->release_audio_patch(hwDevice, handle);
+audioflinger/Threads.cpp:6447:        status = hwDevice->create_audio_patch(hwDevice,
+audioflinger/Threads.cpp:6464:        status = hwDevice->release_audio_patch(hwDevice, handle);
+audioflinger/PatchPanel.cpp:297:                        status = hwDevice->create_audio_patch(hwDevice,
+audioflinger/PatchPanel.cpp:599:                    status = hwDevice->release_audio_patch(hwDevice, removedPatch->mHalHandle);
+audioflinger/PatchPanel.cpp:687:        return hwDevice->set_audio_port_config(hwDevice, config);
+audiopolicy/AudioPolicyService.cpp:104:        rc = mpAudioPolicy->init_check(mpAudioPolicy);
+audiopolicy/AudioPolicyService.cpp:105:        ALOGE_IF(rc, "couldn't init_check the audio policy (%s)", strerror(-rc));
+audiopolicy/AudioPolicyService.cpp:1050:        .set_voice_volume      = aps_set_voice_volume,
+===============================================================================================================================================
+
+shell@gladiator:/system/lib/hw # ll audio*
+===============================================================================================================================================
+-rw-r--r--    1 0        0             5404 Nov 12 05:50 audio.primary.default.so			<<<<< hardware/libhardware/modules/audio		<< mediaserver 未使用 >>
+===============================================================================================================================================
+-rw-r--r--    1 0        0            87660 Nov 12 05:50 audio_policy.default.so			<<<<< hardware/libhardware/modules/audio		<< mediaserver 未使用 >>
+
+	frameworks/av/services/audiopolicy/AudioPolicyService.cpp		rc = hw_get_module(AUDIO_POLICY_HARDWARE_MODULE_ID, &module);
+
+===============================================================================================================================================
+-rw-r--r--    1 0        0            21784 Nov 24 02:48 audio.a2dp.default.so				<<<<< external/bluetooth/bluedroid/audio_a2dp_hw
+-rw-r--r--    1 0        0            26008 Nov 24 02:48 audio.primary.monaco.so			<<<<< hardware/mstar/audio
+
+	frameworks/av/services/audioflinger/AudioFlinger.cpp			rc = hw_get_module_by_class(AUDIO_HARDWARE_MODULE_ID, if_name, &mod);
+
+===============================================================================================================================================
+Mediaserver 使用到的 so:
+++++++++++++++++++++++++
+
+shell@gladiator:/system/lib/hw # cat /proc/119/maps | grep audio
+b3987000-b398b000 r-xp 00000000 b3:0a 781        /system/lib/hw/audio.a2dp.default.so
+b4412000-b4418000 r-xp 00000000 b3:0a 783        /system/lib/hw/audio.primary.monaco.so
+
+b60e1000-b6105000 r-xp 00000000 b3:0a 856        /system/lib/libaudiopolicymanagerdefault.so
+b6106000-b6108000 r--p 00024000 b3:0a 856        /system/lib/libaudiopolicymanagerdefault.so
+b6108000-b6109000 rw-p 00026000 b3:0a 856        /system/lib/libaudiopolicymanagerdefault.so
+b6109000-b610a000 r-xp 00000000 b3:0a 855        /system/lib/libaudiopolicymanager.so
+b610a000-b610b000 r--p 00000000 b3:0a 855        /system/lib/libaudiopolicymanager.so
+b610b000-b610c000 rw-p 00001000 b3:0a 855        /system/lib/libaudiopolicymanager.so
+b610c000-b6118000 r-xp 00000000 b3:0a 857        /system/lib/libaudiopolicyservice.so
+b6118000-b611a000 r--p 0000b000 b3:0a 857        /system/lib/libaudiopolicyservice.so
+b611a000-b611b000 rw-p 0000d000 b3:0a 857        /system/lib/libaudiopolicyservice.so
+b6d9a000-b6d9e000 r-xp 00000000 b3:0a 859        /system/lib/libaudioutils.so
+b6d9e000-b6d9f000 r--p 00003000 b3:0a 859        /system/lib/libaudioutils.so
+b6d9f000-b6da0000 rw-p 00004000 b3:0a 859        /system/lib/libaudioutils.so
+b6da0000-b6dc1000 r-xp 00000000 b3:0a 858        /system/lib/libaudioresampler.so
+b6dc2000-b6dc3000 r--p 00021000 b3:0a 858        /system/lib/libaudioresampler.so
+b6dc3000-b6dc4000 rw-p 00022000 b3:0a 858        /system/lib/libaudioresampler.so
+b6ebf000-b6ed1000 r-xp 00000000 b3:0a 853        /system/lib/libaudiomanager.so
+b6ed1000-b6ed5000 r--p 00011000 b3:0a 853        /system/lib/libaudiomanager.so
+b6ed5000-b6ed6000 rw-p 00015000 b3:0a 853        /system/lib/libaudiomanager.so
+b6ed6000-b6f17000 r-xp 00000000 b3:0a 852        /system/lib/libaudioflinger.so
+b6f18000-b6f1e000 r--p 00041000 b3:0a 852        /system/lib/libaudioflinger.so
+b6f1e000-b6f1f000 rw-p 00047000 b3:0a 852        /system/lib/libaudioflinger.so
+
+===============================================================================================================================================
