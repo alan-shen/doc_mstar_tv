@@ -1,17 +1,44 @@
+========================================================================================================
+"mediaserver" 需要的库:
+++++++++++++++++++++++++
+
+LOCAL_SHARED_LIBRARIES := \
+    libaudioflinger \
+    libaudiopolicyservice \
+    libcamera_metadata\
+    libcameraservice \
+    libmedialogservice \
+    libcutils \
+    libnbaio \
+    libmedia \
+    libmediaplayerservice \
+    libutils \
+    liblog \
+    libbinder \
+    libsoundtriggerservice
+
+========================================================================================================
 frameworks/
 +-- av
 |   +-- media
-|   |   +-- libmedia
-|   |   +-- libmediaplayerservice
-|   |   +-- mediaserver					// mediaserver
+|   |   +-- libmedia										[libmedia]
+|   |   +-- libmediaplayerservice							[libmediaplayerservice]
+|   |   +-- mediaserver					// mediaserver		[mediaserver]
 |   |   +-- mtp
 |   |   +-- ndk
 |   |
 |   +-- services
-|   |   +-- audioflinger				// audioflinger
-|   |   +-- audiopolicy					// audiopolicy
+|   |   +-- audioflinger				// audioflinger		[libaudioflinger]
+|   |   +-- audiopolicy					// audiopolicy		[libaudiopolicyservice][libaudiopolicymanagerdefault][libaudiopolicymanager]
+|   |   +-- camera
 |   |   +-- medialog
 |   |   +-- soundtrigger
+|   |
+|   +-- cmds
+|   |   +-- screenrecord
+|   |   +-- stagefright
+|   |
+|   +-- drm
 |   |
 |   +-- tools
 |       +-- resampler_tools
