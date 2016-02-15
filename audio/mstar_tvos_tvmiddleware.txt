@@ -4,6 +4,66 @@ vendor/duokan/frameworks/tvmiddleware
 
 
 ===================================================================================
+vendor/mstar/supernova
++++++++++++++++++++++++
+编译:
++++++
+
+	1.指定使用哪个sh进行配置:
+
+		vendor/mstar/supernova/Android.mk
+
+		-------------------------------------------------------------------------------------------------------
+		SUPERNOVA_BUILD_TOP := $(ANDROID_BUILD_TOP)/vendor/mstar/supernova
+		SUPERNOVA_PROJECT_TOP := $(SUPERNOVA_BUILD_TOP)/projects
+
+		...
+		
+		else ifeq "gladiator" "$(TARGET_PRODUCT)"
+			SUPERNOVA_BUILDSETTING := buildsettings/build_Monaco_068D_ROM_EMMC_TVOS_4K2K_TEE_CUS204.sh			<<<<<<
+			SUPERNOVA_TARGET_OUT := $(SUPERNOVA_BUILD_TOP)/target/dvb.monaco/images/ext4
+		else ...
+
+		...
+
+		cd $(SUPERNOVA_PROJECT_TOP) && source $(SUPERNOVA_BUILDSETTING) && make all && make image_all			<<<<<<<
+	
+		-------------------------------------------------------------------------------------------------------
+
+	2.sh脚本配置相关config(会对几个相关的.cfg和.mk中宏定义替换配置):
+
+		vendor/mstar/supernova/projects/buildsettings/build_Monaco_068D_ROM_EMMC_TVOS_4K2K_TEE_CUS204.sh
+
+		--------------------------------------------------------------------------------------------------------------------
+		ENV_CFG_FILE=../out/buildenv/env.cfg
+		SW_CFG_FILE=../out/buildenv/config/sw_cfg/tvsystem/dtv/dvb.mk
+		PCB_MK_FILE=../out/buildenv/config/chips/${CHIP}/pcb.mk
+		PCB_CONFIG_MK_FILE=../out/buildenv/config/chips/${CHIP}/MST068D_10AHP_14222_4K2K_UHD_CUS204/pcb_config.mk
+		DFBRC_FILE=../out/buildenv/board/${CHIP}/MST068D_10AHP_14222_4K2K_UHD_CUS204/SN_DFBRC_Monaco_MST068D_10AHP_14222.ini
+		DEFAULT_SETTING_FILE=../out/buildenv/target/default_setting.mk
+		DEVICE_OPTION_MK_FILE=../out/buildenv/config/devices/device_option.mk
+		APP_CFG_FILE=../out/buildenv/config/sw_cfg/app/app.mk
+		PLATFORM_MK_FILE=../out/buildenv/config/sw_cfg/platform/platform.mk
+		COMMON_FEATURE_MK_FILE=../out/buildenv/config/sw_cfg/common_feature/common_feature.mk	/* <--- 包含了audio amp 的配置 */
+		--------------------------------------------------------------------------------------------------------------------
+
+	3.根据宏定义 AUDIO_AMP_TI5717 决定编译那个 amp 文件:
+
+		vendor/mstar/supernova/projects/devices/device_audio.mk
+			^
+			|include
+			|
+		vendor/mstar/supernova/projects/devices/monaco_device.mk
+
+===================================================================================
+vendor/mstar/supernova/projects/devices/audioamp
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+===================================================================================
+vendor/mstar/supernova/projects/msrv/common/src/MSrv_SSSound.cpp
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+===================================================================================
 vendor/mstar/supernova/projects/tvos
 ++++++++++++++++++++++++++++++++++++
 
