@@ -1,0 +1,86 @@
+========================================================================================================
+"mediaserver" 需要的库:
+++++++++++++++++++++++++
+
+LOCAL_SHARED_LIBRARIES := \
+    libaudioflinger \
+    libaudiopolicyservice \
+    libcamera_metadata\
+    libcameraservice \
+    libmedialogservice \
+    libcutils \
+    libnbaio \
+    libmedia \
+    libmediaplayerservice \
+    libutils \
+    liblog \
+    libbinder \
+    libsoundtriggerservice
+
+========================================================================================================
+frameworks/
++-- av
+|   +-- media
+|   |   +-- libmedia										[libmedia]
+|   |   +-- libmediaplayerservice							[libmediaplayerservice]
+|   |   +-- mediaserver					// mediaserver		[mediaserver]
+|   |   +-- mtp
+|   |   +-- ndk
+|   |
+|   +-- services
+|   |   +-- audioflinger				// audioflinger		[libaudioflinger]
+|   |   +-- audiopolicy					// audiopolicy		[libaudiopolicyservice][libaudiopolicymanagerdefault][libaudiopolicymanager]
+|   |   +-- camera
+|   |   +-- medialog
+|   |   +-- soundtrigger
+|   |
+|   +-- cmds
+|   |   +-- screenrecord
+|   |   +-- stagefright
+|   |
+|   +-- drm
+|   |
+|   +-- tools
+|       +-- resampler_tools
+|
++-- base
+|   +-- cmds
+|   |   +-- app_process
+|   |   +-- bootanimation
+|   |   +-- input
+|   |   +-- media
+|   |   +-- pm
+|   |   +-- settings
+|   |   +-- svc
+|   |   +-- wm
+|   |
+|   +-- core
+|   |   +-- java
+|   |   +-- jni
+|   |   +-- res
+|   |
+|   +-- tests
+|
++-- native
+|   +-- cmds
+|   |   +-- dumpstate
+|   |   +-- dumpsys
+|   |   +-- service						// #service list 查看当前的service
+|   |   +-- servicemanager				// servicemanager
+|   |
+|   +-- include
+|   |   +-- binder
+|   |   +-- media
+|   |   +-- ui
+|   |
+|   +-- libs
+|   |   +-- binder						// binder
+|   |   +-- ui
+|   |
+|   +-- services
+|       +-- powermanager
+|       +-- sensorservice
+|       +-- surfaceflinger
+
+-------------------------------------------------------------------------------
+frameworks/base/services/core/java/com/android/server/power/ShutdownThread.java
