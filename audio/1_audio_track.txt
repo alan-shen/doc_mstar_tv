@@ -1,14 +1,20 @@
 =======================================================================================================================
-[Java]			frameworks/base/media/java/android/media/AudioTrack.java
+[Java API 层]	frameworks/base/media/java/android/media/AudioTrack.java
 =======================================================================================================================
-[JNI]			frameworks/base/core/jni/android_media_AudioTrack.cpp
+				|
+				|
+				-----------------------------------------------------
+[JNI 层]		frameworks/base/core/jni/android_media_AudioTrack.cpp
+				-----------------------------------------------------
+				|
+				|
 =======================================================================================================================
-[Native]		frameworks/av/media/libmedia/AudioTrack.cpp
+[Native 层]		frameworks/av/media/libmedia/AudioTrack.cpp
 =======================================================================================================================
 				|
 				-----------------------------
 				BpAudioTrack(IAudioTrack.cpp)
-				=============================
+[Binder]		=============================
 				BnAudioTrack(Tracks.cpp)
 				-----------------------------
 				|

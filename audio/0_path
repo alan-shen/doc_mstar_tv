@@ -83,4 +83,3 @@ frameworks/
 |       +-- surfaceflinger
 
 -------------------------------------------------------------------------------
-frameworks/base/services/core/java/com/android/server/power/ShutdownThread.java
