@@ -21,3 +21,26 @@
 =======================================================================================================================
 [AudioFlinger]	frameworks/av/media/services/audioflinger/...
 =======================================================================================================================
+
+
+=======================================================================================================================
+=======================================================================================================================
+[java api]
+	frameworks/base/media/java/android/media/AudioTrack.java
+	frameworks/base/media/java/android/media/AudioRecord.java
+	frameworks/base/media/java/android/media/AudioManager.java
+[jni]
+	frameworks/base/core/jni/android_media_AudioTrack.cpp
+	frameworks/base/core/jni/android_media_AudioRecord.cpp
+	frameworks/base/core/jni/android_media_AudioSystem.cpp
+[native][libraries]
+	frameworks/av/media/libmedia/AudioTrack.cpp
+	frameworks/av/media/libmedia/AudioRecord.cpp
+	frameworks/av/media/libmedia/AudioEffect.cpp
+	frameworks/av/media/libmedia/AudioPolicy.cpp
+	frameworks/av/media/libmedia/AudioSystem.cpp
+[native][mediaserver]
+	[mediaserver]	frameworks/av/media/mediaserver/
+	[audioflinger]	frameworks/av/services/audioflinger/
+	[audiopolicy]	frameworks/av/services/audiopolicy/
+	[audio hal]		...
