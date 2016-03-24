@@ -2,14 +2,18 @@
 TV:
 ++++
 
-gladiator       |48,55
-inception       |分体
+gladiator         |928      |48,55
+inception         |928      |分体
+
+NationalTreasure  |938
+MissionImpossible |amlogic
 
 =====================================================================================
 BOX:
 +++++
 
-jurassicPark    |m10
-kungfupanda     |m11
+ForrestGump       |mtk      |m7
+jurassicPark      |amlogic  |m10
+kungfupanda       |mtk      |m11
 
 =====================================================================================

@@ -18,14 +18,64 @@ LOCAL_SHARED_LIBRARIES := \
     libsoundtriggerservice
 
 ========================================================================================================
+========================================================================================================
+frameworks/
++-- base
+|   +-- media
+|   |   +-- java
+|   |   |   +-- android
+|   |   |       +-- media
+|   |   |       |   +-- AudioTrack.java                          [audio][java framework]
+|   |   |       |   +-- ...
+|   |   |       |   +-- ...
+|   |   |       +-- mtp
+|   |   |       +-- service
+|   |   +-- jni
+|   |   |   +-- audioeffect
+|   |   |       +-- android_media_AudioEffect.cpp
+|   |   |       +-- android_media_Visualizer.cpp
+|   |   +-- lib
+|   |   +-- mca
+|   |   +-- tests
+|   +-- core
+|   |   +-- jni
+|   |       +-- android_media_AudioTrack.cpp                      [audio][jni]
+|   |       +-- android_media_AudioRecord.cpp
+|   |       +-- android_media_AudioSystem.cpp
+|   |       +-- android_media_JetPlayer.cpp
+|   |       +-- android_media_RemoteDisplay.cpp
+|   |       +-- android_media_ToneGenerator.cpp
+|   |       +-- android_media_AudioErrors.h
+|   |       +-- android_media_AudioFormat.h
+
+========================================================================================================
+========================================================================================================
 frameworks/
 +-- av
 |   +-- media
+|   |   +-- common_time
+|   |   +-- img_utils
+|   |   +-- libcpustats
+|   |   +-- libnbaio
+|   |   +-- libstagefright
+|   |   +-- mtp
+|   |   +-- ndk
+|   |   +-- media
+|   |   |   +-- libstagefright
+|   |   |       +-- wifi-display
 |   |   +-- libmedia										[libmedia]
 |   |   +-- libmediaplayerservice							[libmediaplayerservice]
 |   |   +-- mediaserver					// mediaserver		[mediaserver]
-|   |   +-- mtp
-|   |   +-- ndk
+|   |   +-- libeffects                  // audio effect     --- 与 /device/mstar/gladiator/audio_effects.conf 相关 ---
+|   |       +-- data
+|   |       +-- downmix                                     [libdownmix]
+|   |       +-- factory                                     [libeffects]
+|   |       +-- loudness                                    [libldnhncr]
+|   |       +-- lvm                                         [libbundlewrapper][libreverbwrapper][libmusicbundle][libreverb]
+|   |       +-- preprocessing                               [libaudiopreprocessing]
+|   |       +-- proxy                                       [libeffectproxy]
+|   |       +-- testlibs
+|   |       +-- visualizer                                  [libvisualizer]
 |   |
 |   +-- services
 |   |   +-- audioflinger				// audioflinger		[libaudioflinger]
@@ -39,9 +89,20 @@ frameworks/
 |   |   +-- stagefright
 |   |
 |   +-- drm
-|   |
+|   +-- camera
+|   +-- soundtrigger
 |   +-- tools
-|       +-- resampler_tools
+|   |   +-- resampler_tools
+|   |
+|   +-- include
+|       +-- camera 
+|       +-- common_time
+|       +-- cpustats
+|       +-- drm
+|       +-- media
+|       +-- ndk
+|       +-- privat
+|       +-- soundtrigger
 |
 +-- base
 |   +-- cmds
@@ -82,4 +143,29 @@ frameworks/
 |       +-- sensorservice
 |       +-- surfaceflinger
 
+========================================================================================================
+========================================================================================================
+device/
++-- mstar
+|   +-- gladiator
+|       +-- audio_effects.conf         // 里边指定了 effect 库的位置以及每个库的功能
+|       +-- audio_policy.conf          // 里边每一个 hw module 节点对应一个 so 库, eg.primary<->audio.primary.<device>.so;a2dp<->audio.a2dp.default.so
+
+========================================================================================================
+========================================================================================================
+hardware/
++-- mstar
+|   +-- audio                          // 库 audio.primary.$(TARGET_BOARD_PLATFORM) <-- audio.primary.monaco.so
+
+========================================================================================================
+extrenal/
++-- bluetooth
+|   +-- bluedroid
+|       +-- audio_a2dp_hw              // 库 audio.a2dp.default
+|
++-- tinyalsa                           // tiny alsa
+|
+ 
+========================================================================================================
+========================================================================================================
 -------------------------------------------------------------------------------
