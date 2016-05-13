@@ -31,3 +31,27 @@ OpenMAX:
 FFMpeg:
 
 ===================================================================================
+Ubuntu 安装 VLC 且可以播放 H.265:
++++++++++++++++++++++++++++++++++
+
+1.安装VLC:
+
+	# sudo apt-get install vlc-
+
+2.安装插件:
+
+	http://askubuntu.com/questions/362745/how-to-install-h-265-hevc-codec-on-ubuntu-linux
+	# sudo apt-add-repository ppa:strukturag/libde265
+	# sudo apt-get update
+	# sudo apt-get install gstreamer0.10-libde265
+	# sudo apt-get install gstreamer1.0-libde265
+	# sudo apt-get install vlc-plugin-libde265
+
+===================================================================================
+Ubuntu 安装 ffplay:
++++++++++++++++++++
+
+1.安装
+	# sudo apt-get install libav-tools
+
+===================================================================================
