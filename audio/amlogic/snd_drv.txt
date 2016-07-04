@@ -1,0 +1,66 @@
+===============================================================================================================
+aml_g9tv_snd:								"aml, aml-snd-g9tv"
+
+	cpu_list:
+		cpudai0:	&i2s_dai				"aml, aml-i2s-dai"
+		cpudai1:	&spdif_dai				"aml, aml-spdif-dai"
+		cpudai2:	&pcm_dai				"aml, aml-pcm-dai"
+
+	codec_list:
+		codec1:		&pmu4_codec				"aml, aml-pmu4-codec"
+		codec2:		&spdif_codec			"aml, aml-spdif-codec"
+		codec3:		&pcm_codec				"aml, pcm2BT-codec"
+
+	plat_list:
+		i2s_plat:							"aml, aml-i2s"
+		i2s_plat:							"aml, aml-i2s"
+		pcm_plat:							"aml, aml-pcm"
+
+	aux_dev:
+		tas5731:
+
+===============================================================================================================
+1.Codec 驱动:
++++++++++++++
+
+	eg. sound/soc/aml/aml_spdif_codec.c
+
+	snd_soc_register_codec()
+
+		snd_soc_dai_driver
+		{
+			.name
+			.playback
+			.capture
+		}
+
+===============================================================================================================
+2.平台驱动:
++++++++++++++
+
+	eg. sound/soc/aml/aml_i2s.c
+
+	snd_soc_register_platform()
+
+		snd_soc_platform_driver
+		{
+			.probe
+			.ops	-> snd_pcm_ops
+					{
+						.
+					}
+			.pcm_new
+			.pcm_free
+			.suspend
+			.resume
+		}
+
+===============================================================================================================
+3.板级驱动:
++++++++++++++
+
+	sound/soc/aml/aml_sa9tv.c
+
+	snd_soc_dai_link
+
+===============================================================================================================

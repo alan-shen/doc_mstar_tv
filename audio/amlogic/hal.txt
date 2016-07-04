@@ -1,0 +1,30 @@
+============================================================================================================
+hardware/amlogic/audio/libTVaudio/audio/audio_amaudio.cpp
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	int amAudioOpen(int sr, int input_device, int output_device)
+	设置 输入源 以及 输入/输出设备.
+
+		-> aml_audio_open()
+
+			-> get_aml_card()
+			-> pcm_open()
+
+============================================================================================================
+dolby_audio_processing/dolby_audio_processing_control.h
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	int set_virtual_surround();
+	...
+
+============================================================================================================
+libTVaudio/audio/aml_audio.c
++++++++++++++++++++++++++++++
+
+	/dev/amaudio2_in
+	/dev/amaudio2_out
+
+	/sys/class/amaudio2/aml_audio_enable
+	/sys/class/amaudio2/aml_input_device
+
+============================================================================================================
