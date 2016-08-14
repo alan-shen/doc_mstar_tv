@@ -1,0 +1,67 @@
+==================================================================================================
+/packages/apps/SubwooferService
++++++++++++++++++++++++++++++++
+
+├── AndroidManifest.xml
+├── Android.mk
+├── res
+│   └── values
+│       └── strings.xml
+└── src
+    └── com
+        └── xiaomi
+            └── mitv
+                └── subwoofer
+                    └── service
+                        ├── ConnectionManager.java
+                        └── SubwooferService.java
+
+---------------------------------------------------------------------------------------------------
+/vendor/duokan/apps/SurroundDongleService
++++++++++++++++++++++++++++++++++++++++++
+
+├── AndroidManifest.xml
+├── Android.mk
+├── res
+│   └── values
+│       └── strings.xml
+└── src
+    └── com
+        └── xiaomi
+            └── mitv
+                └── surrounddongle
+                    └── service
+                        ├── RemoteClientManager.java
+                        ├── SurroundDongleDeviceManager.java
+                        └── SurroundDongleService.java
+==================================================================================================
+/vendor/duokan/frameworks/tvmiddleware/java/mitv/impl
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+subwoofer/
+├── ISubwooferManager.aidl
+└── SubwooferManagerImpl.java
+
+---------------------------------------------------------------------------------------------------
+
+surrounddongle/
+├── ISurroundDongleManager.aidl
+└── SurroundDongleManagerImpl.java
+
+==================================================================================================
+/vendor/duokan/frameworks/MiTVSDK/java/mitv
++++++++++++++++++++++++++++++++++++++++++++
+
+subwoofer/
+└── SubwooferManager.java
+
+---------------------------------------------------------------------------------------------------
+
+surrounddongle/
+└── SurroundDongleManager.java
+
+==================================================================================================
+
+==================================================================================================
+
+==================================================================================================

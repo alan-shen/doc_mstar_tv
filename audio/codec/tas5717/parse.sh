@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 if test -z "$1"; then
 	echo -e "\n\n\t\t!!!You should give a file to parse!!!!\n\n"
 	exit
@@ -22,7 +22,7 @@ DRC1="X3B X3C X40"
 DRC2="X3E X3F X43"
 
 #EQ of Channel 1
-echo -e "\nEQ_Ch1:\n"
+echo -e "\nEQ_Ch1+EQ_Ch2:\n"
 for reg in ${CH1_EQ}
 do
 	grep -rw --color "^${reg}" ${INPUT_FILE} > ${TMP_FILE}
@@ -46,11 +46,11 @@ do
 	val_17=`cat  ${TMP_FILE} | awk -F ' ' {'print $19'}`
 	val_18=`cat  ${TMP_FILE} | awk -F ' ' {'print $20'}`
 	val_19=`cat  ${TMP_FILE} | awk -F ' ' {'print $21'}`
-	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} 0x${val_08} 0x${val_09} 0x${val_10} 0x${val_11} 0x${val_12} 0x${val_13} 0x${val_14} 0x${val_15} 0x${val_16} 0x${val_17} 0x${val_18} 0x${val_19} /* 0x${reg}---ch1 */"
+	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} 0x${val_08} 0x${val_09} 0x${val_10} 0x${val_11} 0x${val_12} 0x${val_13} 0x${val_14} 0x${val_15} 0x${val_16} 0x${val_17} 0x${val_18} 0x${val_19} /* 0${reg}---ch1 */"
 done
 
 #EQ of Channel 2
-echo -e "\nEQ_Ch2:\n"
+#echo -e "\nEQ_Ch2:\n"
 for reg in ${CH2_EQ}
 do
 	grep -rw --color "^${reg}" ${INPUT_FILE} > ${TMP_FILE}
@@ -74,7 +74,7 @@ do
 	val_17=`cat  ${TMP_FILE} | awk -F ' ' {'print $19'}`
 	val_18=`cat  ${TMP_FILE} | awk -F ' ' {'print $20'}`
 	val_19=`cat  ${TMP_FILE} | awk -F ' ' {'print $21'}`
-	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} 0x${val_08} 0x${val_09} 0x${val_10} 0x${val_11} 0x${val_12} 0x${val_13} 0x${val_14} 0x${val_15} 0x${val_16} 0x${val_17} 0x${val_18} 0x${val_19} /* 0x${reg}---ch2 */"
+	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} 0x${val_08} 0x${val_09} 0x${val_10} 0x${val_11} 0x${val_12} 0x${val_13} 0x${val_14} 0x${val_15} 0x${val_16} 0x${val_17} 0x${val_18} 0x${val_19} /* 0${reg}---ch2 */"
 done
 
 #DRC1
@@ -90,7 +90,7 @@ do
 	val_05=`cat  ${TMP_FILE} | awk -F ' ' {'print $7'}`
 	val_06=`cat  ${TMP_FILE} | awk -F ' ' {'print $8'}`
 	val_07=`cat  ${TMP_FILE} | awk -F ' ' {'print $9'}`
-	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} /* 0x${reg}---drc1 */"
+	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} /* 0${reg}---drc1 */"
 done
 
 #DRC2
@@ -106,5 +106,7 @@ do
 	val_05=`cat  ${TMP_FILE} | awk -F ' ' {'print $7'}`
 	val_06=`cat  ${TMP_FILE} | awk -F ' ' {'print $8'}`
 	val_07=`cat  ${TMP_FILE} | awk -F ' ' {'print $9'}`
-	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} /* 0x${reg}---drc2 */"
+	echo "                0x${val_00} 0x${val_01} 0x${val_02} 0x${val_03} 0x${val_04} 0x${val_05} 0x${val_06} 0x${val_07} /* 0${reg}---drc2 */"
 done
+
+rm -rf ${TMP_FILE}
