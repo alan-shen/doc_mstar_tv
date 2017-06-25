@@ -33,6 +33,9 @@
 #include <string.h>
 #include <signal.h>
 
+/* mitv, debug, shenpengru@xiaomi.com */
+#define SUPPORT_PLAY_MONO_ON_STERO_DEVICE (1)
+
 #define ID_RIFF 0x46464952
 #define ID_WAVE 0x45564157
 #define ID_FMT  0x20746d66
@@ -216,6 +219,11 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
     struct pcm *pcm;
     char *buffer;
     int size;
+#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+    char *buffer_mono;
+    int i,j,loops;
+    int size_per_frame;
+#endif
     int num_read;
 
     memset(&config, 0, sizeof(config));
@@ -231,11 +239,33 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
     config.stop_threshold = 0;
     config.silence_threshold = 0;
 
+#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+    if (channels == 1) {
+        printf("-- mitv: force to support one channel --\n");
+        size_per_frame = bits*channels/8; 
+        if (!sample_is_playable(card, device, 2, rate, bits, period_size, period_count)) {
+            return;
+        }
+    } else {
+        if (!sample_is_playable(card, device, channels, rate, bits, period_size, period_count)) {
+            return;
+        }
+    }
+#else
     if (!sample_is_playable(card, device, channels, rate, bits, period_size, period_count)) {
         return;
-    }
+#endif
 
+#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+    if (channels == 1) {
+        config.channels = 2;
+        pcm = pcm_open(card, device, PCM_OUT, &config);
+    } else {
+        pcm = pcm_open(card, device, PCM_OUT, &config);
+    }
+#else
     pcm = pcm_open(card, device, PCM_OUT, &config);
+#endif
     if (!pcm || !pcm_is_ready(pcm)) {
         fprintf(stderr, "Unable to open PCM device %u (%s)\n",
                 device, pcm_get_error(pcm));
@@ -250,20 +280,50 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
         pcm_close(pcm);
         return;
     }
+#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+    if (channels == 1) {
+        buffer_mono = malloc(size*2);
+    }
+#endif
 
-    printf("Playing sample: %u ch, %u hz, %u bit\n", channels, rate, bits);
+    printf("Playing sample: %u ch, %u hz, %u bit, %d size, %d size_per_frame\n", channels, rate, bits, size, size_per_frame);
 
     /* catch ctrl-c to shutdown cleanly */
     signal(SIGINT, stream_close);
 
     do {
         num_read = fread(buffer, 1, size, file);
+#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+        if (channels == 1) {
+            if (num_read > 0) {
+                loops = num_read/size_per_frame;
+                /* create stero-data from mono-data!! */
+                for (i=0; i<loops; i++) {
+                    j = 2*i*size_per_frame;
+                    memcpy(&buffer_mono[j],                &buffer[i*size_per_frame], size_per_frame);
+                    memcpy(&buffer_mono[j+size_per_frame], &buffer[i*size_per_frame], size_per_frame);
+                }
+                if (pcm_write(pcm, buffer_mono, num_read*2)) {
+                    fprintf(stderr, "Error playing sample\n");
+                    break;
+                }
+            }
+        } else {
+            if (num_read > 0) {
+                if (pcm_write(pcm, buffer, num_read)) {
+                    fprintf(stderr, "Error playing sample\n");
+                    break;
+                }
+            }
+        }
+#else
         if (num_read > 0) {
             if (pcm_write(pcm, buffer, num_read)) {
                 fprintf(stderr, "Error playing sample\n");
                 break;
             }
         }
+#endif
     } while (!close && num_read > 0);
 
     free(buffer);
