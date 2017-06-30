@@ -32,9 +32,11 @@
 #include <stdint.h>
 #include <string.h>
 #include <signal.h>
+#include "audio_resampler.h"
 
 /* mitv, debug, shenpengru@xiaomi.com */
 #define SUPPORT_PLAY_MONO_ON_STERO_DEVICE (1)
+#define SUPPORT_PLAY_RESAMPLE_16K_MUSIC   (1)
 
 #define ID_RIFF 0x46464952
 #define ID_WAVE 0x45564157
@@ -74,6 +76,14 @@ void stream_close(int sig)
     close = 1;
 }
 
+/*
+ * -f:
+ *     Force to play some format of wave which not support on hw device.
+ *     Now, only support force to play:
+ *         1.MONO file;
+ *         2.Resample 16K to 48K
+ **/
+int gForce = 0;
 int main(int argc, char **argv)
 {
     FILE *file;
@@ -151,6 +161,10 @@ int main(int argc, char **argv)
             if (*argv)
                 card = atoi(*argv);
         }
+        if (strcmp(*argv, "-f") == 0) {
+            if (*argv)
+                gForce = 1;
+        }
         if (*argv)
             argv++;
     }
@@ -211,6 +225,10 @@ int sample_is_playable(unsigned int card, unsigned int device, unsigned int chan
     return can_play;
 }
 
+int is_support_force_play(void) {
+    return gForce;
+}
+
 void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned int channels,
                  unsigned int rate, unsigned int bits, unsigned int period_size,
                  unsigned int period_count)
@@ -220,11 +238,18 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
     char *buffer;
     int size;
 #if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
-    char *buffer_mono;
+    char *buffer_stero;
+    char *buffer_48k;
     int i,j,loops;
     int size_per_frame;
+    int need_remix = 0;
+#endif
+#if SUPPORT_PLAY_RESAMPLE_16K_MUSIC
+    struct resample_para para;
+    int need_resample = 0;
 #endif
     int num_read;
+    int can_play = 1;
 
     memset(&config, 0, sizeof(config));
     config.channels = channels;
@@ -239,25 +264,40 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
     config.stop_threshold = 0;
     config.silence_threshold = 0;
 
-#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
-    if (channels == 1) {
-        printf("-- mitv: force to support one channel --\n");
-        size_per_frame = bits*channels/8; 
-        if (!sample_is_playable(card, device, 2, rate, bits, period_size, period_count)) {
-            return;
-        }
-    } else {
-        if (!sample_is_playable(card, device, channels, rate, bits, period_size, period_count)) {
-            return;
-        }
-    }
-#else
     if (!sample_is_playable(card, device, channels, rate, bits, period_size, period_count)) {
+        can_play = 0;
+        #if SUPPORT_PLAY_RESAMPLE_16K_MUSIC
+        /* check if need do resample? */
+        if (is_support_force_play() && (rate == 16000)) {
+            need_resample = 1;
+            config.rate = 48000;
+            if (!sample_is_playable(card, device, channels, config.rate, bits, period_size, period_count)) {
+                can_play = 0;
+            } else {
+                can_play = 1;
+            }
+        }
+        #endif
+        #if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+        /* check if need do remix for mono music? */
+        if (is_support_force_play()  && (channels == 1)) {
+            need_remix = 1;
+            size_per_frame = bits*channels/8;
+            if (!sample_is_playable(card, device, 2, config.rate, bits, period_size, period_count)) {
+                can_play = 0;
+            } else {
+                can_play = 1;
+            }
+        }
+        #endif
+    }
+
+    if (!can_play) {
         return;
-#endif
+    }
 
 #if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
-    if (channels == 1) {
+    if (need_remix) {
         config.channels = 2;
         pcm = pcm_open(card, device, PCM_OUT, &config);
     } else {
@@ -280,13 +320,21 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
         pcm_close(pcm);
         return;
     }
-#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
-    if (channels == 1) {
-        buffer_mono = malloc(size*2);
-    }
-#endif
 
     printf("Playing sample: %u ch, %u hz, %u bit, %d size, %d size_per_frame\n", channels, rate, bits, size, size_per_frame);
+
+#if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
+    if (need_remix) {
+        buffer_stero = malloc(size*2);
+        printf("-- mitv: force to support one channel --\n");
+    }
+#endif
+#if SUPPORT_PLAY_RESAMPLE_16K_MUSIC
+    if (need_resample) {
+        buffer_48k   = malloc(size*2);
+        printf("-- mitv: force to support sample rate < 32K --\n");
+	}
+#endif
 
     /* catch ctrl-c to shutdown cleanly */
     signal(SIGINT, stream_close);
@@ -294,16 +342,25 @@ void play_sample(FILE *file, unsigned int card, unsigned int device, unsigned in
     do {
         num_read = fread(buffer, 1, size, file);
 #if SUPPORT_PLAY_MONO_ON_STERO_DEVICE
-        if (channels == 1) {
+        if (need_remix) {
             if (num_read > 0) {
                 loops = num_read/size_per_frame;
                 /* create stero-data from mono-data!! */
                 for (i=0; i<loops; i++) {
                     j = 2*i*size_per_frame;
-                    memcpy(&buffer_mono[j],                &buffer[i*size_per_frame], size_per_frame);
-                    memcpy(&buffer_mono[j+size_per_frame], &buffer[i*size_per_frame], size_per_frame);
+                    memcpy(&buffer_stero[j],                &buffer[i*size_per_frame], size_per_frame);
+                    memcpy(&buffer_stero[j+size_per_frame], &buffer[i*size_per_frame], size_per_frame);
                 }
-                if (pcm_write(pcm, buffer_mono, num_read*2)) {
+#if SUPPORT_PLAY_RESAMPLE_16K_MUSIC
+                if (need_resample) {
+                   para.input_sr  = rate;
+                   para.output_sr = 48000;
+                   para.channels  = 2;
+                   resampler_init(&para);
+                   resample_process(&para, loops, buffer_stero, buffer_48k);
+                }
+#endif
+                if (pcm_write(pcm, buffer_stero, num_read*2)) {
                     fprintf(stderr, "Error playing sample\n");
                     break;
                 }
