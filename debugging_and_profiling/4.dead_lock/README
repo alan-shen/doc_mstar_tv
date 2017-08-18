@@ -1,0 +1,17 @@
+
+发生死锁问题如何确认:
+=======================
+
+# ps | grep mediaserver
+# debugerd $PID
+
+	// 生成 tombstone
+
+查看 tombstone, 看 backtrace, 可以看到类似:
+1.有线程在 poll...
+2.有线程在 binder...
+3.有线程在 拿锁...
+....
+
+
+根据这些现象判断是否发生了死锁.
