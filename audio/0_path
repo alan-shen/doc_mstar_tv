@@ -26,6 +26,8 @@ frameworks/
 |   |   |   +-- android
 |   |   |       +-- media
 |   |   |       |   +-- AudioTrack.java                          [audio][java framework]
+|   |   |       |   +-- AudioSystem.java
+|   |   |       |   +-- AudioManager.java
 |   |   |       |   +-- ...
 |   |   |       |   +-- ...
 |   |   |       +-- mtp
@@ -37,6 +39,14 @@ frameworks/
 |   |   +-- lib
 |   |   +-- mca
 |   |   +-- tests
+|   +-- services
+|   |   +-- core
+|   |       +-- java
+|   |           +-- com
+|   |               +-- android
+|   |                   +-- server
+|   |                       +-- audio
+|   |                           +-- AudioService.java
 |   +-- core
 |   |   +-- jni
 |   |       +-- android_media_AudioTrack.cpp                      [audio][jni]
