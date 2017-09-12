@@ -1,0 +1,74 @@
+
+发生死锁问题如何确认:
+=======================
+
+# ps | grep mediaserver
+# debugerd $PID
+
+	// 生成 tombstone
+
+查看 tombstone, 看 backtrace, 可以看到类似:
+1.有线程在 poll...
+2.有线程在 binder...
+3.有线程在 拿锁...
+....
+
+
+根据这些现象判断是否发生了死锁.
+
+
+
+
+判断AudioTrack这里死锁无法写数据的方法:
+=========================================
+
+# dumpsys media.audio_flinger
+
+发生问题时发现,
+	Last write occurred - 这里时间很长;
+	Total writes        - 没有变化
+	Blocked in write    - 而且是"yes"的 block 状态
+可以推断死锁在了 写的过程 中!!!
+
+验证, 通过 tombstone 查找到相关线程拿锁的位置, 找到对应代码行, 验证确实是在 拿 adv->lock 时死锁了.
+
+Output thread 0xf3e80000 type 0 (MIXER):
+  Thread name: AudioOut_2
+  I/O handle: 2
+  TID: 4232
+  Standby: no
+  Sample rate: 48000 Hz
+  HAL frame count: 1024
+  HAL format: 0x1 (pcm16)
+  HAL buffer size: 12288 bytes
+  Channel count: 6
+  Channel mask: 0x0000003f (front-left, front-right, front-center, low freq, back-left, back-right)
+  Format: 0x1 (pcm16)
+  Frame size: 12 bytes
+  Pending config events: none
+  Output device: 0x2 (SPEAKER)
+  Input device: 0 (NONE)
+  Audio source: 0 (default)
+  Normal frame count: 1024
+  Last write occurred (msecs): 1		/* 最后一次写到此次 dump 的时间 */
+  Total writes: 2658407					/* 写了多少数据 */
+  Delayed writes: 0
+  Blocked in write: yes					/* 是否正在写 */
+  Suspend count: 0
+  Sink buffer : 0xf3fae000
+  Mixer buffer: 0xf3e4e000
+  Effect buffer: 0xf3fb1000
+  Fast track availMask=0xfe
+  Standby delay ns=3000000000
+  AudioStreamOut: 0xf62e4188 flags 0x2 (PRIMARY)
+  Thread throttle time (msecs): 1823
+  AudioMixer tracks: 0x00000003
+  FastMixer not initialized
+  Stream volumes in dB: 0:-23, 1:-38, 2:-27, 3:-55, 4:-26, 5:-27, 6:0, 7:-38, 8:-38, 9:0, 10:-55, 11:0, 12:0
+  Normal mixer raw underrun counters: partial=0 empty=0
+  2 Tracks of which 1 are active
+    Name Active Client Type      Fmt Chn mask Session fCount S F SRate  L dB  R dB    Server Main buf  Aux Buf Flags UndFrmCnt
+       1    yes   3856    3 00000001 0000003F     117   4104 A 3 48000     0     0  12466C00 0xf3fae000 0x0 0x001     27698
+       0     no   5294    3 00000001 00000001      16   2760 I 0 16000     0     0  00000000 0xf3fae000 0x0 0x000         0
+  0 Effect Chains
+
