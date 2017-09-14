@@ -14,7 +14,6 @@
   
 namespace android  
 {
-	/****************************** BnTest **********************************/  
     class ITest : public IInterface  
     {  
         public:  
@@ -23,6 +22,7 @@ namespace android
             virtual void getName() = 0;  
     };  
   
+	/****************************** BnTest **********************************/  
     class BnTest: public BnInterface<ITest>  
     {  
         public:  
@@ -44,12 +44,39 @@ namespace android
             void print(){ALOGE("got the service");};  
     };  
   
-	/****************************** BpTest **********************************/  
+	/****************************** BnTest.onTransact **********************************/  
     enum {  
         PRINT = IBinder::FIRST_CALL_TRANSACTION,
         NAME,
     };  
   
+    status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)  
+    {  
+        switch(code)  
+        {  
+            case PRINT:  
+                {  
+                    printf("got the client msg\n");  
+                    CHECK_INTERFACE(ITest, data, reply);  
+                    getTest();  
+                    reply->writeInt32(100);  
+  
+                    return NO_ERROR;  
+                }break; 
+			case NAME:
+				{
+					printf("BnTest::onTransact() NAME\n");
+                    CHECK_INTERFACE(ITest, data, reply);  
+                    getName();  
+                    reply->writeInt32(90);  
+                    return NO_ERROR;  
+				}
+				break; 
+            default:break;  
+        }  
+        return NO_ERROR;  
+    }  
+	/****************************** BpTest **********************************/  
     class BpTest : public BpInterface<ITest>  
     {  
         public:  
@@ -78,35 +105,6 @@ namespace android
   
 	/******************************  **********************************/  
     IMPLEMENT_META_INTERFACE(Test,"android.TestServer.ITest");  
-  
-	/****************************** BnTest.onTransact **********************************/  
-    status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)  
-    {  
-        switch(code)  
-        {  
-            case PRINT:  
-                {  
-                    printf("got the client msg\n");  
-                    CHECK_INTERFACE(ITest, data, reply);  
-                    getTest();  
-                    reply->writeInt32(100);  
-  
-                    return NO_ERROR;  
-                }break; 
-			case NAME:
-				{
-					printf("BnTest::onTransact() NAME\n");
-                    CHECK_INTERFACE(ITest, data, reply);  
-                    getName();  
-                    reply->writeInt32(99);  
-                    return NO_ERROR;  
-				}
-				break; 
-            default:break;  
-        }  
-        return NO_ERROR;  
-    }  
-  
 }// namespace android  
 
 #endif 

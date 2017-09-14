@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
   
     }while(true);  
   
-    const sp<ITest>& bts = interface_cast<ITest>(binder);  
+    const sp<ITest>& bts = interface_cast<ITest>(binder);
+ 
     printf("bindertest client is starting.....\n");
 	printf("\n== Client, test getTest() ==\n");
     bts->getTest();  
