@@ -17,9 +17,11 @@ int main(int argc, char *argv[])
     }while(true);  
   
     const sp<ITest>& bts = interface_cast<ITest>(binder);  
-    ALOGE("bindertest client is starting.....");   
-  
+    printf("bindertest client is starting.....\n");
+	printf("\n== Client, test getTest() ==\n");
     bts->getTest();  
+	printf("\n== Client, test getName() ==\n");
+    bts->getName();  
   
     return 0;  
 } 

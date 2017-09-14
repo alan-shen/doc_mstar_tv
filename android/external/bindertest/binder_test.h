@@ -20,6 +20,7 @@ namespace android
         public:  
             DECLARE_META_INTERFACE(Test);  
             virtual void getTest() = 0;  
+            virtual void getName() = 0;  
     };  
   
     class BnTest: public BnInterface<ITest>  
@@ -37,12 +38,16 @@ namespace android
             //Test(){ALOGE("got the service");};  
             //~Test();  
             virtual void getTest(){ALOGE("got the service");};  
+            virtual void getName(){
+				ALOGE("BnTest Test::getName(): got the service name, pengru");
+			};  
             void print(){ALOGE("got the service");};  
     };  
   
 	/****************************** BpTest **********************************/  
     enum {  
-        PRINT = IBinder::FIRST_CALL_TRANSACTION,  
+        PRINT = IBinder::FIRST_CALL_TRANSACTION,
+        NAME,
     };  
   
     class BpTest : public BpInterface<ITest>  
@@ -60,7 +65,15 @@ namespace android
                 remote()->transact(PRINT, data, &reply);  
                 printf("send Print %d\n",reply.readInt32());  
             }  
-  
+
+			virtual void getName(){
+				printf("BpTest - getName()\n");
+                Parcel data, reply;  
+                data.writeInterfaceToken(ITest::getInterfaceDescriptor());  
+                printf("BpTest - transact()->NAME \n");  
+                remote()->transact(NAME, data, &reply);  
+                printf("BpTest - getName() result: %d\n",reply.readInt32());  
+			}
     };  
   
 	/******************************  **********************************/  
@@ -79,14 +92,21 @@ namespace android
                     reply->writeInt32(100);  
   
                     return NO_ERROR;  
-                }break;  
+                }break; 
+			case NAME:
+				{
+					printf("BnTest::onTransact() NAME\n");
+                    CHECK_INTERFACE(ITest, data, reply);  
+                    getName();  
+                    reply->writeInt32(99);  
+                    return NO_ERROR;  
+				}
+				break; 
             default:break;  
         }  
         return NO_ERROR;  
     }  
   
 }// namespace android  
-  
-  
-  
+
 #endif 
