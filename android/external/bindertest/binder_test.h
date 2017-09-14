@@ -35,9 +35,9 @@ class BnTest: public BnInterface<ITest>
 class Test : public BnTest
 {
 	public:
-	virtual void getTest(){ALOGE("got the service");};
-	virtual void getName(){ALOGE("BnTest Test::getName(): got the service name, pengru");};
-	void print(){ALOGE("got the service");};
+	virtual void getTest() {ALOGE("Class Test:public BnTest, getTest()");};
+	virtual void getName() {ALOGE("Class Test:public BnTest, getName()");};
+	void         print()   {ALOGE("Class Test:public BnTest, print()");};
 };
 
 /****************************** BnTest.onTransact **********************************/
@@ -51,7 +51,7 @@ status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, ui
 	switch(code) {
 	case PRINT:
 		{
-			printf("got the client msg\n");
+			printf("BnTest::onTransact() Command PRINT\n");
 			CHECK_INTERFACE(ITest, data, reply);
 			getTest();
 			reply->writeInt32(100);
@@ -60,7 +60,7 @@ status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, ui
 		break;
 	case NAME:
 		{
-			printf("BnTest::onTransact() NAME\n");
+			printf("BnTest::onTransact() Command NAME\n");
 			CHECK_INTERFACE(ITest, data, reply);
 			getName();
 			reply->writeInt32(90);
@@ -73,17 +73,19 @@ status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, ui
 
 	return NO_ERROR;
 }
+
 /****************************** BpTest **********************************/
 class BpTest : public BpInterface<ITest>
 {
 	public:
 	BpTest(const sp<IBinder>& impl ):BpInterface<ITest>(impl{}
 	virtual void getTest() {
-		printf("in the get Test\n");
+		printf("BpTest - getTest()\n");
 		Parcel data, reply;
 		data.writeInterfaceToken(ITest::getInterfaceDescriptor());
+		printf("BpTest - transact()->PRINT\n");
 		remote()->transact(PRINT, data, &reply);
-		printf("send Print %d\n",reply.readInt32());
+		printf("BpTest - getTest() result: %d\n",reply.readInt32());
 	}
 
 	virtual void getName() {
