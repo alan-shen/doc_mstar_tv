@@ -2,7 +2,7 @@
 
 using namespace android;
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	sp<IBinder> binder;
 	sp<ProcessState> proc(ProcessState::self());

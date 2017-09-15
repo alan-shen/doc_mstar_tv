@@ -14,6 +14,8 @@
 
 namespace android
 {
+
+/****************************** ITest **********************************/
 class ITest : public IInterface
 {
 	public:
@@ -35,19 +37,53 @@ class BnTest: public BnInterface<ITest>
 class Test : public BnTest
 {
 	public:
-	virtual void getTest() {ALOGE("Class Test:public BnTest, getTest()");};
-	virtual void getName() {ALOGE("Class Test:public BnTest, getName()");};
-	void         print()   {ALOGE("Class Test:public BnTest, print()");};
+	virtual void getTest() {printf("Class Test:public BnTest, getTest()\n");};
+	virtual void getName() {printf("Class Test:public BnTest, getName()\n");};
+	void         print()   {printf("Class Test:public BnTest, print()  \n");};
 };
 
-/****************************** BnTest.onTransact **********************************/
+/********************** COMMAND DEFINE **********************************/
 enum {
 	PRINT = IBinder::FIRST_CALL_TRANSACTION,
 	NAME,
 };
 
+/****************************** BpTest **********************************/
+class BpTest : public BpInterface<ITest>
+{
+	public:
+	BpTest(const sp<IBinder>& impl ):BpInterface<ITest> (impl) {
+
+	}
+	virtual void getTest() {
+		printf("BpTest - getTest()\n");
+		Parcel data, reply;
+		data.writeInterfaceToken(ITest::getInterfaceDescriptor());
+		printf("BpTest - getTest() - transact()->PRINT\n");
+		remote()->transact(PRINT, data, &reply);
+		printf("BpTest - getTest() - result: %d\n",reply.readInt32());
+	}
+
+	virtual void getName()
+	{
+		printf("BpTest - getName()\n");
+		Parcel data, reply;
+		data.writeInterfaceToken(ITest::getInterfaceDescriptor());
+		printf("BpTest - getName() - transact()->NAME \n");
+		remote()->transact(NAME, data, &reply);
+		printf("BpTest - getName() - result: %d\n",reply.readInt32());
+	}
+};
+
+/******************************  **********************************/
+IMPLEMENT_META_INTERFACE(Test,"android.TestServer.ITest");
+
+/****************************** BnTest.onTransact **********************************/
 status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
 {
+	if (!flags)
+		printf("\n");
+
 	switch(code) {
 	case PRINT:
 		{
@@ -74,35 +110,6 @@ status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, ui
 	return NO_ERROR;
 }
 
-/****************************** BpTest **********************************/
-class BpTest : public BpInterface<ITest>
-{
-	public:
-	BpTest(const sp<IBinder>& impl ):BpInterface<ITest> (impl) {
-
-	}
-	virtual void getTest() {
-		printf("BpTest - getTest()\n");
-		Parcel data, reply;
-		data.writeInterfaceToken(ITest::getInterfaceDescriptor());
-		printf("BpTest - transact()->PRINT\n");
-		remote()->transact(PRINT, data, &reply);
-		printf("BpTest - getTest() result: %d\n",reply.readInt32());
-	}
-
-	virtual void getName()
-	{
-		printf("BpTest - getName()\n");
-		Parcel data, reply;
-		data.writeInterfaceToken(ITest::getInterfaceDescriptor());
-		printf("BpTest - transact()->NAME \n");
-		remote()->transact(NAME, data, &reply);
-		printf("BpTest - getName() result: %d\n",reply.readInt32());
-	}
-};
-
-/******************************  **********************************/
-IMPLEMENT_META_INTERFACE(Test,"android.TestServer.ITest");
 }// namespace android
 
 #endif
