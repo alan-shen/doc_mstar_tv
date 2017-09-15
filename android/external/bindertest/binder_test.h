@@ -78,7 +78,9 @@ status_t BnTest::onTransact(uint32_t code, const Parcel& data, Parcel* reply, ui
 class BpTest : public BpInterface<ITest>
 {
 	public:
-	BpTest(const sp<IBinder>& impl ):BpInterface<ITest>(impl{}
+	BpTest(const sp<IBinder>& impl ):BpInterface<ITest> (impl) {
+
+	}
 	virtual void getTest() {
 		printf("BpTest - getTest()\n");
 		Parcel data, reply;
@@ -88,7 +90,8 @@ class BpTest : public BpInterface<ITest>
 		printf("BpTest - getTest() result: %d\n",reply.readInt32());
 	}
 
-	virtual void getName() {
+	virtual void getName()
+	{
 		printf("BpTest - getName()\n");
 		Parcel data, reply;
 		data.writeInterfaceToken(ITest::getInterfaceDescriptor());
